@@ -7,13 +7,14 @@
   border-radius: 10px;
   font-size: 30px;
   box-sizing: border-box;
-  margin-bottom: 30px;
 }
 
 #display-screen {
   border: ridge 2px rgba(204, 204, 204, 0.7);
+  margin: 20px 0;
 }
 
 #output {
+  margin-top: 20px;
   border: dashed 5px rgba(204, 204, 204, 0.7);
 }

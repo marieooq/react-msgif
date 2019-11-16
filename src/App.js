@@ -12,15 +12,20 @@ function App() {
   return (
     <div id="container">
       <div id="inner">
-        <Screen id="display-screen" />
-        <Mode />
-        <Textarea />
-        <div className="btn-wrapper">
-          <Record />
-          <CreateGif />
+        <div id="left">
+          <Screen id="display-screen" />
+          <Mode />
+          <Textarea />
+          <div className="btn-wrapper">
+            <Record />
+            <CreateGif />
+          </div>
         </div>
-        <Screen id="output" />
-        <Download />
+
+        <div id="right">
+          <Screen id="output" />
+          <Download />
+        </div>
       </div>
     </div>
   );
