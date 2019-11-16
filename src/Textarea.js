@@ -2,6 +2,28 @@ import React, { Component } from "react";
 import "./Textarea.css";
 
 class Textarea extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: ""
+    };
+  }
+
+  displayMessage = e => {};
+
+  // const displayMessage = val => {
+  //   if (isRec)
+  //   {
+  //     captureScreen();
+  //   }
+  //   if (displayScreen.className !== "")
+  //   {
+  //     removeClass();
+  //   }
+  //   switchMode(isMode());
+  //   displayScreen.textContent = val;
+  // };
+
   render() {
     return (
       <textarea
@@ -11,7 +33,7 @@ class Textarea extends Component {
         cols="26"
         value=""
         maxlength="140"
-        oninput="displayMessage(this.value)"
+        onInput={this.displayMessage}
         placeholder="Type your message here."
       ></textarea>
     );

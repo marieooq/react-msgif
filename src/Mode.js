@@ -7,7 +7,6 @@ class Mode extends Component {
     this.state = {
       value: "note"
     };
-    this.isMode = this.isMode.bind(this);
   }
 
   isMode = e => {
