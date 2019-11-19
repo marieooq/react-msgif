@@ -11,19 +11,6 @@ class Textarea extends Component {
 
   displayMessage = e => {};
 
-  // const displayMessage = val => {
-  //   if (isRec)
-  //   {
-  //     captureScreen();
-  //   }
-  //   if (displayScreen.className !== "")
-  //   {
-  //     removeClass();
-  //   }
-  //   switchMode(isMode());
-  //   displayScreen.textContent = val;
-  // };
-
   render() {
     return (
       <textarea
