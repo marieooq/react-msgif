@@ -1,4 +1,8 @@
-.btn-push {
+#download-btn-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+.download-btn {
   display: inline-block;
   max-width: 180px;
   text-align: left;
@@ -9,18 +13,14 @@
   padding: 10px 24px;
   border-radius: 4px;
   margin-top: 10px;
+  background-color: #2c3be0;
+  background-color: #4653e2;
+  border-bottom: 4px solid #1c2696;
 }
 
-.btn-push:active {
+.download-btn:active {
   transform: translateY(4px);
   border-bottom: none;
-}
-
-#record-btn {
-  background-color: #e2422d;
-  background-color: #e45744;
-  border-bottom: 4px solid #aa3324;
-  margin-right: 15px;
 }
 
 #createGif-btn {

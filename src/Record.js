@@ -4,7 +4,13 @@ import "./PushBtn.css";
 
 class Record extends Component {
   render() {
-    return <PushBtn id="record-btn" action="startRec()" name="Record" />;
+    return (
+      <PushBtn
+        id={this.props.id}
+        action={this.props.action}
+        name={this.props.name}
+      />
+    );
   }
 }
 

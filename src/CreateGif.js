@@ -6,7 +6,11 @@ class CreateGif extends Component {
   render() {
     return (
       // eslint-disable-next-line jsx-a11y/anchor-is-valid
-      <PushBtn id="createGif-btn" action="createGIF()" name="Create GIF" />
+      <PushBtn
+        id={this.props.id}
+        action={this.props.action}
+        name={this.props.name}
+      />
     );
   }
 }

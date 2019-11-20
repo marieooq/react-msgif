@@ -307,8 +307,12 @@ class App extends Component {
               onTextAreaChange={this.displayMessage}
             />
             <div className="btn-wrapper">
-              <Record />
-              <CreateGif />
+              <Record id="record-btn" action={this.startRec} name="Record" />
+              <CreateGif
+                id="createGif-btn"
+                action={this.createGIF}
+                name="Create GIF"
+              />
             </div>
           </div>
 
