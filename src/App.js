@@ -23,9 +23,11 @@ class App extends Component {
   }
 
   displayScreen;
+  textArea;
 
   componentDidMount() {
     this.displayScreen = document.getElementById("display-screen");
+    this.textArea = document.getElementById("textareaMsg");
   }
 
   componentDidUpdate(prevState) {
@@ -35,16 +37,16 @@ class App extends Component {
   }
 
   displayMessage = e => {
-    console.log("inside displayScreen");
     this.setState({ textAreaVal: e.target.value });
-    console.log(`textareaVal: ${this.state.textAreaVal}`);
-    console.log(`mode: ${this.state.mode}`);
 
     if (this.state.isRec) {
       this.captureScreen();
     }
     if (this.displayScreen.className !== "") {
       this.removeClass();
+    }
+    if (this.state.isRec) {
+      this.setState({ isRec: false });
     }
     this.switchMode(this.state.mode);
   };
@@ -55,16 +57,27 @@ class App extends Component {
     console.log(`mode: ${this.state.mode}`);
   };
 
-  // startRec = () => {
-  //   isRec = true;
-  //   const textArea = document.getElementById("textareaMsg");
-  //   textArea.value = "";
-  //   displayScreen.textContent = "";
-  // };
-  updateDisplay = () => {
-    this.displayScreen.textContent = this.state.textAreaVal;
-    console.log(this.displayScreen.textContent);
+  startRec = () => {
+    this.setState({ isRec: true });
   };
+
+  updateDisplay = () => {
+    if (this.state.isRec) {
+      console.log(`isRec: ${this.state.isRec}`);
+      this.textArea.value = "";
+      this.displayScreen.textContent = "";
+      // this.setState({ isRec: false });
+      // console.log(`isRec: ${this.state.isRec}`);
+    } else {
+      this.displayScreen.textContent = this.state.textAreaVal;
+      console.log(this.displayScreen.textContent);
+    }
+    // console.log(`isRec: ${this.state.isRec}`);
+  };
+
+  // resetRec = () => {
+  //   this.setState({ isRec: false });
+  // };
 
   removeClass = () => {
     const isClassName = this.displayScreen.className;

@@ -3,7 +3,6 @@ import "./Textarea.css";
 
 class Textarea extends Component {
   handleInput = e => {
-    console.log("inside handleInput");
     this.props.onTextAreaChange(e);
   };
 
