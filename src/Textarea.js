@@ -9,7 +9,10 @@ class Textarea extends Component {
     };
   }
 
-  displayMessage = e => {};
+  handleInput = e => {
+    console.log("inside handleInput");
+    this.props.onTextAreaChange(e);
+  };
 
   render() {
     return (
@@ -18,9 +21,9 @@ class Textarea extends Component {
         name="user-msg"
         rows="5"
         cols="26"
-        value=""
-        maxlength="140"
-        onInput={this.displayMessage}
+        value={this.props.textAreaVal}
+        maxLength="140"
+        onInput={this.handleInput}
         placeholder="Type your message here."
       ></textarea>
     );

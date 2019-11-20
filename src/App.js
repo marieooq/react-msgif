@@ -6,30 +6,57 @@ import Record from "./Record";
 import CreateGif from "./CreateGif";
 import Download from "./Download";
 import html2canvas from "html2canvas";
+import GIFEncoder from "./GIFEncoder";
 import "./App.css";
 
-class App extends Component() {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isRec: false,
       frames: [],
       gifAnimation: "",
-      encoder: ""
+      encoder: "",
+      textAreaVal: "",
+      mode: "note"
     };
   }
-  displayScreen = document.getElementById("display-screen");
+
+  displayScreen;
+
+  componentDidMount() {
+    this.displayScreen = document.getElementById("display-screen");
+  }
 
   displayMessage = e => {
+    console.log("inside displayScreen");
+    this.setState({ textAreaVal: e.target.value });
+    console.log(`textareaVal: ${this.state.textAreaVal}`);
+    console.log(`mode: ${this.state.mode}`);
+
     if (this.state.isRec) {
       this.captureScreen();
     }
     if (this.displayScreen.className !== "") {
       this.removeClass();
     }
-    this.switchMode(this.isMode());
-    this.displayScreen.textContent = e.target.value;
+    this.switchMode(this.state.mode);
+    this.displayScreen.textContent = this.state.textAreaVal;
+    console.log(this.displayScreen.textContent);
   };
+
+  isMode = e => {
+    console.log(e);
+    this.setState({ mode: e.target.value });
+    console.log(`mode: ${this.state.mode}`);
+  };
+
+  // startRec = () => {
+  //   isRec = true;
+  //   const textArea = document.getElementById("textareaMsg");
+  //   textArea.value = "";
+  //   displayScreen.textContent = "";
+  // };
 
   removeClass = () => {
     const isClassName = this.displayScreen.className;
@@ -217,7 +244,8 @@ class App extends Component() {
     //create a gif animation
     this.state.encoder.finish();
     this.state.gifAnimation =
-      "data:image/gif;base64," + encode64(encoder.stream().getData());
+      "data:image/gif;base64," +
+      this.encode64(this.state.encoder.stream().getData());
     document.getElementById("anime_gif").src = this.state.gifAnimation;
     // document.getElementById("download").style.display = "block";
 
@@ -227,14 +255,49 @@ class App extends Component() {
     document.getElementById("ssgif").href = this.state.gifAnimation;
   };
 
+  encode64 = input => {
+    var output = "",
+      i = 0,
+      l = input.length,
+      key = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
+      chr1,
+      chr2,
+      chr3,
+      enc1,
+      enc2,
+      enc3,
+      enc4;
+    while (i < l) {
+      chr1 = input.charCodeAt(i++);
+      chr2 = input.charCodeAt(i++);
+      chr3 = input.charCodeAt(i++);
+      enc1 = chr1 >> 2;
+      enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+      enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+      enc4 = chr3 & 63;
+      if (isNaN(chr2)) enc3 = enc4 = 64;
+      else if (isNaN(chr3)) enc4 = 64;
+      output =
+        output +
+        key.charAt(enc1) +
+        key.charAt(enc2) +
+        key.charAt(enc3) +
+        key.charAt(enc4);
+    }
+    return output;
+  };
+
   render() {
     return (
       <div id="container">
         <div id="inner">
           <div id="left">
             <Screen id="display-screen" />
-            <Mode />
-            <Textarea />
+            <Mode mode={this.state.mode} onModeChange={this.isMode} />
+            <Textarea
+              textAreaVal={this.state.textAreaVal}
+              onTextAreaChange={this.displayMessage}
+            />
             <div className="btn-wrapper">
               <Record />
               <CreateGif />
