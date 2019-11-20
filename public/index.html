@@ -29,10 +29,24 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+    <script src="/LZWEncoder.js"></script>
+    <script src="/NeuQuant.js"></script>
+    <script src="/GIFEncoder.js"></script>
+    <!-- <script src="/b64.js"></script> -->
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <canvas id="canvas" style="display:none;"></canvas>
+    <p>
+      <img
+        id="anime_gif"
+        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+      />
+    </p>
+
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

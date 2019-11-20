@@ -1,5 +1,3 @@
-import LZWEncoder from "./LZWEncoder";
-import NeuQuant from "./NeuQuant";
 /**
  * This class lets you encode animated GIF files
  * Base class :  http://www.java2s.com/Code/Java/2D-Graphics-GUI/AnimatedGifEncoder.htm
@@ -9,7 +7,7 @@ import NeuQuant from "./NeuQuant";
  * @version 0.1 AS3 implementation
  */
 
-function GIFEncoder() {
+GIFEncoder = function() {
   for (var i = 0, chr = {}; i < 256; i++) chr[i] = String.fromCharCode(i);
 
   function ByteArray() {
@@ -137,11 +135,11 @@ function GIFEncoder() {
     try {
       if (!is_imageData) {
         image = im.getImageData(0, 0, im.canvas.width, im.canvas.height).data;
-        if (!this.sizeSet) setSize(im.canvas.width, im.canvas.height);
+        if (!sizeSet) setSize(im.canvas.width, im.canvas.height);
       } else {
         if (im instanceof ImageData) {
           image = im.data;
-          if (!this.sizeset || width != im.width || height != im.height) {
+          if (!sizeSet || width != im.width || height != im.height) {
             setSize(im.width, im.height);
           } else {
           }
@@ -296,7 +294,7 @@ function GIFEncoder() {
     height = h;
     if (width < 1) width = 320;
     if (height < 1) height = 240;
-    this.sizeSet = true;
+    sizeSet = true;
   });
 
   /**
@@ -562,6 +560,4 @@ function GIFEncoder() {
   });
 
   return exports;
-}
-
-export default GIFEncoder;
+};

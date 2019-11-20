@@ -6,7 +6,7 @@ class Download extends Component {
     return (
       <div id="download-btn-wrapper">
         <a
-          href="＃"
+          href={this.props.href}
           id="ssgif"
           className="download-btn"
           download="message_gif.png"

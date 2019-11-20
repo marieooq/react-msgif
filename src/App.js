@@ -6,15 +6,18 @@ import Record from "./Record";
 import CreateGif from "./CreateGif";
 import Download from "./Download";
 import html2canvas from "html2canvas";
-import GIFEncoder from "./GIFEncoder";
+/* eslint-disable no-undef */
+// import GIFEncoder from "./GIFEncoder";
 import "./App.css";
+import encode64 from "./b64";
 
 class App extends Component {
   constructor(props) {
     super(props);
+    this.frames = [];
     this.state = {
       isRec: false,
-      frames: [],
+      recordingFlg: false,
       gifAnimation: "",
       encoder: "",
       textAreaVal: "",
@@ -42,12 +45,11 @@ class App extends Component {
     if (this.state.isRec) {
       this.captureScreen();
     }
+
     if (this.displayScreen.className !== "") {
       this.removeClass();
     }
-    if (this.state.isRec) {
-      this.setState({ isRec: false });
-    }
+
     this.switchMode(this.state.mode);
   };
 
@@ -57,27 +59,23 @@ class App extends Component {
     console.log(`mode: ${this.state.mode}`);
   };
 
-  startRec = () => {
-    this.setState({ isRec: true });
+  startRec = e => {
+    if (e.target.textContent === "Record") {
+      e.target.textContent = "Stop";
+      this.setState({ isRec: true });
+      this.setState({ textAreaVal: "" });
+      console.log(this.state.isRec);
+    } else {
+      e.target.textContent = "Recrod";
+      this.setState({ isRec: false });
+      console.log(this.state.isRec);
+    }
   };
 
   updateDisplay = () => {
-    if (this.state.isRec) {
-      console.log(`isRec: ${this.state.isRec}`);
-      this.textArea.value = "";
-      this.displayScreen.textContent = "";
-      // this.setState({ isRec: false });
-      // console.log(`isRec: ${this.state.isRec}`);
-    } else {
-      this.displayScreen.textContent = this.state.textAreaVal;
-      console.log(this.displayScreen.textContent);
-    }
-    // console.log(`isRec: ${this.state.isRec}`);
+    this.displayScreen.textContent = this.state.textAreaVal;
+    console.log(this.displayScreen.textContent);
   };
-
-  // resetRec = () => {
-  //   this.setState({ isRec: false });
-  // };
 
   removeClass = () => {
     const isClassName = this.displayScreen.className;
@@ -225,87 +223,71 @@ class App extends Component {
 
   ////CAPTURE/////////////////////////////////////////////////////
 
-  captureScreen = () => {
-    html2canvas(document.getElementById("display-screen"), {
-      onrendered: canvas => {
-        const imgData = canvas.toDataURL();
-        const imgTag = document.createElement("img");
-        imgTag.src = `${imgData}`;
-        this.state.frames.push(imgTag);
+  captureScreen = async () => {
+    const canvas = await html2canvas(document.getElementById("display-screen"));
+    const imgData = canvas.toDataURL();
+    const imgTag = document.createElement("img");
+    imgTag.src = `${imgData}`;
+    this.frames.push(imgTag);
+    console.log(this.frames);
 
-        console.log(this.state.frames);
-      }
-    });
+    // html2canvas(document.getElementById("display-screen"), {
+    //   onrendered: canvas => {
+    //     const imgData = canvas.toDataURL();
+    //     const imgTag = document.createElement("img");
+    //     imgTag.src = `${imgData}`;
+    //     this.frames.push(imgTag);
+
+    //     console.log(this.frames);
+    //   }
+    // });
   };
 
+  ////CREATE GIF//////////////////////////////////////////////////
+
+  encoder;
+
   createGIF = () => {
+    console.log("createGIF here");
     //get canvas
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
 
     //initiate GiTEncoder
-    this.state.encoder = new GIFEncoder();
-    this.state.encoder.setRepeat(0); //infinite loop
+    const encoder = new GIFEncoder();
+    encoder.setRepeat(0); //infinite loop
     // encoder.setDelay(document.getElementById("anime_speed").value);
-    this.state.encoder.start();
+    encoder.start();
 
     //get images
     // frames = document.getElementById("anime").getElementsByTagName("img");
 
     //fit the size of canvas to the first image
-    canvas.width = this.state.frames[0].naturalWidth;
-    canvas.height = this.state.frames[0].naturalHeight;
+    canvas.width = this.frames[0].naturalWidth;
+    canvas.height = this.frames[0].naturalHeight;
+
+    console.log(this.frames.length);
 
     //draw all the images to the canvas
-    for (let frame_no = 0; frame_no < this.state.frames.length; frame_no++) {
-      ctx.drawImage(this.state.frames[frame_no], 0, 0);
-      this.state.encoder.addFrame(ctx);
+    for (let frame_no = 0; frame_no < this.frames.length; frame_no++) {
+      ctx.drawImage(this.frames[frame_no], 0, 0);
+      encoder.addFrame(ctx);
     }
 
     //create a gif animation
-    this.state.encoder.finish();
-    this.state.gifAnimation =
-      "data:image/gif;base64," +
-      this.encode64(this.state.encoder.stream().getData());
-    document.getElementById("anime_gif").src = this.state.gifAnimation;
+    encoder.finish();
+    console.log(encode64(encoder.stream().getData()));
+    const gifAnimation =
+      "data:image/gif;base64," + encode64(encoder.stream().getData());
+    this.setState({ gifAnimation });
+    console.log(gifAnimation);
+    document.getElementById("anime_gif").src = gifAnimation;
     // document.getElementById("download").style.display = "block";
 
     // const downloadGIF = () => {
     //   encoder.download("download.gif");
     // };
-    document.getElementById("ssgif").href = this.state.gifAnimation;
-  };
-
-  encode64 = input => {
-    var output = "",
-      i = 0,
-      l = input.length,
-      key = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
-      chr1,
-      chr2,
-      chr3,
-      enc1,
-      enc2,
-      enc3,
-      enc4;
-    while (i < l) {
-      chr1 = input.charCodeAt(i++);
-      chr2 = input.charCodeAt(i++);
-      chr3 = input.charCodeAt(i++);
-      enc1 = chr1 >> 2;
-      enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
-      enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
-      enc4 = chr3 & 63;
-      if (isNaN(chr2)) enc3 = enc4 = 64;
-      else if (isNaN(chr3)) enc4 = 64;
-      output =
-        output +
-        key.charAt(enc1) +
-        key.charAt(enc2) +
-        key.charAt(enc3) +
-        key.charAt(enc4);
-    }
-    return output;
+    // document.getElementById("ssgif").href = gifAnimation;
   };
 
   render() {
@@ -331,7 +313,7 @@ class App extends Component {
 
           <div id="right">
             <Screen id="output" />
-            <Download />
+            <Download href={this.state.gifAnimation} />
           </div>
         </div>
       </div>

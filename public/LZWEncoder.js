@@ -7,7 +7,7 @@
  * @version 0.1 AS3 implementation
  */
 
-function LZWEncoder() {
+LZWEncoder = function() {
   var exports = {};
   var EOF = -1;
   var imgW;
@@ -285,6 +285,4 @@ function LZWEncoder() {
 
   LZWEncoder.apply(this, arguments);
   return exports;
-}
-
-export default LZWEncoder;
+};
