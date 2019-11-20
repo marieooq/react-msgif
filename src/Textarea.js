@@ -2,13 +2,6 @@ import React, { Component } from "react";
 import "./Textarea.css";
 
 class Textarea extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: ""
-    };
-  }
-
   handleInput = e => {
     console.log("inside handleInput");
     this.props.onTextAreaChange(e);
@@ -23,7 +16,7 @@ class Textarea extends Component {
         cols="26"
         value={this.props.textAreaVal}
         maxLength="140"
-        onInput={this.handleInput}
+        onChange={this.handleInput}
         placeholder="Type your message here."
       ></textarea>
     );

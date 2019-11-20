@@ -28,6 +28,12 @@ class App extends Component {
     this.displayScreen = document.getElementById("display-screen");
   }
 
+  componentDidUpdate(prevState) {
+    if (this.state.textAreaVal !== prevState.textAreaVal) {
+      this.updateDisplay();
+    }
+  }
+
   displayMessage = e => {
     console.log("inside displayScreen");
     this.setState({ textAreaVal: e.target.value });
@@ -41,8 +47,6 @@ class App extends Component {
       this.removeClass();
     }
     this.switchMode(this.state.mode);
-    this.displayScreen.textContent = this.state.textAreaVal;
-    console.log(this.displayScreen.textContent);
   };
 
   isMode = e => {
@@ -57,6 +61,10 @@ class App extends Component {
   //   textArea.value = "";
   //   displayScreen.textContent = "";
   // };
+  updateDisplay = () => {
+    this.displayScreen.textContent = this.state.textAreaVal;
+    console.log(this.displayScreen.textContent);
+  };
 
   removeClass = () => {
     const isClassName = this.displayScreen.className;
