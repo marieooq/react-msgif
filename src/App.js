@@ -5,6 +5,7 @@ import Textarea from "./Textarea";
 import Record from "./Record";
 import CreateGif from "./CreateGif";
 import Download from "./Download";
+// import Loading from "./Loading";
 import html2canvas from "html2canvas";
 /* eslint-disable no-undef */
 // import GIFEncoder from "./GIFEncoder";
@@ -15,29 +16,40 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.frames = [];
+    // this.gifAnimation = "";
     this.state = {
       isRec: false,
       recordingFlg: false,
-      gifAnimation: "",
       encoder: "",
       textAreaVal: "",
-      mode: "note"
+      mode: "note",
+      outputScreenStatus: "",
+      gifAnimation: ""
     };
   }
 
   displayScreen;
   textArea;
-  // outputScreen;
+  outputScreen;
 
   componentDidMount() {
     this.displayScreen = document.getElementById("display-screen");
     this.textArea = document.getElementById("textareaMsg");
-    // this.outputScreen = document.getElementById("output");
+    this.outputScreen = document.getElementById("output");
   }
 
   componentDidUpdate(prevState) {
     if (this.state.textAreaVal !== prevState.textAreaVal) {
-      this.updateDisplay();
+      this.displayScreen.textContent = this.state.textAreaVal;
+    }
+
+    if (this.state.outputScreenStatus !== prevState.outputScreenStatus) {
+      console.log("componentDidUpdate");
+      this.outputScreen.status = this.state.outputScreenStatus;
+      console.log(`this.outputScreen.status: ${this.outputScreen.status}`);
+      console.log(
+        `this.state.outputScreenStatus: ${this.state.outputScreenStatus}`
+      );
     }
   }
 
@@ -72,9 +84,9 @@ class App extends Component {
     }
   };
 
-  updateDisplay = () => {
-    this.displayScreen.textContent = this.state.textAreaVal;
-  };
+  // updateDisplay = () => {
+  //   this.displayScreen.textContent = this.state.textAreaVal;
+  // };
 
   removeClass = () => {
     const isClassName = this.displayScreen.className;
@@ -232,9 +244,23 @@ class App extends Component {
   };
 
   ////CREATE GIF//////////////////////////////////////////////////
+  switchLoading = status => {
+    if (status === "start") {
+      this.setState({ outputScreenStatus: "loading" });
+    } else if (status === "stop") {
+      this.setState({ outputScreenStatus: "" });
+    }
+  };
 
-  createGIF = () => {
-    console.log("createGIF here");
+  createGIF = async () => {
+    //get the output scree
+    console.log("inside createGIF");
+
+    //start loading
+    this.switchLoading("start");
+    console.log("switchLoading has started!!");
+    console.log(this.state.outputScreenStatus);
+
     //get canvas
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
@@ -243,32 +269,50 @@ class App extends Component {
     const encoder = new GIFEncoder();
     encoder.setRepeat(0); //infinite loop
     // encoder.setDelay(document.getElementById("anime_speed").value);
-    encoder.start();
 
-    //fit the size of canvas to the first image
-    canvas.width = this.frames[0].naturalWidth;
-    canvas.height = this.frames[0].naturalHeight;
+    const proseccing = () => {
+      return new Promise((resolve, reject) => {
+        encoder.start();
 
-    //draw all the images to the canvas
-    for (let frame_no = 0; frame_no < this.frames.length; frame_no++) {
-      ctx.drawImage(this.frames[frame_no], 0, 0);
-      encoder.addFrame(ctx);
-    }
+        //fit the size of canvas to the first image
+        canvas.width = this.frames[0].naturalWidth;
+        canvas.height = this.frames[0].naturalHeight;
 
-    //create a gif animation
-    encoder.finish();
-    const gifAnimation =
-      "data:image/gif;base64," + encode64(encoder.stream().getData());
-    this.setState({ gifAnimation });
-    console.log(gifAnimation);
+        //draw all the images to the canvas
+        for (let frame_no = 0; frame_no < this.frames.length; frame_no++) {
+          ctx.drawImage(this.frames[frame_no], 0, 0);
+          encoder.addFrame(ctx);
+        }
 
-    const outputScreen = document.getElementById("output");
+        //create a gif animation
+        encoder.finish();
+
+        resolve("ok");
+      });
+    };
+
+    await proseccing();
+
+    //stop loading
+    this.switchLoading("stop");
+    console.log("switchLoading has STOPPED!!");
+    console.log(this.state.outputScreenStatus);
+
+    // this.gifAnimation =
+    //   "data:image/gif;base64," + encode64(encoder.stream().getData());
+    this.setState({
+      gifAnimation:
+        "data:image/gif;base64," + encode64(encoder.stream().getData())
+    });
+
+    console.log(this.state.gifAnimation);
+
     const img = document.createElement("img");
     img.id = "outputImg";
-    img.src = gifAnimation;
-    outputScreen.style.padding = 0;
-    outputScreen.style.border = "none";
-    outputScreen.appendChild(img);
+    img.src = this.state.gifAnimation;
+    this.outputScreen.style.padding = 0;
+    this.outputScreen.style.border = "none";
+    this.outputScreen.appendChild(img);
   };
 
   render() {
@@ -276,7 +320,7 @@ class App extends Component {
       <div id="container">
         <div id="inner">
           <div id="left">
-            <Screen id="display-screen" />
+            <Screen id="display-screen" status="" />
             <Mode mode={this.state.mode} onModeChange={this.isMode} />
             <Textarea
               textAreaVal={this.state.textAreaVal}
@@ -293,7 +337,7 @@ class App extends Component {
           </div>
 
           <div id="right">
-            <Screen id="output"></Screen>
+            <Screen id="output" status={this.state.outputScreenStatus} />
             <Download href={this.state.gifAnimation} />
           </div>
         </div>

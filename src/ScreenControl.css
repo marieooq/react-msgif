@@ -1,0 +1,20 @@
+.screen {
+  color: #fff;
+  width: 512px;
+  height: 256px;
+  padding: 30px 60px;
+  background-color: #fff;
+  border-radius: 10px;
+  font-size: 30px;
+  box-sizing: border-box;
+}
+
+#display-screen {
+  border: ridge 2px rgba(204, 204, 204, 0.7);
+  margin: 20px 0;
+}
+
+#output {
+  margin-top: 20px;
+  border: dashed 5px rgba(204, 204, 204, 0.7);
+}

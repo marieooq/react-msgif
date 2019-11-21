@@ -1,9 +1,23 @@
 import React, { Component } from "react";
+import Loading from "./Loading";
 import "./Screen.css";
 
 class Screen extends Component {
+  returnScreen = status => {
+    console.log(status);
+    if (status === "loading") {
+      return (
+        <div className="screen" id={this.props.id}>
+          <Loading />
+        </div>
+      );
+    } else {
+      return <div className="screen" id={this.props.id}></div>;
+    }
+  };
+
   render() {
-    return <div className="screen" id={this.props.id}></div>;
+    return this.returnScreen(this.props.status);
   }
 }
 
