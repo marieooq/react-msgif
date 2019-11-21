@@ -27,10 +27,12 @@ class App extends Component {
 
   displayScreen;
   textArea;
+  // outputScreen;
 
   componentDidMount() {
     this.displayScreen = document.getElementById("display-screen");
     this.textArea = document.getElementById("textareaMsg");
+    // this.outputScreen = document.getElementById("output");
   }
 
   componentDidUpdate(prevState) {
@@ -64,17 +66,14 @@ class App extends Component {
       e.target.textContent = "Stop";
       this.setState({ isRec: true });
       this.setState({ textAreaVal: "" });
-      console.log(this.state.isRec);
     } else {
       e.target.textContent = "Recrod";
       this.setState({ isRec: false });
-      console.log(this.state.isRec);
     }
   };
 
   updateDisplay = () => {
     this.displayScreen.textContent = this.state.textAreaVal;
-    console.log(this.displayScreen.textContent);
   };
 
   removeClass = () => {
@@ -230,22 +229,9 @@ class App extends Component {
     imgTag.src = `${imgData}`;
     this.frames.push(imgTag);
     console.log(this.frames);
-
-    // html2canvas(document.getElementById("display-screen"), {
-    //   onrendered: canvas => {
-    //     const imgData = canvas.toDataURL();
-    //     const imgTag = document.createElement("img");
-    //     imgTag.src = `${imgData}`;
-    //     this.frames.push(imgTag);
-
-    //     console.log(this.frames);
-    //   }
-    // });
   };
 
   ////CREATE GIF//////////////////////////////////////////////////
-
-  encoder;
 
   createGIF = () => {
     console.log("createGIF here");
@@ -259,14 +245,9 @@ class App extends Component {
     // encoder.setDelay(document.getElementById("anime_speed").value);
     encoder.start();
 
-    //get images
-    // frames = document.getElementById("anime").getElementsByTagName("img");
-
     //fit the size of canvas to the first image
     canvas.width = this.frames[0].naturalWidth;
     canvas.height = this.frames[0].naturalHeight;
-
-    console.log(this.frames.length);
 
     //draw all the images to the canvas
     for (let frame_no = 0; frame_no < this.frames.length; frame_no++) {
@@ -276,18 +257,18 @@ class App extends Component {
 
     //create a gif animation
     encoder.finish();
-    console.log(encode64(encoder.stream().getData()));
     const gifAnimation =
       "data:image/gif;base64," + encode64(encoder.stream().getData());
     this.setState({ gifAnimation });
     console.log(gifAnimation);
-    document.getElementById("anime_gif").src = gifAnimation;
-    // document.getElementById("download").style.display = "block";
 
-    // const downloadGIF = () => {
-    //   encoder.download("download.gif");
-    // };
-    // document.getElementById("ssgif").href = gifAnimation;
+    const outputScreen = document.getElementById("output");
+    const img = document.createElement("img");
+    img.id = "outputImg";
+    img.src = gifAnimation;
+    outputScreen.style.padding = 0;
+    outputScreen.style.border = "none";
+    outputScreen.appendChild(img);
   };
 
   render() {
@@ -312,7 +293,7 @@ class App extends Component {
           </div>
 
           <div id="right">
-            <Screen id="output" />
+            <Screen id="output"></Screen>
             <Download href={this.state.gifAnimation} />
           </div>
         </div>
