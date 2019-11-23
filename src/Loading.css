@@ -7,8 +7,8 @@
   border-radius: 50%;
   position: relative;
   text-indent: -9999em;
-  -webkit-animation: load4 1.3s infinite linear;
-  animation: load4 1.3s infinite linear;
+  -webkit-animation: load4 0.3s infinite linear;
+  animation: load4 0.3s infinite linear;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);

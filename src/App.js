@@ -17,6 +17,7 @@ class App extends Component {
     super(props);
     this.frames = [];
     this.captureCount = 0;
+    this.createGifCount = 0;
     this.state = {
       isRec: false,
       recordingFlg: false,
@@ -43,9 +44,9 @@ class App extends Component {
       this.displayScreen.textContent = this.state.textAreaVal;
     }
 
-    if (this.state.outputScreenStatus !== prevState.outputScreenStatus) {
-      this.outputScreen.status = this.state.outputScreenStatus;
-    }
+    // if (this.state.outputScreenStatus !== prevState.outputScreenStatus) {
+    //   console.log(this.state.outputScreenStatus);
+    // }
   }
 
   displayMessage = async e => {
@@ -79,10 +80,6 @@ class App extends Component {
       return;
     }
   };
-
-  // updateDisplay = () => {
-  //   this.displayScreen.textContent = this.state.textAreaVal;
-  // };
 
   removeClass = () => {
     const isClassName = this.displayScreen.className;
@@ -234,7 +231,6 @@ class App extends Component {
     if (this.captureCount === 0) {
       //shows the create gif button
       const createGifBtn = document.getElementById("createGif-btn");
-      console.log(createGifBtn);
       createGifBtn.classList.remove("hide");
       this.captureCount++;
     }
@@ -245,7 +241,6 @@ class App extends Component {
     const imgTag = document.createElement("img");
     imgTag.src = `${imgData}`;
     this.frames.push(imgTag);
-    console.log(this.frames);
   };
 
   ////CREATE GIF//////////////////////////////////////////////////
@@ -259,78 +254,78 @@ class App extends Component {
 
   createGIF = async () => {
     //make the createGIF button invalid
-    const createGifBtn = document.getElementById("createGif-btn");
-    createGifBtn.id = "";
-    createGifBtn.classList.remove("default");
-    createGifBtn.classList.add("createGif-pushed");
+    if (this.createGifCount === 0) {
+      const createGifBtn = document.getElementById("createGif-btn");
+      createGifBtn.id = "";
+      createGifBtn.classList.remove("default");
+      createGifBtn.classList.add("createGif-pushed");
+      this.createGifCount++;
 
-    //display "creating..."
-    const recordBtn = document.getElementsByClassName("recording")[0];
-    console.log(recordBtn);
-    recordBtn.textContent = "Creating...";
+      //display "creating..."
+      const recordBtn = document.getElementsByClassName("recording")[0];
+      recordBtn.textContent = "Creating...";
 
-    await this.captureScreen();
+      //start loading
+      this.switchLoading("start");
 
-    //start loading
-    this.switchLoading("start");
-    console.log("switchLoading has started!!");
-    console.log(this.state.outputScreenStatus);
+      await this.captureScreen();
 
-    //get canvas
-    const canvas = document.getElementById("canvas");
-    const ctx = canvas.getContext("2d");
+      //get canvas
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
 
-    //initiate GiTEncoder
-    const encoder = new GIFEncoder();
-    encoder.setRepeat(0); //infinite loop
-    // encoder.setDelay(document.getElementById("anime_speed").value);
+      //initiate GiTEncoder
+      const encoder = new GIFEncoder();
+      encoder.setRepeat(0); //infinite loop
+      // encoder.setDelay(document.getElementById("anime_speed").value);
 
-    const proseccing = () => {
-      return new Promise(resolve => {
-        encoder.start();
+      const proseccing = () => {
+        return new Promise(resolve => {
+          encoder.start();
 
-        //fit the size of canvas to the first image
-        canvas.width = this.frames[0].naturalWidth;
-        canvas.height = this.frames[0].naturalHeight;
+          //fit the size of canvas to the first image
+          canvas.width = this.frames[0].naturalWidth;
+          canvas.height = this.frames[0].naturalHeight;
 
-        //draw all the images to the canvas
-        for (let frame_no = 0; frame_no < this.frames.length; frame_no++) {
-          ctx.drawImage(this.frames[frame_no], 0, 0);
-          encoder.addFrame(ctx);
-        }
+          //draw all the images to the canvas
+          for (let frame_no = 0; frame_no < this.frames.length; frame_no++) {
+            ctx.drawImage(this.frames[frame_no], 0, 0);
+            encoder.addFrame(ctx);
+          }
 
-        //create a gif animation
-        encoder.finish();
+          //create a gif animation
+          encoder.finish();
 
-        resolve("ok");
+          resolve("ok");
+        });
+      };
+
+      await proseccing();
+
+      //stop loading
+      this.switchLoading("stop");
+
+      this.setState({
+        gifAnimation:
+          "data:image/gif;base64," + encode64(encoder.stream().getData())
       });
-    };
 
-    await proseccing();
+      const img = document.createElement("img");
+      img.id = "outputImg";
+      img.src = this.state.gifAnimation;
+      this.outputScreen.style.padding = 0;
+      this.outputScreen.style.border = "none";
+      this.outputScreen.appendChild(img);
 
-    //stop loading
-    this.switchLoading("stop");
-    console.log("switchLoading has STOPPED!!");
-    console.log(this.state.outputScreenStatus);
+      //display "Done!"
+      recordBtn.textContent = "Done!";
 
-    this.setState({
-      gifAnimation:
-        "data:image/gif;base64," + encode64(encoder.stream().getData())
-    });
-
-    const img = document.createElement("img");
-    img.id = "outputImg";
-    img.src = this.state.gifAnimation;
-    this.outputScreen.style.padding = 0;
-    this.outputScreen.style.border = "none";
-    this.outputScreen.appendChild(img);
-
-    //display "Done!"
-    recordBtn.textContent = "Done!";
-
-    //shows a download button
-    const donwloadBtn = document.getElementById("ssgif");
-    donwloadBtn.classList.remove("hide");
+      //shows a download button
+      const donwloadBtn = document.getElementById("ssgif");
+      donwloadBtn.classList.remove("hide");
+    } else {
+      return;
+    }
   };
 
   render() {
