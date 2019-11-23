@@ -72,7 +72,7 @@ class App extends Component {
     if (e.target.textContent === "Record") {
       this.setState({ isRec: true });
       this.setState({ textAreaVal: "" });
-      e.target.textContent = "Recording";
+      e.target.textContent = "Recording...";
       e.target.id = "";
       e.target.classList.add("recording");
       e.target.classList.remove("default");
@@ -233,6 +233,11 @@ class App extends Component {
   ////CAPTURE/////////////////////////////////////////////////////
 
   captureScreen = async () => {
+    //shows the create gif button
+    const createGifBtn = document.getElementById("createGif-btn");
+    createGifBtn.classList.remove("hide");
+
+    //capture the canvas
     const canvas = await html2canvas(document.getElementById("display-screen"));
     const imgData = canvas.toDataURL();
     const imgTag = document.createElement("img");
@@ -251,8 +256,16 @@ class App extends Component {
   };
 
   createGIF = async () => {
-    //get the output scree
-    console.log("inside createGIF");
+    //make the createGIF button invalid
+    const createGifBtn = document.getElementById("createGif-btn");
+    createGifBtn.id = "";
+    createGifBtn.classList.remove("default");
+    createGifBtn.classList.add("createGif-pushed");
+
+    //display "creating..."
+    const recordBtn = document.getElementsByClassName("recording")[0];
+    console.log(recordBtn);
+    recordBtn.textContent = "Creating...";
 
     //start loading
     this.switchLoading("start");
@@ -311,6 +324,13 @@ class App extends Component {
     this.outputScreen.style.padding = 0;
     this.outputScreen.style.border = "none";
     this.outputScreen.appendChild(img);
+
+    //display "Done!"
+    recordBtn.textContent = "Done!";
+
+    //shows a download button
+    const donwloadBtn = document.getElementById("ssgif");
+    donwloadBtn.classList.remove("hide");
   };
 
   render() {
@@ -325,9 +345,15 @@ class App extends Component {
               onTextAreaChange={this.displayMessage}
             />
             <div className="btn-wrapper">
-              <Record id="record-btn" action={this.startRec} name="Record" />
+              <Record
+                id="record-btn"
+                class="btn-push default"
+                action={this.startRec}
+                name="Record"
+              />
               <CreateGif
                 id="createGif-btn"
+                class="btn-push default hide"
                 action={this.createGIF}
                 name="Create GIF"
               />

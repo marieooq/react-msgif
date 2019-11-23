@@ -7,6 +7,7 @@ class Record extends Component {
     return (
       <PushBtn
         id={this.props.id}
+        class={this.props.class}
         action={this.props.action}
         name={this.props.name}
       />

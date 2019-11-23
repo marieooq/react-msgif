@@ -28,3 +28,7 @@
   background-color: #4653e2;
   border-bottom: 4px solid #1c2696;
 }
+
+.hide {
+  display: none;
+}
