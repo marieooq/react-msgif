@@ -44,12 +44,7 @@ class App extends Component {
     }
 
     if (this.state.outputScreenStatus !== prevState.outputScreenStatus) {
-      console.log("componentDidUpdate");
       this.outputScreen.status = this.state.outputScreenStatus;
-      console.log(`this.outputScreen.status: ${this.outputScreen.status}`);
-      console.log(
-        `this.state.outputScreenStatus: ${this.state.outputScreenStatus}`
-      );
     }
   }
 
@@ -75,11 +70,14 @@ class App extends Component {
 
   startRec = e => {
     if (e.target.textContent === "Record") {
-      e.target.textContent = "Stop";
       this.setState({ isRec: true });
       this.setState({ textAreaVal: "" });
+      e.target.textContent = "Recording";
+      e.target.id = "";
+      e.target.classList.add("recording");
+      e.target.classList.remove("default");
     } else {
-      e.target.textContent = "Recrod";
+      // e.target.textContent = "Recrod";
       this.setState({ isRec: false });
     }
   };

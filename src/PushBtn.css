@@ -11,7 +11,25 @@
   margin-top: 10px;
 }
 
-.btn-push:active {
+/* .btn-push:active {
+  transform: translateY(4px);
+  border-bottom: none;
+} */
+
+.default {
+  display: inline-block;
+  max-width: 180px;
+  text-align: left;
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 24px;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.default:active {
   transform: translateY(4px);
   border-bottom: none;
 }
@@ -25,4 +43,10 @@
 #createGif-btn {
   background-color: #4653e2;
   border-bottom: 4px solid #1c2696;
+}
+
+.recording {
+  background-color: #44e451;
+  border-bottom: 4px solid #24aa2b;
+  margin-right: 15px;
 }

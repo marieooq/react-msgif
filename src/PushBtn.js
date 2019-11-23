@@ -7,7 +7,7 @@ class PushBtn extends Component {
       // eslint-disable-next-line jsx-a11y/anchor-is-valid
       <a
         href="#"
-        className="btn-push"
+        className="btn-push default"
         id={this.props.id}
         onClick={this.props.action}
       >

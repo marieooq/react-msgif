@@ -4,7 +4,6 @@ import "./Screen.css";
 
 class Screen extends Component {
   returnScreen = status => {
-    console.log(status);
     if (status === "loading") {
       return (
         <div className="screen" id={this.props.id}>
