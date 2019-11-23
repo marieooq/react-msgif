@@ -63,9 +63,7 @@ class App extends Component {
   };
 
   isMode = e => {
-    console.log(e);
     this.setState({ mode: e.target.value });
-    console.log(`mode: ${this.state.mode}`);
   };
 
   startRec = e => {
