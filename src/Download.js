@@ -9,7 +9,7 @@ class Download extends Component {
           href={this.props.href}
           id="ssgif"
           className="download-btn hide"
-          download="message_gif.png"
+          download="messagif.gif"
         >
           DOWNLOAD
         </a>
