@@ -42,6 +42,7 @@
 #createGif-btn {
   background-color: #4653e2;
   border-bottom: 4px solid #1c2696;
+  margin-left: 15px;
 }
 
 .hide {
@@ -51,10 +52,10 @@
 .recording {
   background-color: #44e451;
   border-bottom: 4px solid #24aa2b;
-  margin-right: 15px;
 }
 
 .createGif-pushed {
   background-color: #c7c7c9;
   border-bottom: 4px solid #7a7a7a;
+  margin-left: 15px;
 }
