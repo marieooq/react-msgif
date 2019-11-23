@@ -7,29 +7,29 @@
  * @version 0.1 AS3 implementation
  */
 
-GIFEncoder = function() {
+GIFEncoder = function () {
   for (var i = 0, chr = {}; i < 256; i++) chr[i] = String.fromCharCode(i);
 
   function ByteArray() {
     this.bin = [];
   }
 
-  ByteArray.prototype.getData = function() {
+  ByteArray.prototype.getData = function () {
     for (var v = "", l = this.bin.length, i = 0; i < l; i++)
       v += chr[this.bin[i]];
     return v;
   };
 
-  ByteArray.prototype.writeByte = function(val) {
+  ByteArray.prototype.writeByte = function (val) {
     this.bin.push(val);
   };
 
-  ByteArray.prototype.writeUTFBytes = function(string) {
+  ByteArray.prototype.writeUTFBytes = function (string) {
     for (var l = string.length, i = 0; i < l; i++)
       this.writeByte(string.charCodeAt(i));
   };
 
-  ByteArray.prototype.writeBytes = function(array, offset, length) {
+  ByteArray.prototype.writeBytes = function (array, offset, length) {
     for (var l = length || array.length, i = offset || 0; i < l; i++)
       this.writeByte(array[i]);
   };
@@ -375,7 +375,7 @@ GIFEncoder = function() {
     var dmin = 256 * 256 * 256;
     var len = colorTab.length;
 
-    for (var i = 0; i < len; ) {
+    for (var i = 0; i < len;) {
       var dr = r - (colorTab[i++] & 0xff);
       var dg = g - (colorTab[i++] & 0xff);
       var db = b - (colorTab[i] & 0xff);
@@ -437,7 +437,7 @@ GIFEncoder = function() {
       0 | // 1:3 reserved
       disp | // 4:6 disposal
       0 | // 7 user input - 0 = none
-        transp
+      transp
     ); // 8 transparency flag
 
     WriteShort(delay); // delay x 1/100 sec
@@ -479,7 +479,7 @@ GIFEncoder = function() {
         0 | // 2 interlace - 0=no
         0 | // 3 sorted - 0=no
         0 | // 4-5 reserved
-          palSize
+        palSize
       ); // 6-8 size of color table
     }
   };
@@ -497,7 +497,7 @@ GIFEncoder = function() {
       0x80 | // 1 : global color table flag = 1 (gct used)
       0x70 | // 2-4 : color resolution = 7
       0x00 | // 5 : gct sort flag = 0
-        palSize
+      palSize
     ); // 6-8 : gct size
 
     out.writeByte(0); // background color index
