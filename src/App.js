@@ -16,6 +16,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.frames = [];
+    this.captureCount = 0;
     this.state = {
       isRec: false,
       recordingFlg: false,
@@ -75,8 +76,7 @@ class App extends Component {
       e.target.classList.add("recording");
       e.target.classList.remove("default");
     } else {
-      // e.target.textContent = "Recrod";
-      this.setState({ isRec: false });
+      return;
     }
   };
 
@@ -231,9 +231,13 @@ class App extends Component {
   ////CAPTURE/////////////////////////////////////////////////////
 
   captureScreen = async () => {
-    //shows the create gif button
-    const createGifBtn = document.getElementById("createGif-btn");
-    createGifBtn.classList.remove("hide");
+    if (this.captureCount === 0) {
+      //shows the create gif button
+      const createGifBtn = document.getElementById("createGif-btn");
+      console.log(createGifBtn);
+      createGifBtn.classList.remove("hide");
+      this.captureCount++;
+    }
 
     //capture the canvas
     const canvas = await html2canvas(document.getElementById("display-screen"));
@@ -282,7 +286,7 @@ class App extends Component {
     // encoder.setDelay(document.getElementById("anime_speed").value);
 
     const proseccing = () => {
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         encoder.start();
 
         //fit the size of canvas to the first image
