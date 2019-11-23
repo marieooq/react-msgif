@@ -16,7 +16,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.frames = [];
-    // this.gifAnimation = "";
     this.state = {
       isRec: false,
       recordingFlg: false,
@@ -48,11 +47,10 @@ class App extends Component {
     }
   }
 
-  displayMessage = e => {
+  displayMessage = async e => {
     this.setState({ textAreaVal: e.target.value });
-
     if (this.state.isRec) {
-      this.captureScreen();
+      await this.captureScreen();
     }
 
     if (this.displayScreen.className !== "") {
@@ -267,6 +265,8 @@ class App extends Component {
     console.log(recordBtn);
     recordBtn.textContent = "Creating...";
 
+    await this.captureScreen();
+
     //start loading
     this.switchLoading("start");
     console.log("switchLoading has started!!");
@@ -282,7 +282,7 @@ class App extends Component {
     // encoder.setDelay(document.getElementById("anime_speed").value);
 
     const proseccing = () => {
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         encoder.start();
 
         //fit the size of canvas to the first image
@@ -309,14 +309,10 @@ class App extends Component {
     console.log("switchLoading has STOPPED!!");
     console.log(this.state.outputScreenStatus);
 
-    // this.gifAnimation =
-    //   "data:image/gif;base64," + encode64(encoder.stream().getData());
     this.setState({
       gifAnimation:
         "data:image/gif;base64," + encode64(encoder.stream().getData())
     });
-
-    console.log(this.state.gifAnimation);
 
     const img = document.createElement("img");
     img.id = "outputImg";
