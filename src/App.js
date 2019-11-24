@@ -75,6 +75,7 @@ class App extends Component {
       e.target.id = "recording-btn";
       e.target.classList.add("recording");
       e.target.classList.remove("default");
+      e.target.classList.remove("invalid");
 
       //shows the reset button
       const resetBtn = document.getElementById("reset-btn");
@@ -102,7 +103,7 @@ class App extends Component {
       createGifBtn.id = "createGif-btn";
       createGifBtn.classList.add("default");
       createGifBtn.classList.add("hide");
-      createGifBtn.classList.remove("createGif-pushed");
+      createGifBtn.classList.remove("invalid");
       this.createGifCount = 0;
 
       //delete the output image
@@ -316,7 +317,7 @@ class App extends Component {
       const createGifBtn = document.getElementById("createGif-btn");
       createGifBtn.id = "createGif-btn-pushed";
       createGifBtn.classList.remove("default");
-      createGifBtn.classList.add("createGif-pushed");
+      createGifBtn.classList.add("invalid");
       this.createGifCount++;
 
       //display "creating..."
@@ -377,6 +378,8 @@ class App extends Component {
 
       //display "Done!"
       recordBtn.textContent = "Done!";
+      recordBtn.classList.remove("recording");
+      recordBtn.classList.add("invalid");
 
       //shows a download button
       const donwloadBtn = document.getElementById("ssgif");
@@ -398,17 +401,17 @@ class App extends Component {
               onTextAreaChange={this.displayMessage}
             />
             <div className="btn-wrapper">
-              <Record
-                id="record-btn"
-                class="btn-push default"
-                action={this.startRec}
-                name="Record"
-              />
               <Reset
                 id="reset-btn"
                 class="btn-push default hide"
                 action={this.reset}
                 name="Reset"
+              />
+              <Record
+                id="record-btn"
+                class="btn-push default"
+                action={this.startRec}
+                name="Record"
               />
               <CreateGif
                 id="createGif-btn"

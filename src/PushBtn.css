@@ -40,7 +40,7 @@
   border-bottom: 4px solid #aa3324;
 }
 
-#reset-btn {
+#record-btn {
   margin-left: 15px;
 }
 
@@ -57,9 +57,10 @@
 .recording {
   background-color: #44e451;
   border-bottom: 4px solid #24aa2b;
+  margin-left: 15px;
 }
 
-.createGif-pushed {
+.invalid {
   background-color: #c7c7c9;
   border-bottom: 4px solid #7a7a7a;
   margin-left: 15px;
