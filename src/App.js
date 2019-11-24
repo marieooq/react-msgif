@@ -45,9 +45,9 @@ class App extends Component {
       this.displayScreen.textContent = this.state.textAreaVal;
     }
 
-    // if (this.state.outputScreenStatus !== prevState.outputScreenStatus) {
-    //   console.log(this.state.outputScreenStatus);
-    // }
+    if (this.state.mode !== prevState.mode) {
+      this.switchMode(this.state.mode);
+    }
   }
 
   displayMessage = async e => {
