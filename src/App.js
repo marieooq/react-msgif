@@ -86,8 +86,6 @@ class App extends Component {
   };
 
   reset = e => {
-    console.log("reset");
-
     //before creating a gif animation
     if (this.captureCount > 0 && this.createGifCount === 0) {
       //hide the create gif button
@@ -284,10 +282,8 @@ class App extends Component {
   ////CAPTURE/////////////////////////////////////////////////////
 
   captureScreen = async () => {
-    console.log(this.captureCount);
     if (this.captureCount === 0) {
       //shows the create gif button
-      console.log("here");
       const createGifBtn = document.getElementById("createGif-btn");
       createGifBtn.classList.remove("hide");
       this.captureCount++;
@@ -299,7 +295,6 @@ class App extends Component {
     const imgTag = document.createElement("img");
     imgTag.src = `${imgData}`;
     this.frames.push(imgTag);
-    console.log(this.frames);
   };
 
   ////CREATE GIF//////////////////////////////////////////////////
