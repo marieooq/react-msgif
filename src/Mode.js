@@ -2,13 +2,6 @@ import React, { Component } from "react";
 import "./Mode.css";
 
 class Mode extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     value: "note"
-  //   };
-  // }
-
   handleMode = e => {
     this.props.onModeChange(e);
   };

@@ -107,11 +107,17 @@ class App extends Component {
 
       //delete the output image
       const outputImg = document.getElementById("outputImg");
-      console.log(outputImg);
       outputImg.parentNode.removeChild(outputImg);
 
       this.outputScreen.style.padding = "30px 60px";
       this.outputScreen.style.border = "dashed 5px rgba(204, 204, 204, 0.7)";
+
+      //hide the download button
+      const donwloadBtn = document.getElementById("ssgif");
+      donwloadBtn.classList.add("hide");
+
+      //reset captureCount
+      this.captureCount = 0;
     }
 
     //hide the reset button itself
@@ -128,7 +134,6 @@ class App extends Component {
     recordingBtn.classList.remove("recording");
     recordingBtn.classList.add("default");
     recordingBtn.id = "record-btn";
-    console.log(recordingBtn);
   };
 
   removeClass = () => {
@@ -278,8 +283,10 @@ class App extends Component {
   ////CAPTURE/////////////////////////////////////////////////////
 
   captureScreen = async () => {
+    console.log(this.captureCount);
     if (this.captureCount === 0) {
       //shows the create gif button
+      console.log("here");
       const createGifBtn = document.getElementById("createGif-btn");
       createGifBtn.classList.remove("hide");
       this.captureCount++;
