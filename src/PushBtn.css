@@ -34,9 +34,14 @@
   border-bottom: none;
 }
 
-#record-btn {
+#record-btn,
+#reset-btn {
   background-color: #e45744;
   border-bottom: 4px solid #aa3324;
+}
+
+#reset-btn {
+  margin-left: 15px;
 }
 
 #createGif-btn {

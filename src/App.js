@@ -3,6 +3,7 @@ import Screen from "./Screen";
 import Mode from "./Mode";
 import Textarea from "./Textarea";
 import Record from "./Record";
+import Reset from "./Reset";
 import CreateGif from "./CreateGif";
 import Download from "./Download";
 // import Loading from "./Loading";
@@ -71,12 +72,63 @@ class App extends Component {
       this.setState({ isRec: true });
       this.setState({ textAreaVal: "" });
       e.target.textContent = "Recording...";
-      e.target.id = "";
+      e.target.id = "recording-btn";
       e.target.classList.add("recording");
       e.target.classList.remove("default");
+
+      //shows the reset button
+      const resetBtn = document.getElementById("reset-btn");
+      resetBtn.classList.remove("hide");
     } else {
       return;
     }
+  };
+
+  reset = e => {
+    console.log("reset");
+
+    //before creating a gif animation
+    if (this.captureCount > 0 && this.createGifCount === 0) {
+      //hide the create gif button
+      const createGifBtn = document.getElementById("createGif-btn");
+      createGifBtn.classList.add("hide");
+      this.captureCount = 0;
+    }
+
+    //after creating a gif animation
+    if (this.createGifCount > 0) {
+      //hide the create gif button and makes it valid
+      const createGifBtn = document.getElementById("createGif-btn-pushed");
+      createGifBtn.id = "createGif-btn";
+      createGifBtn.classList.add("default");
+      createGifBtn.classList.add("hide");
+      createGifBtn.classList.remove("createGif-pushed");
+      this.createGifCount = 0;
+
+      //delete the output image
+      const outputImg = document.getElementById("outputImg");
+      console.log(outputImg);
+      outputImg.parentNode.removeChild(outputImg);
+
+      this.outputScreen.style.padding = "30px 60px";
+      this.outputScreen.style.border = "dashed 5px rgba(204, 204, 204, 0.7)";
+    }
+
+    //hide the reset button itself
+    e.target.classList.add("hide");
+
+    //reset values
+    this.setState({ isRec: false });
+    this.setState({ textAreaVal: "" });
+    this.frames = [];
+
+    //shows the record button
+    const recordingBtn = document.getElementById("recording-btn");
+    recordingBtn.textContent = "Record";
+    recordingBtn.classList.remove("recording");
+    recordingBtn.classList.add("default");
+    recordingBtn.id = "record-btn";
+    console.log(recordingBtn);
   };
 
   removeClass = () => {
@@ -239,6 +291,7 @@ class App extends Component {
     const imgTag = document.createElement("img");
     imgTag.src = `${imgData}`;
     this.frames.push(imgTag);
+    console.log(this.frames);
   };
 
   ////CREATE GIF//////////////////////////////////////////////////
@@ -251,10 +304,10 @@ class App extends Component {
   };
 
   createGIF = async () => {
-    //make the createGIF button invalid
     if (this.createGifCount === 0) {
+      //make the createGIF button invalid
       const createGifBtn = document.getElementById("createGif-btn");
-      createGifBtn.id = "";
+      createGifBtn.id = "createGif-btn-pushed";
       createGifBtn.classList.remove("default");
       createGifBtn.classList.add("createGif-pushed");
       this.createGifCount++;
@@ -343,6 +396,12 @@ class App extends Component {
                 class="btn-push default"
                 action={this.startRec}
                 name="Record"
+              />
+              <Reset
+                id="reset-btn"
+                class="btn-push default hide"
+                action={this.reset}
+                name="Reset"
               />
               <CreateGif
                 id="createGif-btn"
