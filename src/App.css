@@ -1,3 +1,8 @@
+:root {
+  --screenWidth: 512px;
+  --screenHeight: 256px;
+}
+
 #container {
   width: 1080px;
   margin: 0 auto;

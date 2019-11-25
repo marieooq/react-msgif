@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Screen from "./Screen";
+import ScreenSize from "./ScreenSize";
 import Mode from "./Mode";
 import Textarea from "./Textarea";
 import Record from "./Record";
@@ -24,6 +25,7 @@ class App extends Component {
       recordingFlg: false,
       encoder: "",
       textAreaVal: "",
+      size: "twitter",
       mode: "note",
       outputScreenStatus: "",
       gifAnimation: ""
@@ -48,6 +50,10 @@ class App extends Component {
     if (this.state.mode !== prevState.mode) {
       this.switchMode(this.state.mode);
     }
+
+    if (this.state.size !== prevState.size) {
+      this.changeScreenSize(this.state.size);
+    }
   }
 
   displayMessage = async e => {
@@ -62,6 +68,20 @@ class App extends Component {
 
     this.switchMode(this.state.mode);
   };
+
+  setScreenSize = e => {
+    this.setState({ size: e.target.value });
+  };
+
+  changeScreenSize(size) {
+    if (size === "twitter") {
+      document.documentElement.style.setProperty("--screenWidth", "512px");
+      document.documentElement.style.setProperty("--screenHeight", "256px");
+    } else if (size === "social") {
+      document.documentElement.style.setProperty("--screenWidth", "400px");
+      document.documentElement.style.setProperty("--screenHeight", "400px");
+    }
+  }
 
   isMode = e => {
     this.setState({ mode: e.target.value });
@@ -390,6 +410,10 @@ class App extends Component {
         <div id="inner">
           <div id="left">
             <Screen id="display-screen" status="" />
+            <ScreenSize
+              size={this.state.size}
+              onScreenSizeChange={this.setScreenSize}
+            />
             <Mode mode={this.state.mode} onModeChange={this.isMode} />
             <Textarea
               textAreaVal={this.state.textAreaVal}
