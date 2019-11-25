@@ -2,7 +2,7 @@
   position: relative;
   float: left;
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 /* IE11 hide native button  */
@@ -21,7 +21,7 @@ select::-ms-expand {
   right: 11px;
   /*Adjust for position however you want*/
 
-  top: 18px;
+  top: 10px;
   padding: 0 0 2px;
   border-bottom: 1px solid #999;
   /*left line */
@@ -39,11 +39,11 @@ select::-ms-expand {
   display: block;
   width: 100%;
   max-width: 512px;
-  height: 50px;
+  height: 32px;
   float: right;
   margin: 5px 0px;
   padding: 0px 24px;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.75;
   color: #333;
   background-color: #ffffff;

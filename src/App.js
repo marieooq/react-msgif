@@ -74,12 +74,36 @@ class App extends Component {
   };
 
   changeScreenSize(size) {
+    let docStyle = document.documentElement.style;
+    let container = document.getElementById("container");
+    let left = document.getElementById("left");
+    let leftLeft = document.getElementById("left-left");
+    let leftRight = document.getElementById("left-right");
+    let textArea = document.getElementById("textareaMsg");
+    let right = document.getElementById("right");
+
     if (size === "twitter") {
-      document.documentElement.style.setProperty("--screenWidth", "512px");
-      document.documentElement.style.setProperty("--screenHeight", "256px");
+      container.style.width = "1080px";
+      left.style.width = "512px";
+      left.style.display = "block";
+      left.style.justifyContent = "";
+      leftLeft.style.width = "100%";
+      leftRight.style.width = "100%";
+      textArea.style.marginTop = "0px";
+      right.style.width = "512px";
+      docStyle.setProperty("--screenWidth", "512px");
+      docStyle.setProperty("--screenHeight", "256px");
     } else if (size === "social") {
-      document.documentElement.style.setProperty("--screenWidth", "400px");
-      document.documentElement.style.setProperty("--screenHeight", "400px");
+      container.style.width = "1280px";
+      left.style.width = "840px";
+      left.style.display = "flex";
+      left.style.justifyContent = "space-between";
+      leftLeft.style.width = "400px";
+      leftRight.style.width = "400px";
+      textArea.style.marginTop = "20px";
+      right.style.width = "400px";
+      docStyle.setProperty("--screenWidth", "400px");
+      docStyle.setProperty("--screenHeight", "400px");
     }
   }
 
@@ -409,35 +433,39 @@ class App extends Component {
       <div id="container">
         <div id="inner">
           <div id="left">
-            <Screen id="display-screen" status="" />
-            <ScreenSize
-              size={this.state.size}
-              onScreenSizeChange={this.setScreenSize}
-            />
-            <Mode mode={this.state.mode} onModeChange={this.isMode} />
-            <Textarea
-              textAreaVal={this.state.textAreaVal}
-              onTextAreaChange={this.displayMessage}
-            />
-            <div className="btn-wrapper">
-              <Reset
-                id="reset-btn"
-                class="btn-push default hide"
-                action={this.reset}
-                name="Reset"
+            <div id="left-left">
+              <Screen id="display-screen" status="" />
+              <ScreenSize
+                size={this.state.size}
+                onScreenSizeChange={this.setScreenSize}
               />
-              <Record
-                id="record-btn"
-                class="btn-push default"
-                action={this.startRec}
-                name="Record"
+              <Mode mode={this.state.mode} onModeChange={this.isMode} />
+            </div>
+            <div id="left-right">
+              <Textarea
+                textAreaVal={this.state.textAreaVal}
+                onTextAreaChange={this.displayMessage}
               />
-              <CreateGif
-                id="createGif-btn"
-                class="btn-push default hide"
-                action={this.createGIF}
-                name="Create GIF"
-              />
+              <div className="btn-wrapper">
+                <Reset
+                  id="reset-btn"
+                  class="btn-push default hide"
+                  action={this.reset}
+                  name="Reset"
+                />
+                <Record
+                  id="record-btn"
+                  class="btn-push default"
+                  action={this.startRec}
+                  name="Record"
+                />
+                <CreateGif
+                  id="createGif-btn"
+                  class="btn-push default hide"
+                  action={this.createGIF}
+                  name="Create GIF"
+                />
+              </div>
             </div>
           </div>
 

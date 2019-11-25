@@ -11,7 +11,7 @@
 
 #display-screen {
   border: ridge 2px rgba(204, 204, 204, 0.7);
-  margin: 20px 0;
+  margin: 20px 0 10px;
 }
 
 #output {

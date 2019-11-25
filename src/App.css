@@ -6,21 +6,28 @@
 #container {
   width: 1080px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 #inner {
   margin: 0 auto;
   display: flex;
+  justify-content: space-between;
 }
 
 #left {
   width: 512px;
-  margin-right: 10px;
+}
+
+#left-left {
+  width: 100%;
+}
+#left-right {
+  width: 100%;
 }
 
 #right {
   width: 512px;
-  margin-left: 10px;
 }
 
 .btn-wrapper {
