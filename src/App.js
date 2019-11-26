@@ -28,7 +28,8 @@ class App extends Component {
       size: "twitter",
       mode: "note",
       outputScreenStatus: "",
-      gifAnimation: ""
+      gifAnimation: "",
+      isComposing: false
     };
   }
 
@@ -57,6 +58,17 @@ class App extends Component {
   }
 
   displayMessage = async e => {
+    document.addEventListener("keydown", e => {
+      console.log(`keydown: ${e}`);
+    });
+    document.addEventListener("keypress", e => {
+      //
+      //日本語の場合はkeypressイベントが発動しない
+      console.log(`keypress: ${e}`);
+    });
+    document.addEventListener("keyup", e => {
+      console.log(`keyup: ${e}`);
+    });
     this.setState({ textAreaVal: e.target.value });
     if (this.state.isRec) {
       await this.captureScreen();
@@ -257,7 +269,12 @@ class App extends Component {
         break;
 
       case "pop":
-        this.displayScreen.style.fontFamily = "'Anton', sans-serif";
+        if (this.state.isComposing) {
+          this.displayScreen.style.fontFamily = "'Kosugi Maru', sans-serif";
+        } else {
+          this.displayScreen.style.fontFamily = "'Anton', sans-serif";
+        }
+
         break;
 
       default:
@@ -375,7 +392,7 @@ class App extends Component {
       //initiate GiTEncoder
       const encoder = new GIFEncoder();
       encoder.setRepeat(0); //infinite loop
-      // encoder.setDelay(document.getElementById("anime_speed").value);
+      encoder.setDelay(100); //delay
 
       const proseccing = () => {
         return new Promise(resolve => {
