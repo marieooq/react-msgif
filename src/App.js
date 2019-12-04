@@ -26,7 +26,6 @@ class App extends Component {
       recordingFlg: false,
       encoder: "",
       textAreaVal: "",
-      mode: "note",
       outputScreenStatus: "",
       gifAnimation: "",
       isComposing: false
@@ -48,9 +47,9 @@ class App extends Component {
       this.displayScreen.textContent = this.state.textAreaVal;
     }
 
-    if (this.state.mode !== prevState.mode) {
-      this.switchMode(this.state.mode);
-    }
+    // if (this.state.mode !== prevState.mode) {
+    //   this.switchMode(this.state.mode);
+    // }
   }
 
   displayMessage = async e => {
@@ -79,10 +78,6 @@ class App extends Component {
 
   setScreenSize = e => {
     this.setState({ size: e.target.value });
-  };
-
-  isMode = e => {
-    this.setState({ mode: e.target.value });
   };
 
   startRec = e => {
@@ -417,7 +412,7 @@ class App extends Component {
             <div id="left-left">
               <Screen id="display-screen" status="" />
               <ScreenSize />
-              <Mode mode={this.state.mode} onModeChange={this.isMode} />
+              <Mode onSwitchMode={this.switchMode} />
             </div>
             <div id="left-right">
               <Textarea
