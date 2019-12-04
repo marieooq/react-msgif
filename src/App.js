@@ -1,20 +1,20 @@
 import React, { Component } from "react";
-import Screen from "./Screen";
-import ScreenSize from "./ScreenSize";
-import Mode from "./Mode";
-import Textarea from "./Textarea";
-import Record from "./Record";
-import Reset from "./Reset";
-import CreateGif from "./CreateGif";
-import Download from "./Download";
+import Screen from "./components/Screen";
+import ScreenSize from "./containers/ScreenSize";
+import Mode from "./components/Mode";
+import Textarea from "./components/Textarea";
+import Record from "./containers/Record";
+import Reset from "./containers/Reset";
+import CreateGif from "./containers/CreateGif";
+import Download from "./components/Download";
 // import Loading from "./Loading";
 import html2canvas from "html2canvas";
 /* eslint-disable no-undef */
 // import GIFEncoder from "./GIFEncoder";
 import "./App.css";
 import encode64 from "./b64";
-import { connect } from 'react-redux'
-import { startRec, endRec } from './actions'
+import { connect } from "react-redux";
+import { startRec, endRec } from "./actions";
 
 class App extends Component {
   constructor(props) {
@@ -127,7 +127,7 @@ class App extends Component {
   startRec = e => {
     if (e.target.textContent === "Record") {
       // this.setState({ isRec: true });
-      this.props.startRec()
+      this.props.startRec();
       this.setState({ textAreaVal: "" });
       e.target.textContent = "Recording...";
       e.target.id = "recording-btn";
@@ -182,7 +182,7 @@ class App extends Component {
 
     //reset values
     // this.setState({ isRec: false });
-    this.props.endRec()
+    this.props.endRec();
     this.setState({ textAreaVal: "" });
     this.frames = [];
 
@@ -502,17 +502,14 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     isRec: state.isRec
-  }
-}
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
     startRec: () => dispatch(startRec),
-    endRec: () => dispatch(endRec),
-  }
-}
+    endRec: () => dispatch(endRec)
+  };
+};
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App);

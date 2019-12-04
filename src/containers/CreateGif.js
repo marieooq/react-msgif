@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import PushBtn from "./PushBtn";
-import "./PushBtn.css";
+import PushBtn from "../components/PushBtn";
+import "../components/PushBtn.css";
 
-class Record extends Component {
+class CreateGif extends Component {
   render() {
     return (
+      // eslint-disable-next-line jsx-a11y/anchor-is-valid
       <PushBtn
         id={this.props.id}
         class={this.props.class}
@@ -15,4 +16,4 @@ class Record extends Component {
   }
 }
 
-export default Record;
+export default CreateGif;

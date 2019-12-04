@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import Screen from "./Screen";
-import CreateGif from "./CreateGif";
 import "./ScreenControl.css";
 
 class ScreenControl extends Component {

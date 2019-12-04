@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import PushBtn from "./PushBtn";
-import "./PushBtn.css";
+import PushBtn from "../components/PushBtn";
+import "../components/PushBtn.css";
 
-class Reset extends Component {
+class Record extends Component {
   render() {
     return (
       <PushBtn
@@ -15,4 +15,4 @@ class Reset extends Component {
   }
 }
 
-export default Reset;
+export default Record;

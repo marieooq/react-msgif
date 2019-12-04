@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Mode.css";
+import "../components/Mode.css";
 
 class ScreenSize extends Component {
   handleScreenSize = e => {
