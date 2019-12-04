@@ -13,6 +13,8 @@ import html2canvas from "html2canvas";
 // import GIFEncoder from "./GIFEncoder";
 import "./App.css";
 import encode64 from "./b64";
+import { connect } from 'react-redux'
+import { startRec, endRec } from './actions'
 
 class App extends Component {
   constructor(props) {
@@ -21,7 +23,6 @@ class App extends Component {
     this.captureCount = 0;
     this.createGifCount = 0;
     this.state = {
-      isRec: false,
       recordingFlg: false,
       encoder: "",
       textAreaVal: "",
@@ -70,7 +71,7 @@ class App extends Component {
       console.log(`keyup: ${e}`);
     });
     this.setState({ textAreaVal: e.target.value });
-    if (this.state.isRec) {
+    if (this.props.isRec) {
       await this.captureScreen();
     }
 
@@ -125,7 +126,8 @@ class App extends Component {
 
   startRec = e => {
     if (e.target.textContent === "Record") {
-      this.setState({ isRec: true });
+      // this.setState({ isRec: true });
+      this.props.startRec()
       this.setState({ textAreaVal: "" });
       e.target.textContent = "Recording...";
       e.target.id = "recording-btn";
@@ -179,7 +181,8 @@ class App extends Component {
     e.target.classList.add("hide");
 
     //reset values
-    this.setState({ isRec: false });
+    // this.setState({ isRec: false });
+    this.props.endRec()
     this.setState({ textAreaVal: "" });
     this.frames = [];
 
@@ -496,4 +499,20 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    isRec: state.isRec
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    startRec: () => dispatch(startRec),
+    endRec: () => dispatch(endRec),
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
