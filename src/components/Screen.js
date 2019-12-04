@@ -2,7 +2,7 @@ import React from "react";
 import Loading from "./Loading";
 import "./Screen.css";
 
-const returnScreen = props => {
+const Screen = props => {
   if (props.status === "loading") {
     return (
       <div className="screen" id={props.id}>
@@ -12,10 +12,6 @@ const returnScreen = props => {
   } else {
     return <div className="screen" id={props.id}></div>;
   }
-};
-
-const Screen = props => {
-  return returnScreen(props);
 };
 
 export default Screen;
