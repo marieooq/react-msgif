@@ -13,10 +13,8 @@ import html2canvas from "html2canvas";
 // import GIFEncoder from "./GIFEncoder";
 import "./App.css";
 import encode64 from "./b64";
-import { connect } from "react-redux";
-import { startRec, endRec } from "./actions";
 
-class App extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props);
     this.frames = [];
@@ -25,65 +23,26 @@ class App extends Component {
     this.state = {
       recordingFlg: false,
       encoder: "",
-      textAreaVal: "",
       outputScreenStatus: "",
       gifAnimation: "",
       isComposing: false
     };
   }
 
-  displayScreen;
+  // displayScreen;
   textArea;
   outputScreen;
 
   componentDidMount() {
-    this.displayScreen = document.getElementById("display-screen");
     this.textArea = document.getElementById("textareaMsg");
     this.outputScreen = document.getElementById("output");
   }
-
-  componentDidUpdate(prevState) {
-    if (this.state.textAreaVal !== prevState.textAreaVal) {
-      this.displayScreen.textContent = this.state.textAreaVal;
-    }
-
-    // if (this.state.mode !== prevState.mode) {
-    //   this.switchMode(this.state.mode);
-    // }
-  }
-
-  displayMessage = async e => {
-    document.addEventListener("keydown", e => {
-      console.log(`keydown: ${e}`);
-    });
-    document.addEventListener("keypress", e => {
-      //
-      //日本語の場合はkeypressイベントが発動しない
-      console.log(`keypress: ${e}`);
-    });
-    document.addEventListener("keyup", e => {
-      console.log(`keyup: ${e}`);
-    });
-    this.setState({ textAreaVal: e.target.value });
-    if (this.props.isRec) {
-      await this.captureScreen();
-    }
-
-    if (this.displayScreen.className !== "") {
-      this.removeClass();
-    }
-
-    this.switchMode(this.state.mode);
-  };
-
-  setScreenSize = e => {
-    this.setState({ size: e.target.value });
-  };
 
   startRec = e => {
     if (e.target.textContent === "Record") {
       // this.setState({ isRec: true });
       this.props.startRec();
+      console.log(this.props.startRec());
       this.setState({ textAreaVal: "" });
       e.target.textContent = "Recording...";
       e.target.id = "recording-btn";
@@ -100,6 +59,8 @@ class App extends Component {
   };
 
   reset = e => {
+    console.log("here");
+    console.log(e);
     //before creating a gif animation
     if (this.captureCount > 0 && this.createGifCount === 0) {
       //hide the create gif button
@@ -148,155 +109,6 @@ class App extends Component {
     recordingBtn.classList.remove("recording");
     recordingBtn.classList.add("default");
     recordingBtn.id = "record-btn";
-  };
-
-  removeClass = () => {
-    const isClassName = this.displayScreen.className;
-    if (isClassName.includes("coloredText")) {
-      this.displayScreen.classList.remove("coloredText");
-    }
-    if (isClassName.includes("textShadow")) {
-      this.displayScreen.classList.remove("textShadow");
-    }
-  };
-
-  changeTextColor = mode => {
-    this.displayScreen.classList.add("coloredText");
-    const coloredTextClass = document.getElementsByClassName("coloredText");
-
-    for (let i = 0; i < coloredTextClass.length; i++) {
-      switch (mode) {
-        case "developer":
-          coloredTextClass[i].style.color = "#00c200";
-          break;
-
-        case "neon":
-          coloredTextClass[i].style.color = "#fff";
-          break;
-
-        case "note":
-          coloredTextClass[i].style.color = "#292929";
-          break;
-
-        case "pop":
-          coloredTextClass[i].style.color = "#292929";
-          break;
-
-        default:
-          console.log("mode is undefined");
-      }
-    }
-  };
-
-  changeTextShadow = mode => {
-    const returnRanNum = () => {
-      const runNum = Math.floor(Math.random() * 360);
-      return runNum;
-    };
-
-    const returnRgb = () => {
-      let rgb = `rgb(${returnRanNum()}, ${returnRanNum()}, ${returnRanNum()})`;
-      return rgb;
-    };
-
-    if (mode === "neon") {
-      this.displayScreen.classList.add("textShadow");
-      const textShadowClass = document.getElementsByClassName("textShadow");
-      for (let i = 0; i < textShadowClass.length; i++) {
-        textShadowClass[i].style.textShadow = `2px 2px 15px ${returnRgb()}`;
-      }
-    } else {
-      if (this.displayScreen.className.includes("textShadow")) {
-        this.displayScreen.classList.remove("textShadow");
-      }
-      this.displayScreen.style.textShadow = "";
-    }
-  };
-
-  changeFontFamily = mode => {
-    switch (mode) {
-      case "developer":
-        this.displayScreen.style.fontFamily = '"Ubuntu Mono", monospace';
-        break;
-
-      case "neon":
-        this.displayScreen.style.fontFamily = '"Lobster", cursive';
-        break;
-
-      case "note":
-        this.displayScreen.style.fontFamily = '"Noto Serif", serif';
-        break;
-
-      case "pop":
-        if (this.state.isComposing) {
-          this.displayScreen.style.fontFamily = "'Kosugi Maru', sans-serif";
-        } else {
-          this.displayScreen.style.fontFamily = "'Anton', sans-serif";
-        }
-
-        break;
-
-      default:
-        console.log("mode is undefined");
-    }
-  };
-
-  changeBackground = mode => {
-    switch (mode) {
-      case "developer":
-        this.displayScreen.style.backgroundColor = "rgb(12, 5, 32)";
-        break;
-
-      case "neon":
-        this.displayScreen.style.backgroundColor = "rgb(12, 5, 32)";
-        break;
-
-      case "note":
-        this.displayScreen.style.backgroundColor = "#fff";
-        break;
-
-      case "pop":
-        this.displayScreen.style.backgroundColor = "#fef734";
-        break;
-
-      default:
-        console.log("mode is undefined");
-    }
-  };
-
-  switchMode = mode => {
-    switch (mode) {
-      case "developer":
-        this.changeTextColor(mode);
-        this.changeTextShadow(mode);
-        this.changeFontFamily(mode);
-        this.changeBackground(mode);
-        break;
-
-      case "neon":
-        this.changeTextColor(mode);
-        this.changeTextShadow(mode);
-        this.changeFontFamily(mode);
-        this.changeBackground(mode);
-        break;
-
-      case "note":
-        this.changeTextColor(mode);
-        this.changeTextShadow(mode);
-        this.changeFontFamily(mode);
-        this.changeBackground(mode);
-        break;
-
-      case "pop":
-        this.changeTextColor(mode);
-        this.changeTextShadow(mode);
-        this.changeFontFamily(mode);
-        this.changeBackground(mode);
-        break;
-
-      default:
-        console.log("isMode returns undefined");
-    }
   };
 
   ////CAPTURE/////////////////////////////////////////////////////
@@ -412,13 +224,10 @@ class App extends Component {
             <div id="left-left">
               <Screen id="display-screen" status="" />
               <ScreenSize />
-              <Mode onSwitchMode={this.switchMode} />
+              <Mode />
             </div>
             <div id="left-right">
-              <Textarea
-                textAreaVal={this.state.textAreaVal}
-                onTextAreaChange={this.displayMessage}
-              />
+              <Textarea />
               <div className="btn-wrapper">
                 <Reset
                   id="reset-btn"
@@ -451,18 +260,3 @@ class App extends Component {
     );
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    isRec: state.isRec
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    startRec: () => dispatch(startRec),
-    endRec: () => dispatch(endRec)
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
