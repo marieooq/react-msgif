@@ -98,6 +98,9 @@ export default class App extends Component {
 
       //reset captureCount
       this.captureCount = 0;
+
+      //erase the screen
+      this.props.changeMode("note");
     }
 
     //hide the reset button itself
