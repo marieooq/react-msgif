@@ -53,6 +53,9 @@ export default class App extends Component {
       e.target.classList.remove("default");
       e.target.classList.remove("invalid");
 
+      //erase the screen
+      this.props.changeTextAreaVal("");
+
       //shows the reset button
       const resetBtn = document.getElementById("reset-btn");
       resetBtn.classList.remove("hide");
