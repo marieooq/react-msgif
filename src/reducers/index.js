@@ -20,7 +20,17 @@ const textAreaVal = (state = "", action) => {
   }
 };
 
+const mode = (state = "note", action) => {
+  switch (action.type) {
+    case "CHANGE_MODE":
+      return action.text;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   isRec,
-  textAreaVal
+  textAreaVal,
+  mode
 });

@@ -9,3 +9,7 @@ export const endRec = {
 export const changeTextAreaVal = text => {
   return { type: "CHANGE_TEXT_AREA_VAL", text };
 };
+
+export const changeMode = text => {
+  return { type: "CHANGE_MODE", text };
+};

@@ -13,6 +13,7 @@ import html2canvas from "html2canvas";
 // import GIFEncoder from "./GIFEncoder";
 import "./App.css";
 import encode64 from "./b64";
+import store from "./reducers/store";
 
 export default class App extends Component {
   constructor(props) {
@@ -36,6 +37,10 @@ export default class App extends Component {
   componentDidMount() {
     this.textArea = document.getElementById("textareaMsg");
     this.outputScreen = document.getElementById("output");
+
+    //initiate mode
+    this.setState({ mode: store.getState().mode });
+    console.log(store.getState().mode);
   }
 
   startRec = e => {
