@@ -1,15 +1,8 @@
 import React, { Component } from "react";
+import store from "../reducers/store";
 import "./Textarea.css";
 
 class Textarea extends Component {
-  // handleInput = e => {
-  //   this.props.onTextAreaChange(e);
-  // };
-
-  state = {
-    textAreaVal: ""
-  };
-
   displayScreen;
 
   componentDidMount() {
@@ -17,24 +10,12 @@ class Textarea extends Component {
   }
 
   componentDidUpdate(prevState) {
-    if (this.state.textAreaVal !== prevState.textAreaVal) {
-      this.displayScreen.textContent = this.state.textAreaVal;
+    if (store.getState().textAreaVal !== prevState.textAreaVal) {
+      this.displayScreen.textContent = store.getState().textAreaVal;
     }
   }
 
   displayMessage = async e => {
-    // document.addEventListener("keydown", e => {
-    //   console.log(`keydown: ${e}`);
-    // });
-    // document.addEventListener("keypress", e => {
-    //   //
-    //   //日本語の場合はkeypressイベントが発動しない
-    //   console.log(`keypress: ${e}`);
-    // });
-    // document.addEventListener("keyup", e => {
-    //   console.log(`keyup: ${e}`);
-    // });
-
     if (this.props.isRec) {
       await this.captureScreen();
     }
@@ -55,7 +36,7 @@ class Textarea extends Component {
   };
 
   setTextAreaVal = e => {
-    this.setState({ textAreaVal: e.target.value });
+    this.props.changeTextAreaVal(e.target.value);
     this.displayMessage();
   };
 
@@ -66,7 +47,7 @@ class Textarea extends Component {
         name="user-msg"
         rows="5"
         cols="26"
-        value={this.state.textAreaVal}
+        value={store.getState().textAreaVal}
         maxLength="140"
         onChange={this.setTextAreaVal}
         placeholder="Type your message here."

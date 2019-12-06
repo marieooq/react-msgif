@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Screen from "./components/Screen";
 import ScreenSize from "./containers/ScreenSize";
 import ModeContainer from "./components/ModeContainer";
-import Textarea from "./components/Textarea";
+import TextareaContainer from "./components/TextareaContainer";
 import Record from "./containers/Record";
 import Reset from "./containers/Reset";
 import CreateGif from "./containers/CreateGif";
@@ -231,7 +231,7 @@ export default class App extends Component {
               <ModeContainer />
             </div>
             <div id="left-right">
-              <Textarea />
+              <TextareaContainer />
               <div className="btn-wrapper">
                 <Reset
                   id="reset-btn"

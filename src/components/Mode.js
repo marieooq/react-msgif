@@ -10,13 +10,11 @@ class Mode extends Component {
   }
 
   componentDidUpdate(prevState) {
-    console.log(store.getState().textAreaVal);
     if (store.getState().mode !== prevState.mode) {
       this.switchMode(store.getState().mode);
     }
 
     if (store.getState().textAreaVal !== prevState.textAreaVal) {
-      console.log("here");
       this.switchMode(store.getState().mode);
     }
   }
