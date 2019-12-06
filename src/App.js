@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Screen from "./components/Screen";
 import ScreenSize from "./containers/ScreenSize";
-import Mode from "./components/Mode";
+import ModeContainer from "./components/ModeContainer";
 import Textarea from "./components/Textarea";
 import Record from "./containers/Record";
 import Reset from "./containers/Reset";
@@ -47,6 +47,7 @@ export default class App extends Component {
     if (e.target.textContent === "Record") {
       // this.setState({ isRec: true });
       this.props.startRec();
+      // console.log(this.props.changeMode("note"));
       // console.log(this.props.startRec());
       // this.props.changeTextAreaVal("");
       // this.setState({ textAreaVal: "" });
@@ -230,7 +231,7 @@ export default class App extends Component {
             <div id="left-left">
               <Screen id="display-screen" status="" />
               <ScreenSize />
-              <Mode />
+              <ModeContainer />
             </div>
             <div id="left-right">
               <Textarea />

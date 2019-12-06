@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import store from "../reducers/store";
 import "./Mode.css";
 
 class Mode extends Component {
@@ -13,8 +14,11 @@ class Mode extends Component {
   }
 
   componentDidUpdate(prevState) {
-    if (this.state.mode !== prevState.mode) {
-      this.switchMode(this.state.mode);
+    if (store.getState().mode !== prevState.mode) {
+      console.log(store.getState().mode);
+      console.log(typeof store.getState().mode);
+      console.log("here");
+      console.log(this.props.changeMode("note"));
     }
   }
   switchMode = mode => {

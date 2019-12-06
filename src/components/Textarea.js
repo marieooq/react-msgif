@@ -18,11 +18,7 @@ class Textarea extends Component {
 
   componentDidUpdate(prevState) {
     if (this.state.textAreaVal !== prevState.textAreaVal) {
-      console.log("here");
       this.displayScreen.textContent = this.state.textAreaVal;
-      console.log(this.state.textAreaVal);
-      console.log(this.displayScreen.textContent);
-      console.log(this.displayScreen);
     }
   }
 
@@ -38,8 +34,6 @@ class Textarea extends Component {
     // document.addEventListener("keyup", e => {
     //   console.log(`keyup: ${e}`);
     // });
-    console.log("inside displayMessage");
-    console.log(`this.props.isRec : ${this.props.isRec}`);
 
     if (this.props.isRec) {
       await this.captureScreen();
