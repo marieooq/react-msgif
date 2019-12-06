@@ -118,6 +118,7 @@ export default class App extends Component {
   ////CAPTURE/////////////////////////////////////////////////////
 
   captureScreen = async () => {
+    console.log("here");
     if (this.captureCount === 0) {
       //shows the create gif button
       const createGifBtn = document.getElementById("createGif-btn");
@@ -231,7 +232,7 @@ export default class App extends Component {
               <ModeContainer />
             </div>
             <div id="left-right">
-              <TextareaContainer />
+              <TextareaContainer captureScreen={this.captureScreen} />
               <div className="btn-wrapper">
                 <Reset
                   id="reset-btn"

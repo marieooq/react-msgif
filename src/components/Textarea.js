@@ -16,8 +16,8 @@ class Textarea extends Component {
   }
 
   displayMessage = async e => {
-    if (this.props.isRec) {
-      await this.captureScreen();
+    if (store.getState().isRec) {
+      await this.props.captureScreen();
     }
 
     if (this.displayScreen.className !== "") {
