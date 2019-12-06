@@ -40,17 +40,13 @@ export default class App extends Component {
 
     //initiate mode
     this.setState({ mode: store.getState().mode });
-    console.log(store.getState().mode);
   }
 
   startRec = e => {
     if (e.target.textContent === "Record") {
       // this.setState({ isRec: true });
       this.props.startRec();
-      // console.log(this.props.changeMode("note"));
-      // console.log(this.props.startRec());
-      // this.props.changeTextAreaVal("");
-      // this.setState({ textAreaVal: "" });
+
       e.target.textContent = "Recording...";
       e.target.id = "recording-btn";
       e.target.classList.add("recording");
@@ -107,7 +103,8 @@ export default class App extends Component {
     //reset values
     // this.setState({ isRec: false });
     this.props.endRec();
-    this.setState({ textAreaVal: "" });
+    this.props.changeTextAreaVal("");
+    // this.setState({ textAreaVal: "" });
     this.frames = [];
 
     //shows the record button

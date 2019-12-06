@@ -3,10 +3,6 @@ import store from "../reducers/store";
 import "./Mode.css";
 
 class Mode extends Component {
-  state = {
-    mode: "note"
-  };
-
   displayScreen;
 
   componentDidMount() {
@@ -14,11 +10,14 @@ class Mode extends Component {
   }
 
   componentDidUpdate(prevState) {
+    console.log(store.getState().textAreaVal);
     if (store.getState().mode !== prevState.mode) {
-      console.log(store.getState().mode);
-      console.log(typeof store.getState().mode);
+      this.switchMode(store.getState().mode);
+    }
+
+    if (store.getState().textAreaVal !== prevState.textAreaVal) {
       console.log("here");
-      console.log(this.props.changeMode("note"));
+      this.switchMode(store.getState().mode);
     }
   }
   switchMode = mode => {
@@ -124,11 +123,7 @@ class Mode extends Component {
         break;
 
       case "pop":
-        if (this.state.isComposing) {
-          this.displayScreen.style.fontFamily = "'Kosugi Maru', sans-serif";
-        } else {
-          this.displayScreen.style.fontFamily = "'Anton', sans-serif";
-        }
+        this.displayScreen.style.fontFamily = "'Anton', sans-serif";
 
         break;
 
@@ -161,14 +156,14 @@ class Mode extends Component {
   };
 
   handleMode = e => {
-    this.setState({ mode: e.target.value });
+    this.props.changeMode(e.target.value);
   };
 
   render() {
     return (
       <div className="selectdiv">
         <select
-          value={this.state.mode}
+          value={store.getState().mode}
           name="display-mode"
           onChange={this.handleMode}
           id="mode"
