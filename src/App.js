@@ -43,7 +43,7 @@ export default class App extends Component {
       // this.setState({ isRec: true });
       this.props.startRec();
       // console.log(this.props.startRec());
-      this.props.changeTextAreaVal("");
+      // this.props.changeTextAreaVal("");
       // this.setState({ textAreaVal: "" });
       e.target.textContent = "Recording...";
       e.target.id = "recording-btn";
@@ -53,7 +53,6 @@ export default class App extends Component {
 
       //shows the reset button
       const resetBtn = document.getElementById("reset-btn");
-      console.log(resetBtn);
       resetBtn.classList.remove("hide");
     } else {
       return;

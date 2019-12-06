@@ -18,7 +18,11 @@ class Textarea extends Component {
 
   componentDidUpdate(prevState) {
     if (this.state.textAreaVal !== prevState.textAreaVal) {
+      console.log("here");
       this.displayScreen.textContent = this.state.textAreaVal;
+      console.log(this.state.textAreaVal);
+      console.log(this.displayScreen.textContent);
+      console.log(this.displayScreen);
     }
   }
 
@@ -34,7 +38,9 @@ class Textarea extends Component {
     // document.addEventListener("keyup", e => {
     //   console.log(`keyup: ${e}`);
     // });
-    this.setState({ textAreaVal: e.target.value });
+    console.log("inside displayMessage");
+    console.log(`this.props.isRec : ${this.props.isRec}`);
+
     if (this.props.isRec) {
       await this.captureScreen();
     }
@@ -54,6 +60,11 @@ class Textarea extends Component {
     }
   };
 
+  setTextAreaVal = e => {
+    this.setState({ textAreaVal: e.target.value });
+    this.displayMessage();
+  };
+
   render() {
     return (
       <textarea
@@ -63,7 +74,7 @@ class Textarea extends Component {
         cols="26"
         value={this.state.textAreaVal}
         maxLength="140"
-        onChange={this.displayMessage}
+        onChange={this.setTextAreaVal}
         placeholder="Type your message here."
       ></textarea>
     );
