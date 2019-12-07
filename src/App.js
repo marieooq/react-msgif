@@ -231,7 +231,9 @@ export default class App extends Component {
   render() {
     return (
       <div id="container">
-        <img src={logo} alt="logo" width="100px" />
+        <div id="header">
+          <img src={logo} alt="logo" width="70px" />
+        </div>
         <div id="inner">
           <div id="left">
             <div id="left-left">

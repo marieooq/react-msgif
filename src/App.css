@@ -9,6 +9,11 @@
   box-sizing: border-box;
 }
 
+#header {
+  /* background-color: aqua; */
+  margin-top: 15px;
+}
+
 #inner {
   margin: 0 auto;
   display: flex;
