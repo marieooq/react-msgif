@@ -3,7 +3,7 @@ import Screen from "./components/Screen";
 import ScreenSize from "./containers/ScreenSize";
 import ModeContainer from "./components/ModeContainer";
 import TextareaContainer from "./components/TextareaContainer";
-import Record from "./containers/Record";
+import RecordContainer from "./containers/RecordContainer";
 import Reset from "./containers/Reset";
 import CreateGif from "./containers/CreateGif";
 import Download from "./components/Download";
@@ -26,8 +26,7 @@ export default class App extends Component {
       recordingFlg: false,
       encoder: "",
       outputScreenStatus: "",
-      gifAnimation: "",
-      isComposing: false
+      gifAnimation: ""
     };
   }
 
@@ -43,31 +42,29 @@ export default class App extends Component {
     this.setState({ mode: store.getState().mode });
   }
 
-  startRec = e => {
-    if (e.target.textContent === "Record") {
-      // this.setState({ isRec: true });
-      this.props.startRec();
+  // startRec = e => {
+  //   if (e.target.textContent === "Record") {
+  //     // this.setState({ isRec: true });
+  //     this.props.startRec();
 
-      e.target.textContent = "Recording...";
-      e.target.id = "recording-btn";
-      e.target.classList.add("recording");
-      e.target.classList.remove("default");
-      e.target.classList.remove("invalid");
+  //     e.target.textContent = "Recording...";
+  //     e.target.id = "recording-btn";
+  //     e.target.classList.add("recording");
+  //     e.target.classList.remove("default");
+  //     e.target.classList.remove("invalid");
 
-      //erase the screen
-      this.props.changeTextAreaVal("");
+  //     //erase the screen
+  //     this.props.changeTextAreaVal("");
 
-      //shows the reset button
-      const resetBtn = document.getElementById("reset-btn");
-      resetBtn.classList.remove("hide");
-    } else {
-      return;
-    }
-  };
+  //     //shows the reset button
+  //     const resetBtn = document.getElementById("reset-btn");
+  //     resetBtn.classList.remove("hide");
+  //   } else {
+  //     return;
+  //   }
+  // };
 
   reset = e => {
-    console.log("here");
-    console.log(e);
     //before creating a gif animation
     if (this.captureCount > 0 && this.createGifCount === 0) {
       //hide the create gif button
@@ -125,7 +122,7 @@ export default class App extends Component {
   ////CAPTURE/////////////////////////////////////////////////////
 
   captureScreen = async () => {
-    console.log("here");
+    // console.log("here");
     if (this.captureCount === 0) {
       //shows the create gif button
       const createGifBtn = document.getElementById("createGif-btn");
@@ -250,12 +247,7 @@ export default class App extends Component {
                   action={this.reset}
                   name="Reset"
                 />
-                <Record
-                  id="record-btn"
-                  class="btn-push default"
-                  action={this.startRec}
-                  name="Record"
-                />
+                <RecordContainer />
                 <CreateGif
                   id="createGif-btn"
                   class="btn-push default hide"
