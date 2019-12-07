@@ -12,6 +12,7 @@ import html2canvas from "html2canvas";
 /* eslint-disable no-undef */
 // import GIFEncoder from "./GIFEncoder";
 import "./App.css";
+import logo from "./img/logo.png";
 import encode64 from "./b64";
 import store from "./reducers/store";
 
@@ -230,6 +231,7 @@ export default class App extends Component {
   render() {
     return (
       <div id="container">
+        <img src={logo} alt="logo" width="100px" />
         <div id="inner">
           <div id="left">
             <div id="left-left">
