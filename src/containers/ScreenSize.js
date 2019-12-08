@@ -24,7 +24,7 @@ class ScreenSize extends Component {
 
     if (size === "twitter") {
       container.style.width = "1080px";
-      header.style.marginTop = "15px";
+      // header.style.marginTop = "15px";
       left.style.width = "512px";
       left.style.display = "block";
       left.style.justifyContent = "";
@@ -36,7 +36,7 @@ class ScreenSize extends Component {
       docStyle.setProperty("--screenHeight", "256px");
     } else if (size === "social") {
       container.style.width = "1280px";
-      header.style.marginTop = "60px";
+      // header.style.marginTop = "60px";
       left.style.width = "840px";
       left.style.display = "flex";
       left.style.justifyContent = "space-between";

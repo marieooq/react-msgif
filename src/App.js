@@ -42,28 +42,6 @@ export default class App extends Component {
     this.setState({ mode: store.getState().mode });
   }
 
-  // startRec = e => {
-  //   if (e.target.textContent === "Record") {
-  //     // this.setState({ isRec: true });
-  //     this.props.startRec();
-
-  //     e.target.textContent = "Recording...";
-  //     e.target.id = "recording-btn";
-  //     e.target.classList.add("recording");
-  //     e.target.classList.remove("default");
-  //     e.target.classList.remove("invalid");
-
-  //     //erase the screen
-  //     this.props.changeTextAreaVal("");
-
-  //     //shows the reset button
-  //     const resetBtn = document.getElementById("reset-btn");
-  //     resetBtn.classList.remove("hide");
-  //   } else {
-  //     return;
-  //   }
-  // };
-
   reset = e => {
     //before creating a gif animation
     if (this.captureCount > 0 && this.createGifCount === 0) {
@@ -228,9 +206,9 @@ export default class App extends Component {
   render() {
     return (
       <div id="container">
-        <div id="header">
+        {/* <div id="header">
           <img src={logo} alt="logo" width="70px" />
-        </div>
+        </div> */}
         <div id="inner">
           <div id="left">
             <div id="left-left">
