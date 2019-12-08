@@ -14,8 +14,9 @@ class ScreenSize extends Component {
 
   changeScreenSize(size) {
     let docStyle = document.documentElement.style;
-    let container = document.getElementById("container");
-    let header = document.getElementById("header");
+    let inner = document.getElementById("inner");
+    let side = document.getElementById("side");
+    let logo = document.getElementById("logo");
     let left = document.getElementById("left");
     let leftLeft = document.getElementById("left-left");
     let leftRight = document.getElementById("left-right");
@@ -23,8 +24,9 @@ class ScreenSize extends Component {
     let right = document.getElementById("right");
 
     if (size === "twitter") {
-      container.style.width = "1080px";
-      // header.style.marginTop = "15px";
+      inner.style.width = "1080px";
+      side.style.width = "15%";
+      logo.style.width = "70px";
       left.style.width = "512px";
       left.style.display = "block";
       left.style.justifyContent = "";
@@ -35,9 +37,10 @@ class ScreenSize extends Component {
       docStyle.setProperty("--screenWidth", "512px");
       docStyle.setProperty("--screenHeight", "256px");
     } else if (size === "social") {
-      container.style.width = "1280px";
-      // header.style.marginTop = "60px";
-      left.style.width = "840px";
+      inner.style.width = "1240px";
+      side.style.width = "8%";
+      logo.style.width = "60px";
+      left.style.width = "820px";
       left.style.display = "flex";
       left.style.justifyContent = "space-between";
       leftLeft.style.width = "400px";
