@@ -109,11 +109,13 @@ class Mode extends Component {
   changeFontFamily = mode => {
     switch (mode) {
       case "developer":
-        this.displayScreen.style.fontFamily = '"Ubuntu Mono", monospace';
+        this.displayScreen.style.fontFamily =
+          '"Ubuntu Mono", monospace, "M PLUS 1p", "sans - serif"';
         break;
 
       case "neon":
-        this.displayScreen.style.fontFamily = '"Lobster", cursive';
+        this.displayScreen.style.fontFamily =
+          '"Lobster", cursive, "Kosugi", sans-serif';
         break;
 
       case "note":
@@ -121,7 +123,8 @@ class Mode extends Component {
         break;
 
       case "pop":
-        this.displayScreen.style.fontFamily = "'Anton', sans-serif";
+        this.displayScreen.style.fontFamily =
+          "'Anton', sans-serif, 'M PLUS 1p', sans-serif";
 
         break;
 
