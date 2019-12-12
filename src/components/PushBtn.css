@@ -34,10 +34,15 @@
   border-bottom: none;
 }
 
-#record-btn,
 #reset-btn {
   background-color: #e45744;
   border-bottom: 4px solid #aa3324;
+}
+
+#record-btn {
+  background-color: #44e451;
+  border-bottom: 4px solid #24aa2b;
+  margin-left: 15px;
 }
 
 #record-btn {

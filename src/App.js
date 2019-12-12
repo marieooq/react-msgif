@@ -103,7 +103,7 @@ export default class App extends Component {
   ////CAPTURE/////////////////////////////////////////////////////
 
   captureScreen = async () => {
-    // console.log("here");
+    console.log("here");
     if (this.captureCount === 0) {
       //shows the create gif button
       const createGifBtn = document.getElementById("createGif-btn");
@@ -137,9 +137,7 @@ export default class App extends Component {
       createGifBtn.classList.add("invalid");
       this.createGifCount++;
 
-      //display "creating..."
-      const recordBtn = document.getElementsByClassName("recording")[0];
-      recordBtn.textContent = "Creating...";
+      //when it's creating GIF show a snap bar
 
       //start loading
       this.switchLoading("start");
@@ -193,10 +191,7 @@ export default class App extends Component {
       this.outputScreen.style.border = "none";
       this.outputScreen.appendChild(img);
 
-      //display "Done!"
-      recordBtn.textContent = "Done!";
-      recordBtn.classList.remove("recording");
-      recordBtn.classList.add("invalid");
+      //when it's done show a snap bar
 
       //shows a download button
       const donwloadBtn = document.getElementById("ssgif");
@@ -235,12 +230,12 @@ export default class App extends Component {
             <div id="left-right">
               <TextareaContainer captureScreen={this.captureScreen} />
               <div className="btn-wrapper">
-                {/* <Reset
+                <Reset
                   id="reset-btn"
                   class="btn-push default hide"
                   action={this.reset}
                   name="Reset"
-                /> */}
+                />
                 <RecordContainer />
                 <CreateGif
                   id="createGif-btn"
