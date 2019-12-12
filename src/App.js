@@ -15,6 +15,9 @@ import "./App.css";
 import logo from "./img/logo.png";
 import encode64 from "./b64";
 import store from "./reducers/store";
+import "@material/react-snackbar/dist/snackbar.css";
+import Snackbar from "@material/react-snackbar";
+import SnackBarControl from "./components/SnackBarControl";
 
 export default class App extends Component {
   constructor(props) {
@@ -203,6 +206,12 @@ export default class App extends Component {
     }
   };
 
+  obj = {
+    default: false,
+    message: "This is test",
+    time: "4000"
+  };
+
   render() {
     return (
       <div id="container">
@@ -210,6 +219,13 @@ export default class App extends Component {
           <img src={logo} alt="logo" width="70px" id="logo" />
         </div>
         <div id="inner">
+          <SnackBarControl obj={this.obj} />
+          {/* <Snackbar
+            message="Recording..."
+            actionText="close"
+            timeoutMs="4000"
+            leading="true"
+          /> */}
           <div id="left">
             <div id="left-left">
               <Screen id="display-screen" status="" />
@@ -219,12 +235,12 @@ export default class App extends Component {
             <div id="left-right">
               <TextareaContainer captureScreen={this.captureScreen} />
               <div className="btn-wrapper">
-                <Reset
+                {/* <Reset
                   id="reset-btn"
                   class="btn-push default hide"
                   action={this.reset}
                   name="Reset"
-                />
+                /> */}
                 <RecordContainer />
                 <CreateGif
                   id="createGif-btn"

@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { startRec, changeTextAreaVal } from "../actions";
+import { startRec, endRec, changeTextAreaVal } from "../actions";
 import Record from "./Record";
 
 const mapStateToProps = state => {
@@ -12,6 +12,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     startRec: () => dispatch(startRec),
+    endRec: () => dispatch(endRec),
     changeTextAreaVal: text => dispatch(changeTextAreaVal(text))
   };
 };
