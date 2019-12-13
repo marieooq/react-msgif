@@ -13,3 +13,23 @@ export const changeTextAreaVal = text => {
 export const changeMode = text => {
   return { type: "CHANGE_MODE", text };
 };
+
+export const captureCountIncrement = () => {
+  return { type: "CAPTURE_COUNT_INCREMENT" };
+};
+
+export const captureCountDecrement = () => {
+  return { type: "CAPTURE_COUNT_DECREMENT" };
+};
+
+export const createGifCountIncrement = () => {
+  return { type: "CREATE_GIT_COUNT_INCREMENT" };
+};
+
+export const createGifCountDecrement = () => {
+  return { type: "CREATE_GIT_COUNT_DECREMENT" };
+};
+
+export const pushToFrames = image => {
+  return { type: "PUSH_TO_FRAMES", image };
+};

@@ -29,8 +29,43 @@ const mode = (state = "note", action) => {
   }
 };
 
+const captureCount = (state = { counter: 0 }, action) => {
+  switch (action.type) {
+    case "CAPTURE_COUNT_INCREMENT":
+      return { counter: state.counter + 1 };
+    case "CAPTURE_COUNT_DECREMENT":
+      return { counter: state.counter - 1 };
+    default:
+      return state;
+  }
+};
+
+const createGifCount = (state = { counter: 0 }, action) => {
+  switch (action.type) {
+    case "CREATE_GIT_COUNT_INCREMEN":
+      return { conter: state.conter + 1 };
+    case "CREATE_GIT_COUNT_DECREMENT":
+      return { counter: state.counter - 1 };
+    default:
+      return state;
+  }
+};
+
+const frames = (state = [], action) => {
+  switch (action.type) {
+    case "PUSH_TO_FRAMES":
+      return [...state, action.image];
+
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   isRec,
   textAreaVal,
-  mode
+  mode,
+  captureCount,
+  createGifCount,
+  frames
 });

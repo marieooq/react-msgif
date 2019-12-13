@@ -10,29 +10,6 @@ class Record extends Component {
     name: "Record"
   };
 
-  // startRec = e => {
-  //   if (e.target.textContent === "Record") {
-  //     //change state.isRec to true
-  //     this.props.startRec();
-
-  //     //display "Recording..." while recording
-  //     e.target.textContent = "Recording...";
-  //     e.target.id = "recording-btn";
-  //     e.target.classList.add("recording");
-  //     e.target.classList.remove("default");
-  //     e.target.classList.remove("invalid");
-
-  //     //erase the screen
-  //     this.props.changeTextAreaVal("");
-
-  //     //shows the reset button
-  //     const resetBtn = document.getElementById("reset-btn");
-  //     resetBtn.classList.remove("hide");
-  //   } else {
-  //     return;
-  //   }
-  // };
-
   componentDidUpdate(prevState) {
     if (store.getState().isRec !== prevState.isRec) {
       if (!store.getState().isRec) {
@@ -59,36 +36,74 @@ class Record extends Component {
     }
   }
 
+  reset = e => {
+    console.log("reseet function is excecuted");
+    //before creating a gif animation
+    if (
+      store.getState().captureCount > 0 &&
+      store.getState().createGifCount === 0
+    ) {
+      //hide the create gif button
+      const createGifBtn = document.getElementById("createGif-btn");
+      createGifBtn.classList.add("hide");
+
+      //reset captureCount
+      this.props.changeCaptureCount(0);
+    }
+
+    //after creating a gif animation
+    if (store.getState().createGifCount > 0) {
+      //hide the create gif button and makes it valid
+      const createGifBtn = document.getElementById("createGif-btn-pushed");
+      createGifBtn.id = "createGif-btn";
+      createGifBtn.classList.add("default");
+      createGifBtn.classList.add("hide");
+      createGifBtn.classList.remove("invalid");
+
+      //reset createGifCount
+      this.props.changeCreateGifCount(0);
+
+      //delete the output image
+      const outputImg = document.getElementById("outputImg");
+      outputImg.parentNode.removeChild(outputImg);
+
+      this.outputScreen.style.padding = "30px 60px";
+      this.outputScreen.style.border = "dashed 5px rgba(204, 204, 204, 0.7)";
+
+      //hide the download button
+      const donwloadBtn = document.getElementById("ssgif");
+      donwloadBtn.classList.add("hide");
+
+      //reset captureCount
+      this.props.changeCaptureCount(0);
+
+      //erase the screen
+      this.props.changeMode("note");
+    }
+
+    // this.setState({ isRec: false });
+    this.props.endRec();
+    this.props.changeTextAreaVal("");
+    // this.setState({ textAreaVal: "" });
+    this.frames = [];
+  };
+
   startRec = e => {
     e.preventDefault();
     if (!store.getState().isRec) {
-      console.log(store.getState().isRec);
+      console.log("1");
+      //when the RECORD button has been pushed
+
       //change state.isRec to true
-      this.props.startRec(!store.getState().isRec);
-
-      // this.setState({
-      //   id: "record-btn",
-      //   class: "btn-push default",
-      //   action: this.startRec,
-      //   name: "Record"
-      // });
-
-      // //erase the screen
-      // this.props.changeTextAreaVal("");
+      this.props.startRec();
     } else {
-      console.log(store.getState().isRec);
+      console.log("2");
+      //when the RESET button has been pushed
+
       //change state.isRec to false
       this.props.endRec();
 
-      //   this.setState({
-      //     id: "reset-btn",
-      //     class: "btn-push default",
-      //     action: this.startRec,
-      //     name: "Reset"
-      //   });
-
-      //   //erase the screen
-      //   this.props.changeTextAreaVal("");
+      this.reset();
     }
   };
 
