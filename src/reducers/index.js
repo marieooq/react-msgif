@@ -32,7 +32,6 @@ const mode = (state = "note", action) => {
 const captureCount = (state = { counter: 0 }, action) => {
   switch (action.type) {
     case "CAPTURE_COUNT_INCREMENT":
-      console.log("action.type is CAPTURE_COUNT_INCREMENT");
       return { counter: state.counter + 1 };
     case "CAPTURE_COUNT_DECREMENT":
       return { counter: state.counter - 1 };
@@ -44,8 +43,8 @@ const captureCount = (state = { counter: 0 }, action) => {
 const createGifCount = (state = { counter: 0 }, action) => {
   switch (action.type) {
     case "CREATE_GIT_COUNT_INCREMENT":
-      console.log("action.type is CREATE_GIF_COUNT_INCREMENT");
-      return { conter: state.counter + 1 };
+      console.log(`action.type: ${action.type}`);
+      return { counter: state.counter + 1 };
     case "CREATE_GIT_COUNT_DECREMENT":
       return { counter: state.counter - 1 };
     default:

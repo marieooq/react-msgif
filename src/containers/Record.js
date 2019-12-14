@@ -10,6 +10,11 @@ class Record extends Component {
     name: "Record"
   };
 
+  outputScreen;
+  componentDidMount() {
+    this.outputScreen = document.getElementById("output");
+  }
+
   componentDidUpdate(prevState) {
     if (store.getState().isRec !== prevState.isRec) {
       if (!store.getState().isRec) {
@@ -37,11 +42,13 @@ class Record extends Component {
   }
 
   reset = e => {
-    console.log("reseet function is excecuted");
+    console.log("reset function is excecuted");
 
     console.log("----------");
     console.log(`captureCount: ${store.getState().captureCount.counter}`);
-    console.log(`createGifCount: ${store.getState().createGifCount.counter}`);
+    console.log(
+      `createGifCount.counter: ${store.getState().createGifCount.counter}`
+    );
     console.log("----------");
     //before creating a gif animation
     if (
