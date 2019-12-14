@@ -48,24 +48,24 @@ export default class App extends Component {
   reset = e => {
     //before creating a gif animation
     if (
-      store.getState().captureCount > 0 &&
-      store.getState().createGifCount === 0
+      store.getState().captureCount.counter > 0 &&
+      store.getState().createGifCount.counter === 0
     ) {
       //hide the create gif button
       const createGifBtn = document.getElementById("createGif-btn");
       createGifBtn.classList.add("hide");
-      this.props.changeCaptureCount(0);
+      this.props.captureCountDecrement();
     }
 
     //after creating a gif animation
-    if (store.getState().createGifCount > 0) {
+    if (store.getState().createGifCount.counter > 0) {
       //hide the create gif button and makes it valid
       const createGifBtn = document.getElementById("createGif-btn-pushed");
       createGifBtn.id = "createGif-btn";
       createGifBtn.classList.add("default");
       createGifBtn.classList.add("hide");
       createGifBtn.classList.remove("invalid");
-      this.props.changeCreateGifCount(0);
+      this.props.createGifCountDecrement();
 
       //delete the output image
       const outputImg = document.getElementById("outputImg");
@@ -79,7 +79,7 @@ export default class App extends Component {
       donwloadBtn.classList.add("hide");
 
       //reset captureCount
-      this.props.changeCaptureCount(0);
+      this.props.captureCountDecrement();
 
       //erase the screen
       this.props.changeMode("note");
@@ -106,13 +106,11 @@ export default class App extends Component {
   ////CAPTURE/////////////////////////////////////////////////////
 
   captureScreen = async () => {
-    if (store.getState().captureCount === 0) {
+    if (store.getState().captureCount.counter === 0) {
       //shows the create gif button
       const createGifBtn = document.getElementById("createGif-btn");
-      console.log(createGifBtn);
       createGifBtn.classList.remove("hide");
-      this.props.changeCaptureCount(1);
-      console.log(store.getState().captureCount);
+      this.props.captureCountIncrement();
     }
 
     //capture the canvas
@@ -121,7 +119,6 @@ export default class App extends Component {
     const imgTag = document.createElement("img");
     imgTag.src = `${imgData}`;
     this.props.pushToFrames(imgTag);
-    // this.frames.push(imgTag);
   };
 
   ////CREATE GIF//////////////////////////////////////////////////
@@ -135,13 +132,13 @@ export default class App extends Component {
 
   createGIF = async () => {
     console.log("here");
-    if (store.getState().createGifCount === 0) {
+    if (store.getState().createGifCount.counter === 0) {
       //make the createGIF button invalid
       const createGifBtn = document.getElementById("createGif-btn");
       createGifBtn.id = "createGif-btn-pushed";
       createGifBtn.classList.remove("default");
       createGifBtn.classList.add("invalid");
-      this.props.changeCreateGifCount(1);
+      this.props.createGifCountIncrement();
 
       //when it's creating GIF show a snap bar
 
@@ -164,12 +161,16 @@ export default class App extends Component {
           encoder.start();
 
           //fit the size of canvas to the first image
-          canvas.width = this.frames[0].naturalWidth;
-          canvas.height = this.frames[0].naturalHeight;
+          canvas.width = store.getState().frames[0].naturalWidth;
+          canvas.height = store.getState().frames[0].naturalHeight;
 
           //draw all the images to the canvas
-          for (let frame_no = 0; frame_no < this.frames.length; frame_no++) {
-            ctx.drawImage(this.frames[frame_no], 0, 0);
+          for (
+            let frame_no = 0;
+            frame_no < store.getState().frames.length;
+            frame_no++
+          ) {
+            ctx.drawImage(store.getState().frames[frame_no], 0, 0);
             encoder.addFrame(ctx);
           }
 
