@@ -111,6 +111,7 @@ export default class App extends Component {
       const createGifBtn = document.getElementById("createGif-btn");
       createGifBtn.classList.remove("hide");
       this.props.captureCountIncrement();
+      console.log(store.getState().captureCount);
     }
 
     //capture the canvas
@@ -131,14 +132,19 @@ export default class App extends Component {
   };
 
   createGIF = async () => {
-    console.log("here");
+    console.log("inside createGIF");
     if (store.getState().createGifCount.counter === 0) {
       //make the createGIF button invalid
       const createGifBtn = document.getElementById("createGif-btn");
       createGifBtn.id = "createGif-btn-pushed";
       createGifBtn.classList.remove("default");
       createGifBtn.classList.add("invalid");
+
+      //increment createGIF counter
       this.props.createGifCountIncrement();
+      console.log("-----");
+      console.log(store.getState().createGifCount);
+      console.log("-----");
 
       //when it's creating GIF show a snap bar
 

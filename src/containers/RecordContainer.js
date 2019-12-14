@@ -6,7 +6,9 @@ import {
   captureCountIncrement,
   captureCountDecrement,
   createGifCountIncrement,
-  createGifCountDecrement
+  createGifCountDecrement,
+  pushToFrames,
+  deleteAllFromFrames
 } from "../actions";
 import Record from "./Record";
 
@@ -15,7 +17,8 @@ const mapStateToProps = state => {
     isRec: state.isRec,
     textAreaVal: state.textAreaVal,
     captureCount: state.captureCount,
-    createGifCount: state.createGifCount
+    createGifCount: state.createGifCount,
+    frames: state.frames
   };
 };
 
@@ -27,7 +30,9 @@ const mapDispatchToProps = dispatch => {
     captureCountIncrement: () => dispatch(captureCountIncrement()),
     captureCountDecrement: () => dispatch(captureCountDecrement()),
     createGifCountIncrement: () => dispatch(createGifCountIncrement()),
-    createGifCountDecrement: () => dispatch(createGifCountDecrement())
+    createGifCountDecrement: () => dispatch(createGifCountDecrement()),
+    pushToFrames: image => dispatch(pushToFrames(image)),
+    deleteAllFromFrames: () => dispatch(deleteAllFromFrames())
   };
 };
 

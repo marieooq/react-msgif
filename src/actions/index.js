@@ -33,3 +33,7 @@ export const createGifCountDecrement = () => {
 export const pushToFrames = image => {
   return { type: "PUSH_TO_FRAMES", image };
 };
+
+export const deleteAllFromFrames = () => {
+  return { type: "DELETE_ALL_FROM_FRAMES" };
+};

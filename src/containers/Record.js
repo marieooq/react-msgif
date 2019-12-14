@@ -38,21 +38,27 @@ class Record extends Component {
 
   reset = e => {
     console.log("reseet function is excecuted");
+
+    console.log("----------");
+    console.log(`captureCount: ${store.getState().captureCount.counter}`);
+    console.log(`createGifCount: ${store.getState().createGifCount.counter}`);
+    console.log("----------");
     //before creating a gif animation
     if (
-      store.getState().captureCount > 0 &&
-      store.getState().createGifCount === 0
+      store.getState().captureCount.counter > 0 &&
+      store.getState().createGifCount.counter === 0
     ) {
       //hide the create gif button
       const createGifBtn = document.getElementById("createGif-btn");
+      console.log(createGifBtn);
       createGifBtn.classList.add("hide");
 
       //reset captureCount
-      this.props.changeCaptureCount(0);
+      this.props.captureCountDecrement();
     }
 
     //after creating a gif animation
-    if (store.getState().createGifCount > 0) {
+    if (store.getState().createGifCount.counter > 0) {
       //hide the create gif button and makes it valid
       const createGifBtn = document.getElementById("createGif-btn-pushed");
       createGifBtn.id = "createGif-btn";
@@ -61,7 +67,7 @@ class Record extends Component {
       createGifBtn.classList.remove("invalid");
 
       //reset createGifCount
-      this.props.changeCreateGifCount(0);
+      this.props.createGifCountDecrement();
 
       //delete the output image
       const outputImg = document.getElementById("outputImg");
@@ -75,7 +81,7 @@ class Record extends Component {
       donwloadBtn.classList.add("hide");
 
       //reset captureCount
-      this.props.changeCaptureCount(0);
+      this.props.captureCountDecrement();
 
       //erase the screen
       this.props.changeMode("note");
@@ -85,7 +91,10 @@ class Record extends Component {
     this.props.endRec();
     this.props.changeTextAreaVal("");
     // this.setState({ textAreaVal: "" });
-    this.frames = [];
+    this.props.deleteAllFromFrames();
+    console.log("----");
+    console.log(store.getState().frames);
+    console.log("----");
   };
 
   startRec = e => {
