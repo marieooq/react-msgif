@@ -104,6 +104,7 @@ export default class App extends Component {
   ////CAPTURE/////////////////////////////////////////////////////
 
   captureScreen = async () => {
+    console.log("inside captureScreen");
     if (store.getState().captureCount.counter === 0) {
       //shows the create gif button
       const createGifBtn = document.getElementById("createGif-btn");
@@ -128,7 +129,8 @@ export default class App extends Component {
     }
   };
 
-  createGIF = async () => {
+  createGIF = async e => {
+    e.preventDefault();
     if (store.getState().createGifCount.counter === 0) {
       //make the createGIF button invalid
       const createGifBtn = document.getElementById("createGif-btn");
@@ -216,11 +218,11 @@ export default class App extends Component {
   render() {
     return (
       <div id="container">
+        <Notification />
         <div id="side">
           <img src={logo} alt="logo" width="70px" id="logo" />
         </div>
         <div id="inner">
-          <Notification />
           <div id="left">
             <div id="left-left">
               <Screen id="display-screen" status="" />

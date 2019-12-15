@@ -6,10 +6,10 @@ import ErrorIcon from "@material-ui/icons/Error";
 import InfoIcon from "@material-ui/icons/Info";
 import CloseIcon from "@material-ui/icons/Close";
 import red from "@material-ui/core/colors/red";
-import green from "@material-ui/core/colors/green";
-import amber from "@material-ui/core/colors/amber";
+import lightGreen from "@material-ui/core/colors/green";
 import indigo from "@material-ui/core/colors/indigo";
 import IconButton from "@material-ui/core/IconButton";
+import Snackbar from "@material-ui/core/Snackbar";
 import SnackbarContent from "@material-ui/core/SnackbarContent";
 import WarningIcon from "@material-ui/icons/Warning";
 import { withStyles } from "@material-ui/core/styles";
@@ -23,16 +23,13 @@ const variantIcon = {
 
 const styles = theme => ({
   success: {
-    backgroundColor: green[400]
-  },
-  error: {
-    backgroundColor: red[700]
-  },
-  info: {
-    backgroundColor: indigo[700]
+    backgroundColor: lightGreen["A700"]
   },
   warning: {
-    backgroundColor: amber[700]
+    backgroundColor: red[600]
+  },
+  creating: {
+    backgroundColor: indigo[700]
   },
   icon: {
     fontSize: 20

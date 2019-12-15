@@ -27,12 +27,10 @@ class Notification extends React.Component {
     // Material-ui関連
     const { classes } = this.props;
 
-    console.log("inside Notification");
-
     return (
       <Snackbar
         anchorOrigin={{
-          vertical: "top",
+          vertical: "bottom",
           horizontal: "left"
         }}
         open={NotificationReducer.isOpen}
