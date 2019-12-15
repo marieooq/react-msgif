@@ -64,11 +64,34 @@ const frames = (state = [], action) => {
   }
 };
 
+const NotificationReducer = (
+  state = { isOpen: false, variant: "success", message: "" },
+  action
+) => {
+  switch (action.type) {
+    case "SET_NOTIFICATION":
+      return {
+        ...state,
+        isOpen: true,
+        variant: action.variant,
+        message: action.message
+      };
+    case "CLOSE_NOTIFICATION":
+      return {
+        ...state,
+        isOpen: false
+      };
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   isRec,
   textAreaVal,
   mode,
   captureCount,
   createGifCount,
-  frames
+  frames,
+  NotificationReducer
 });

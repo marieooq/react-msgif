@@ -15,9 +15,10 @@ import "./App.css";
 import logo from "./img/logo.png";
 import encode64 from "./b64";
 import store from "./reducers/store";
-import "@material/react-snackbar/dist/snackbar.css";
-import Snackbar from "@material/react-snackbar";
-import SnackBarControl from "./components/SnackBarControl";
+import Notification from "./containers/Notification";
+// import "@material/react-snackbar/dist/snackbar.css";
+// import Snackbar from "@material/react-snackbar";
+// import SnackBarControl from "./components/SnackBarControl";
 
 export default class App extends Component {
   constructor(props) {
@@ -219,7 +220,7 @@ export default class App extends Component {
           <img src={logo} alt="logo" width="70px" id="logo" />
         </div>
         <div id="inner">
-          <SnackBarControl obj={this.obj} />
+          <Notification />
           <div id="left">
             <div id="left-left">
               <Screen id="display-screen" status="" />

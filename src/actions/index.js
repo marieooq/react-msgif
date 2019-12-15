@@ -37,3 +37,17 @@ export const pushToFrames = image => {
 export const deleteAllFromFrames = () => {
   return { type: "DELETE_ALL_FROM_FRAMES" };
 };
+
+export const setNotification = (variant, message) => {
+  return {
+    type: "SET_NOTIFICATION",
+    variant: variant,
+    message: message
+  };
+};
+
+export const closeNotification = (variant, message) => {
+  return {
+    type: "CLOSE_NOTIFICATION"
+  };
+};
