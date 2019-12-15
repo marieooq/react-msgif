@@ -42,14 +42,6 @@ class Record extends Component {
   }
 
   reset = e => {
-    console.log("reset function is excecuted");
-
-    console.log("----------");
-    console.log(`captureCount: ${store.getState().captureCount.counter}`);
-    console.log(
-      `createGifCount.counter: ${store.getState().createGifCount.counter}`
-    );
-    console.log("----------");
     //before creating a gif animation
     if (
       store.getState().captureCount.counter > 0 &&
@@ -57,7 +49,6 @@ class Record extends Component {
     ) {
       //hide the create gif button
       const createGifBtn = document.getElementById("createGif-btn");
-      console.log(createGifBtn);
       createGifBtn.classList.add("hide");
 
       //reset captureCount
@@ -99,21 +90,16 @@ class Record extends Component {
     this.props.changeTextAreaVal("");
     // this.setState({ textAreaVal: "" });
     this.props.deleteAllFromFrames();
-    console.log("----");
-    console.log(store.getState().frames);
-    console.log("----");
   };
 
   startRec = e => {
     e.preventDefault();
     if (!store.getState().isRec) {
-      console.log("1");
       //when the RECORD button has been pushed
 
       //change state.isRec to true
       this.props.startRec();
     } else {
-      console.log("2");
       //when the RESET button has been pushed
 
       //change state.isRec to false

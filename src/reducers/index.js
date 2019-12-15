@@ -43,7 +43,6 @@ const captureCount = (state = { counter: 0 }, action) => {
 const createGifCount = (state = { counter: 0 }, action) => {
   switch (action.type) {
     case "CREATE_GIT_COUNT_INCREMENT":
-      console.log(`action.type: ${action.type}`);
       return { counter: state.counter + 1 };
     case "CREATE_GIT_COUNT_DECREMENT":
       return { counter: state.counter - 1 };

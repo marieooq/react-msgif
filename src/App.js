@@ -22,9 +22,6 @@ import SnackBarControl from "./components/SnackBarControl";
 export default class App extends Component {
   constructor(props) {
     super(props);
-    // this.frames = [];
-    // this.captureCount = 0;
-    // this.createGifCount = 0;
     this.state = {
       recordingFlg: false,
       encoder: "",
@@ -131,9 +128,6 @@ export default class App extends Component {
   };
 
   createGIF = async () => {
-    console.log(
-      `createGifCount.counter: ${store.getState().createGifCount.counter}`
-    );
     if (store.getState().createGifCount.counter === 0) {
       //make the createGIF button invalid
       const createGifBtn = document.getElementById("createGif-btn");
@@ -143,9 +137,6 @@ export default class App extends Component {
 
       //increment createGIF counter
       this.props.createGifCountIncrement();
-      console.log(
-        `createGifCount.counter: ${store.getState().createGifCount.counter}`
-      );
 
       //when it's creating GIF show a snap bar
 
@@ -229,12 +220,6 @@ export default class App extends Component {
         </div>
         <div id="inner">
           <SnackBarControl obj={this.obj} />
-          {/* <Snackbar
-            message="Recording..."
-            actionText="close"
-            timeoutMs="4000"
-            leading="true"
-          /> */}
           <div id="left">
             <div id="left-left">
               <Screen id="display-screen" status="" />
