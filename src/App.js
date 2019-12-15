@@ -104,7 +104,6 @@ export default class App extends Component {
   ////CAPTURE/////////////////////////////////////////////////////
 
   captureScreen = async () => {
-    console.log("inside captureScreen");
     if (store.getState().captureCount.counter === 0) {
       //shows the create gif button
       const createGifBtn = document.getElementById("createGif-btn");

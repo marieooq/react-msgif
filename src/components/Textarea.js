@@ -18,6 +18,8 @@ class Textarea extends Component {
   displayMessage = async e => {
     if (store.getState().isRec) {
       await this.props.captureScreen();
+    } else {
+      console.log("before recording.");
     }
 
     if (this.displayScreen.className !== "") {
@@ -42,16 +44,18 @@ class Textarea extends Component {
 
   render() {
     return (
-      <textarea
-        id="textareaMsg"
-        name="user-msg"
-        rows="5"
-        cols="26"
-        value={store.getState().textAreaVal}
-        maxLength="140"
-        onChange={this.setTextAreaVal}
-        placeholder="Type your message here."
-      ></textarea>
+      <div>
+        <textarea
+          id="textareaMsg"
+          name="user-msg"
+          rows="5"
+          cols="26"
+          value={store.getState().textAreaVal}
+          maxLength="140"
+          onChange={this.setTextAreaVal}
+          placeholder="Type your message here."
+        ></textarea>
+      </div>
     );
   }
 }
