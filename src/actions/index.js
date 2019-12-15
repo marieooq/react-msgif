@@ -48,6 +48,8 @@ export const setNotification = (variant, message) => {
 
 export const closeNotification = (variant, message) => {
   return {
-    type: "CLOSE_NOTIFICATION"
+    type: "CLOSE_NOTIFICATION",
+    variant: variant,
+    message: message
   };
 };

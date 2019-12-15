@@ -9,7 +9,9 @@ import {
   createGifCountIncrement,
   createGifCountDecrement,
   pushToFrames,
-  deleteAllFromFrames
+  deleteAllFromFrames,
+  setNotification,
+  closeNotification
 } from "../actions";
 import Record from "./Record";
 
@@ -20,7 +22,8 @@ const mapStateToProps = state => {
     mode: state.mode,
     captureCount: state.captureCount,
     createGifCount: state.createGifCount,
-    frames: state.frames
+    frames: state.frames,
+    NotificationReducer: state.NotificationReducer
   };
 };
 
@@ -35,7 +38,11 @@ const mapDispatchToProps = dispatch => {
     createGifCountIncrement: () => dispatch(createGifCountIncrement()),
     createGifCountDecrement: () => dispatch(createGifCountDecrement()),
     pushToFrames: image => dispatch(pushToFrames(image)),
-    deleteAllFromFrames: () => dispatch(deleteAllFromFrames())
+    deleteAllFromFrames: () => dispatch(deleteAllFromFrames()),
+    setNotification: (variant, message) =>
+      dispatch(setNotification(variant, message)),
+    closeNotification: (variant, message) =>
+      dispatch(closeNotification(variant, message))
   };
 };
 

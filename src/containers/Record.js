@@ -99,6 +99,9 @@ class Record extends Component {
 
       //change state.isRec to true
       this.props.startRec();
+
+      //call a snackbar notifies it's recording
+      this.props.setNotification("success", "Recording...");
     } else {
       //when the RESET button has been pushed
 

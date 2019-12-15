@@ -23,7 +23,7 @@ const variantIcon = {
 
 const styles = theme => ({
   success: {
-    backgroundColor: green[600]
+    backgroundColor: green[400]
   },
   error: {
     backgroundColor: red[700]
