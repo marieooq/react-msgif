@@ -19,38 +19,10 @@ class Mode extends Component {
     }
   }
   switchMode = mode => {
-    switch (mode) {
-      case "developer":
-        this.changeTextColor(mode);
-        this.changeTextShadow(mode);
-        this.changeFontFamily(mode);
-        this.changeBackground(mode);
-        break;
-
-      case "neon":
-        this.changeTextColor(mode);
-        this.changeTextShadow(mode);
-        this.changeFontFamily(mode);
-        this.changeBackground(mode);
-        break;
-
-      case "note":
-        this.changeTextColor(mode);
-        this.changeTextShadow(mode);
-        this.changeFontFamily(mode);
-        this.changeBackground(mode);
-        break;
-
-      case "pop":
-        this.changeTextColor(mode);
-        this.changeTextShadow(mode);
-        this.changeFontFamily(mode);
-        this.changeBackground(mode);
-        break;
-
-      default:
-        console.log("isMode returns undefined");
-    }
+    this.changeTextColor(mode);
+    this.changeTextShadow(mode);
+    this.changeFontFamily(mode);
+    this.changeBackground(mode);
   };
 
   changeTextColor = mode => {
@@ -73,6 +45,14 @@ class Mode extends Component {
 
         case "pop":
           coloredTextClass[i].style.color = "#292929";
+          break;
+
+        case "xmas-green":
+          coloredTextClass[i].style.color = "#fff";
+          break;
+
+        case "xmas-red":
+          coloredTextClass[i].style.color = "#fff";
           break;
 
         default:
@@ -124,7 +104,16 @@ class Mode extends Component {
 
       case "pop":
         this.displayScreen.style.fontFamily = "'Anton', 'Kosugi', sans-serif";
+        break;
 
+      case "xmas-green":
+        this.displayScreen.style.fontFamily =
+          "'Abril Fatface', cursive, 'Kosugi', sans-serif";
+        break;
+
+      case "xmas-red":
+        this.displayScreen.style.fontFamily =
+          "'Abril Fatface', cursive, 'Kosugi', sans-serif";
         break;
 
       default:
@@ -150,6 +139,14 @@ class Mode extends Component {
         this.displayScreen.style.backgroundColor = "#fef734";
         break;
 
+      case "xmas-green":
+        this.displayScreen.style.backgroundColor = "#006400";
+        break;
+
+      case "xmas-red":
+        this.displayScreen.style.backgroundColor = "#dc143c";
+        break;
+
       default:
         console.log("mode is undefined");
     }
@@ -172,6 +169,8 @@ class Mode extends Component {
           <option value="neon">Neon</option>
           <option value="note">Note</option>
           <option value="pop">Pop</option>
+          <option value="xmas-green">X'mas(green)</option>
+          <option value="xmas-red">X'mas(red)</option>
         </select>
       </div>
     );
