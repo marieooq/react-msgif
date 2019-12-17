@@ -140,12 +140,13 @@ export default class App extends Component {
       //increment createGIF counter
       this.props.createGifCountIncrement();
 
-      //when it's creating GIF show a snap bar
-
       //start loading
       this.switchLoading("start");
 
       await this.captureScreen();
+
+      //when it's creating GIF show a snap bar
+      this.props.setNotification("info", "Done!");
 
       //get canvas
       const canvas = document.getElementById("canvas");

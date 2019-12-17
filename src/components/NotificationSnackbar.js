@@ -28,7 +28,7 @@ const styles = theme => ({
   warning: {
     backgroundColor: red[600]
   },
-  creating: {
+  info: {
     backgroundColor: indigo[700]
   },
   icon: {
