@@ -19,7 +19,11 @@ class Textarea extends Component {
     if (store.getState().isRec) {
       await this.props.captureScreen();
     } else {
-      console.log("before recording.");
+      //when it's creating GIF show a snap bar
+      this.props.setNotification(
+        "info",
+        "It's demo until you start recording."
+      );
     }
 
     if (this.displayScreen.className !== "") {
