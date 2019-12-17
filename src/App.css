@@ -68,6 +68,9 @@
 @media screen and (min-width: 1024px) {
 }
 @media screen and (min-width: 1300px) {
+  #container {
+    height: 100vh;
+  }
   #inner {
     display: flex;
     justify-content: space-between;
