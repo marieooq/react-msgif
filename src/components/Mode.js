@@ -113,7 +113,7 @@ class Mode extends Component {
 
       case "xmas-red":
         this.displayScreen.style.fontFamily =
-          "'Abril Fatface', cursive, 'Kosugi', sans-serif";
+          "'Courgette', cursive, 'Kosugi', sans-serif";
         break;
 
       default:
