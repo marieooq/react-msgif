@@ -4,7 +4,6 @@ import ScreenSize from "./containers/ScreenSize";
 import ModeContainer from "./components/ModeContainer";
 import TextareaContainer from "./components/TextareaContainer";
 import RecordContainer from "./containers/RecordContainer";
-import Reset from "./containers/Reset";
 import CreateGif from "./containers/CreateGif";
 import Download from "./components/Download";
 // import Loading from "./Loading";
@@ -43,6 +42,9 @@ export default class App extends Component {
 
     //initiate mode
     this.setState({ mode: store.getState().mode });
+
+    //go to top
+    window.scrollTo(0, 0);
   }
 
   reset = e => {
@@ -211,8 +213,8 @@ export default class App extends Component {
   };
 
   ScrollDown = () => {
-    let rect = this.outputScreen.getBoundingClientRect();
-    let position = rect.top;
+    const rect = this.outputScreen.getBoundingClientRect();
+    const position = rect.top;
     window.scrollTo(0, position);
   };
 
@@ -233,12 +235,6 @@ export default class App extends Component {
             <div id="left-right">
               <TextareaContainer captureScreen={this.captureScreen} />
               <div className="btn-wrapper">
-                <Reset
-                  id="reset-btn"
-                  class="btn-push default hide"
-                  action={this.reset}
-                  name="Reset"
-                />
                 <RecordContainer />
                 <CreateGif
                   id="createGif-btn"
