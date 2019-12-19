@@ -3,7 +3,7 @@ import Screen from "./components/Screen";
 import ScreenSize from "./containers/ScreenSize";
 import ModeContainer from "./components/ModeContainer";
 import TextareaContainer from "./components/TextareaContainer";
-import RecordContainer from "./containers/RecordContainer";
+import RecordResetContainer from "./containers/RecordResetContainer";
 import CreateGif from "./containers/CreateGif";
 import Download from "./components/Download";
 // import Loading from "./Loading";
@@ -235,7 +235,7 @@ export default class App extends Component {
             <div id="left-right">
               <TextareaContainer captureScreen={this.captureScreen} />
               <div className="btn-wrapper">
-                <RecordContainer />
+                <RecordResetContainer />
                 <CreateGif
                   id="createGif-btn"
                   class="btn-push default hide"

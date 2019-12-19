@@ -3,7 +3,7 @@ import PushBtn from "../components/PushBtn";
 import store from "../reducers/store";
 import "../components/PushBtn.css";
 
-class Record extends Component {
+class RecordAndReset extends Component {
   state = {
     id: "record-btn",
     class: "btn-push default",
@@ -130,4 +130,4 @@ class Record extends Component {
   }
 }
 
-export default Record;
+export default RecordAndReset;

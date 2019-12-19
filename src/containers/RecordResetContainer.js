@@ -13,7 +13,7 @@ import {
   setNotification,
   closeNotification
 } from "../actions";
-import Record from "./Record";
+import RecordAndReset from "./RecordAndReset";
 
 const mapStateToProps = state => {
   return {
@@ -46,4 +46,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Record);
+export default connect(mapStateToProps, mapDispatchToProps)(RecordAndReset);
