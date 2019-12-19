@@ -22,7 +22,7 @@ class Textarea extends Component {
       //when it's creating GIF show a snap bar
       this.props.setNotification(
         "warning",
-        "It's demo until you start recording."
+        "It's a demo until you push the Record button."
       );
     }
 
