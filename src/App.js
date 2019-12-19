@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Screen from "./components/Screen";
-import ScreenSize from "./containers/ScreenSize";
+import ScreenSizeContainer from "./containers/ScreenSizeContainer";
 import ModeContainer from "./components/ModeContainer";
 import TextareaContainer from "./components/TextareaContainer";
 import RecordResetContainer from "./containers/RecordResetContainer";
@@ -229,7 +229,7 @@ export default class App extends Component {
           <div id="left">
             <div id="left-left">
               <Screen id="display-screen" status="" />
-              <ScreenSize />
+              <ScreenSizeContainer />
               <ModeContainer />
             </div>
             <div id="left-right">

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import store from "../reducers/store";
 import "../components/Mode.css";
 
 class ScreenSize extends Component {
