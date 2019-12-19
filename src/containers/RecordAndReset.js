@@ -42,6 +42,8 @@ class RecordAndReset extends Component {
   }
 
   reset = e => {
+    //scroll to top of the window
+    window.scrollTo(0, 0);
     //before creating a gif animation
     if (
       store.getState().captureCount.counter > 0 &&
