@@ -3,13 +3,9 @@ import store from "../reducers/store";
 import "../components/Mode.css";
 
 class ScreenSize extends Component {
-  state = {
-    size: "twitter"
-  };
-
   componentDidUpdate(prevState) {
-    if (this.state.size !== prevState.size) {
-      this.changeScreenSize(this.state.size);
+    if (store.getState().screenSize !== prevState.screenSize) {
+      this.changeScreenSize(store.getState().screenSize);
     }
   }
 
@@ -54,8 +50,8 @@ class ScreenSize extends Component {
   }
 
   handleScreenSize = e => {
-    this.setState({ size: e.target.value });
-    this.changeScreenSize(e);
+    this.props.changeScreenSize(e.target.value);
+    this.changeScreenSize(store.getState().screenSize);
   };
 
   render() {
@@ -63,7 +59,7 @@ class ScreenSize extends Component {
     return (
       <div className="selectdiv">
         <select
-          size={this.state.size}
+          size={store.getState().screenSize}
           value={ScreenSizeVal}
           name="screen-size"
           onChange={this.handleScreenSize}
