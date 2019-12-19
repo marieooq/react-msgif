@@ -209,12 +209,6 @@ export default class App extends Component {
     }
   };
 
-  obj = {
-    default: false,
-    message: "This is test",
-    time: "4000"
-  };
-
   render() {
     return (
       <div id="container">
