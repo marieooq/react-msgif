@@ -34,10 +34,12 @@ export default class App extends Component {
   // displayScreen;
   textArea;
   outputScreen;
+  donwloadBtn;
 
   componentDidMount() {
     this.textArea = document.getElementById("textareaMsg");
     this.outputScreen = document.getElementById("output");
+    this.donwloadBtn = document.getElementById("ssgif");
 
     //initiate mode
     this.setState({ mode: store.getState().mode });
@@ -73,8 +75,7 @@ export default class App extends Component {
       this.outputScreen.style.border = "dashed 5px rgba(204, 204, 204, 0.7)";
 
       //hide the download button
-      const donwloadBtn = document.getElementById("ssgif");
-      donwloadBtn.classList.add("hide");
+      this.donwloadBtn.classList.add("hide");
 
       //reset captureCount
       this.props.captureCountDecrement();
@@ -145,9 +146,6 @@ export default class App extends Component {
 
       await this.captureScreen();
 
-      //when it's creating GIF show a snap bar
-      this.props.setNotification("info", "Done!");
-
       //get canvas
       const canvas = document.getElementById("canvas");
       const ctx = canvas.getContext("2d");
@@ -199,14 +197,23 @@ export default class App extends Component {
       this.outputScreen.style.border = "none";
       this.outputScreen.appendChild(img);
 
-      //when it's done show a snap bar
+      //when it's creating GIF show a snap bar
+      this.props.setNotification("info", "Done!");
+
+      //scroll down to the top of the output screen
+      this.ScrollDown();
 
       //shows a download button
-      const donwloadBtn = document.getElementById("ssgif");
-      donwloadBtn.classList.remove("hide");
+      this.donwloadBtn.classList.remove("hide");
     } else {
       return;
     }
+  };
+
+  ScrollDown = () => {
+    let rect = this.outputScreen.getBoundingClientRect();
+    let position = rect.top;
+    window.scrollTo(0, position);
   };
 
   render() {
