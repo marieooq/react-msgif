@@ -15,6 +15,7 @@ import logo from "./img/logo.png";
 import encode64 from "./b64";
 import store from "./reducers/store";
 import Notification from "./containers/Notification";
+import { log } from "util";
 // import "@material/react-snackbar/dist/snackbar.css";
 // import Snackbar from "@material/react-snackbar";
 // import SnackBarControl from "./components/SnackBarControl";
@@ -34,11 +35,17 @@ export default class App extends Component {
   textArea;
   outputScreen;
   donwloadBtn;
+  mq480;
 
   componentDidMount() {
     this.textArea = document.getElementById("textareaMsg");
     this.outputScreen = document.getElementById("output");
     this.donwloadBtn = document.getElementById("ssgif");
+
+    //excecute if the width of window is less than 480px
+    this.mq480 = window.matchMedia("(max-width: 480px)");
+    this.handleMediaQuery(this.mq480);
+    this.mq480.addListener(this.handleMediaQuery);
 
     //initiate mode
     this.setState({ mode: store.getState().mode });
@@ -46,6 +53,14 @@ export default class App extends Component {
     //go to top
     window.scrollTo(0, 0);
   }
+
+  handleMediaQuery = mq => {
+    if (mq.matches) {
+      console.log("LESS THAN 480px");
+    } else {
+      console.log("MORE THAN 480px");
+    }
+  };
 
   reset = e => {
     //before creating a gif animation
