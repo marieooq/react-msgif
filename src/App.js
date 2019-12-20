@@ -57,11 +57,30 @@ export default class App extends Component {
 
   handleMediaQuery = mq => {
     const docStyle = document.documentElement.style;
+    const inner = document.getElementById("inner");
+    const side = document.getElementById("side");
+    const logo = document.getElementById("logo");
+    const left = document.getElementById("left");
+    const leftLeft = document.getElementById("left-left");
+    const leftRight = document.getElementById("left-right");
+    const textArea = document.getElementById("textareaMsg");
+    const right = document.getElementById("right");
+
     changeScreenSize(store.getState().screenSize);
     if (mq.matches) {
       console.log("LESS THAN 480px");
 
       if (store.getState().screenSize === "twitter") {
+        // inner.style.width = "256px";
+        // side.style.width = "0";
+        // // logo.style.width = "70px";
+        // // left.style.width = "512px";
+        // // left.style.display = "block";
+        // // left.style.justifyContent = "";
+        // // leftLeft.style.width = "100%";
+        // // leftRight.style.width = "100%";
+        // // textArea.style.marginTop = "0px";
+        // // right.style.width = "512px";
         docStyle.setProperty("--screenWidth", "256px");
         docStyle.setProperty("--screenHeight", "128px");
       } else if (store.getState().screenSize === "social") {
