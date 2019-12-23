@@ -247,6 +247,19 @@ export default class App extends Component {
       const img = document.createElement("img");
       img.id = "outputImg";
       img.src = this.state.gifAnimation;
+
+      //set width and height of the output image
+      const outputImgWidth = getComputedStyle(document.documentElement)
+        .getPropertyValue("--screenWidth")
+        .substring(0, 3);
+      const outputImgHeight = getComputedStyle(document.documentElement)
+        .getPropertyValue("--screenHeight")
+        .substring(0, 3);
+
+      img.width = outputImgWidth;
+      img.height = outputImgHeight;
+
+      //set a style of outputScreen
       this.outputScreen.style.padding = 0;
       this.outputScreen.style.border = "none";
       this.outputScreen.appendChild(img);
