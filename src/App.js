@@ -115,7 +115,7 @@ export default class App extends Component {
     }
 
     //capture the canvas
-    const canvas = await html2canvas(document.getElementById("textareaMsg"));
+    const canvas = await html2canvas(this.textArea);
     const imgData = canvas.toDataURL();
     const imgTag = document.createElement("img");
     imgTag.src = `${imgData}`;
@@ -226,7 +226,7 @@ export default class App extends Component {
           <img src={logo} alt="logo" width="70px" id="logo" />
         </header>
         <div id="inner">
-          <Screen id="display-screen" status="" />
+          {/* <Screen id="display-screen" status="" /> */}
           <ScreenSize />
           <ModeContainer />
           <TextareaContainer captureScreen={this.captureScreen} />

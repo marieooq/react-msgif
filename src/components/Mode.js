@@ -6,7 +6,7 @@ class Mode extends Component {
   displayScreen;
 
   componentDidMount() {
-    this.displayScreen = document.getElementById("display-screen");
+    this.displayScreen = document.getElementById("textareaMsg");
   }
 
   componentDidUpdate(prevState) {
