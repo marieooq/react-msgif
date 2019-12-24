@@ -24,6 +24,7 @@ class ScreenSize extends Component {
     let right = document.getElementById("right");
 
     if (size === "twitter") {
+      console.log(size);
       // inner.style.width = "1080px";
       // side.style.width = "15%";
       // logo.style.width = "70px";
@@ -37,6 +38,7 @@ class ScreenSize extends Component {
       // docStyle.setProperty("--screenWidth", "512px");
       // docStyle.setProperty("--screenHeight", "256px");
     } else if (size === "social") {
+      console.log(size);
       // inner.style.width = "1240px";
       // side.style.width = "8%";
       // logo.style.width = "60px";
