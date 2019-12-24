@@ -115,7 +115,7 @@ export default class App extends Component {
     }
 
     //capture the canvas
-    const canvas = await html2canvas(document.getElementById("display-screen"));
+    const canvas = await html2canvas(document.getElementById("textareaMsg"));
     const imgData = canvas.toDataURL();
     const imgTag = document.createElement("img");
     imgTag.src = `${imgData}`;
@@ -222,34 +222,26 @@ export default class App extends Component {
     return (
       <div id="container">
         <Notification />
-        <div id="side">
+        <header>
           <img src={logo} alt="logo" width="70px" id="logo" />
-        </div>
+        </header>
         <div id="inner">
-          <div id="left">
-            <div id="left-left">
-              <Screen id="display-screen" status="" />
-              <ScreenSize />
-              <ModeContainer />
-            </div>
-            <div id="left-right">
-              <TextareaContainer captureScreen={this.captureScreen} />
-              <div className="btn-wrapper">
-                <RecordResetContainer />
-                <CreateGif
-                  id="createGif-btn"
-                  class="btn-push default hide"
-                  action={this.createGIF}
-                  name="Create GIF"
-                />
-              </div>
-            </div>
+          <Screen id="display-screen" status="" />
+          <ScreenSize />
+          <ModeContainer />
+          <TextareaContainer captureScreen={this.captureScreen} />
+          <div className="btn-wrapper">
+            <RecordResetContainer />
+            <CreateGif
+              id="createGif-btn"
+              class="btn-push default hide"
+              action={this.createGIF}
+              name="Create GIF"
+            />
           </div>
 
-          <div id="right">
-            <Screen id="output" status={this.state.outputScreenStatus} />
-            <Download href={this.state.gifAnimation} />
-          </div>
+          <Screen id="output" status={this.state.outputScreenStatus} />
+          <Download href={this.state.gifAnimation} />
         </div>
       </div>
     );

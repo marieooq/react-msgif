@@ -5,8 +5,9 @@ textarea#textareaMsg {
   padding: 30px 60px;
   box-sizing: border-box;
   font-size: 30px;
-
   background-color: aqua;
+  display: block;
+  margin: 0 auto;
 }
 
 textarea#textareaMsg:focus {
