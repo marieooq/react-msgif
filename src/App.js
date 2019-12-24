@@ -192,9 +192,24 @@ export default class App extends Component {
           "data:image/gif;base64," + encode64(encoder.stream().getData())
       });
 
+      //set width and height of the output image
+      const outputImgWidth = getComputedStyle(document.documentElement)
+        .getPropertyValue("--screenWidth")
+        .substring(0, 4);
+      const outputImgHeight = getComputedStyle(document.documentElement)
+        .getPropertyValue("--screenHeight")
+        .substring(0, 4);
+
+      console.log(outputImgWidth);
+      console.log(outputImgHeight);
+
       const img = document.createElement("img");
       img.id = "outputImg";
       img.src = this.state.gifAnimation;
+      img.width = outputImgWidth;
+      img.height = outputImgHeight;
+
+      //set a style to outputScreen
       this.outputScreen.style.padding = 0;
       this.outputScreen.style.border = "none";
       this.outputScreen.appendChild(img);
