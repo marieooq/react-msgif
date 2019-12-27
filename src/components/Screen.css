@@ -17,3 +17,7 @@
 #output {
   border: dashed 5px rgba(204, 204, 204, 0.7);
 }
+
+#output.output-hide {
+  display: none;
+}

@@ -10,7 +10,7 @@ const Screen = props => {
       </div>
     );
   } else {
-    return <div className="screen" id={props.id}></div>;
+    return <div className="screen output-hide" id={props.id}></div>;
   }
 };
 

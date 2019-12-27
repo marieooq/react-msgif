@@ -136,6 +136,9 @@ export default class App extends Component {
   createGIF = async e => {
     e.preventDefault();
     if (store.getState().createGifCount.counter === 0) {
+      //when it's creating GIF show a snap bar
+      this.props.setNotification("info", "Creating GIF...");
+
       //make the createGIF button invalid
       const createGifBtn = document.getElementById("createGif-btn");
       createGifBtn.id = "createGif-btn-pushed";
@@ -217,10 +220,14 @@ export default class App extends Component {
       this.outputScreen.appendChild(img);
 
       //when it's creating GIF show a snap bar
-      this.props.setNotification("info", "Done!");
+      // this.props.setNotification("info", "Done!");
 
       //scroll down to the top of the output screen
       this.ScrollDown();
+
+      //when it finish creating GIF erase the old snap bar and show new one
+      this.props.closeNotification("info", "Creating GIF...");
+      this.props.setNotification("info", "Done!");
 
       //shows a download button
       this.donwloadBtn.classList.remove("hide");
@@ -260,7 +267,11 @@ export default class App extends Component {
             />
           </div>
 
-          <Screen id="output" status={this.state.outputScreenStatus} />
+          <Screen
+            id="output"
+            className="output-hide"
+            status={this.state.outputScreenStatus}
+          />
           <Download href={this.state.gifAnimation} />
         </div>
       </div>
