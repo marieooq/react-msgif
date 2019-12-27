@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Screen from "./components/Screen";
+import OutputScreen from "./components/OutputScreen";
 import ScreenSize from "./containers/ScreenSize";
 import ModeContainer from "./components/ModeContainer";
 import TextareaContainer from "./components/TextareaContainer";
@@ -268,7 +268,7 @@ export default class App extends Component {
             />
           </div>
 
-          <Screen />
+          <OutputScreen />
           <Download href={this.state.gifAnimation} />
         </div>
       </div>

@@ -4,10 +4,9 @@
   height: var(--screenHeight);
   padding: 30px 60px;
   background-color: #fff;
-  border: dashed 5px rgba(204, 204, 204, 0.7);
   font-size: 30px;
   box-sizing: border-box;
-  margin: 0 auto;
+  margin: 30px auto 0;
 }
 
 #output.output-hide {

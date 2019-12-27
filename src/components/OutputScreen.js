@@ -1,9 +1,9 @@
 import React from "react";
 // import Loading from "./Loading";
-import "./Screen.css";
+import "./OutputScreen.css";
 
-const Screen = () => {
+const OutputScreen = () => {
   return <div className="output-hide" id="output"></div>;
 };
 
-export default Screen;
+export default OutputScreen;
