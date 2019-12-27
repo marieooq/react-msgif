@@ -80,6 +80,10 @@ class RecordAndReset extends Component {
       const donwloadBtn = document.getElementById("ssgif");
       donwloadBtn.classList.add("hide");
 
+      //hide the output screen
+      this.outputScreen.classList.remove("output-show");
+      this.outputScreen.classList.add("output-hide");
+
       //reset captureCount
       this.props.captureCountDecrement();
 
@@ -106,7 +110,10 @@ class RecordAndReset extends Component {
       this.props.startRec();
 
       //call a snackbar notifies it's recording
-      this.props.setNotification("success", "Successfully recording.");
+      this.props.setNotification("success", "Recording now...");
+
+      //close the snackbar notifies it's resetting
+      this.props.closeNotification("warning", "Reset the setting.");
     } else {
       //when the RESET button has been pushed
 
@@ -114,9 +121,9 @@ class RecordAndReset extends Component {
       this.props.endRec();
 
       //close the snackbar notifies it's recording
-      this.props.closeNotification("success", "Successfully recording.");
+      this.props.closeNotification("success", "Recording now...");
 
-      //call a snackbar notifies it's recording
+      //call a snackbar notifies it's resetting
       this.props.setNotification("warning", "Reset the setting.");
 
       this.reset();

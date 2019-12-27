@@ -25,7 +25,7 @@ export default class App extends Component {
     this.state = {
       recordingFlg: false,
       encoder: "",
-      outputScreenStatus: "",
+      // outputScreenStatus: "",
       gifAnimation: ""
     };
   }
@@ -149,7 +149,7 @@ export default class App extends Component {
       this.props.createGifCountIncrement();
 
       //start loading
-      this.switchLoading("start");
+      // this.switchLoading("start");
 
       await this.captureScreen();
 
@@ -190,7 +190,7 @@ export default class App extends Component {
       await proseccing();
 
       //stop loading
-      this.switchLoading("stop");
+      // this.switchLoading("stop");
 
       this.setState({
         gifAnimation:
@@ -218,6 +218,8 @@ export default class App extends Component {
       this.outputScreen.style.padding = 0;
       this.outputScreen.style.border = "none";
       this.outputScreen.appendChild(img);
+      this.outputScreen.classList.remove("output-hide");
+      this.outputScreen.classList.add("output-show");
 
       //when it's creating GIF show a snap bar
       // this.props.setNotification("info", "Done!");
@@ -250,7 +252,6 @@ export default class App extends Component {
           <img src={logo} alt="logo" id="logo" />
         </header>
         <div id="inner">
-          {/* <Screen id="display-screen" status="" /> */}
           <div id="size-mode-wrapper">
             <ScreenSize />
             <ModeContainer />
@@ -267,11 +268,7 @@ export default class App extends Component {
             />
           </div>
 
-          <Screen
-            id="output"
-            className="output-hide"
-            status={this.state.outputScreenStatus}
-          />
+          <Screen />
           <Download href={this.state.gifAnimation} />
         </div>
       </div>

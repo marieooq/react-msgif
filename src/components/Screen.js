@@ -1,17 +1,9 @@
 import React from "react";
-import Loading from "./Loading";
+// import Loading from "./Loading";
 import "./Screen.css";
 
-const Screen = props => {
-  if (props.status === "loading") {
-    return (
-      <div className="screen" id={props.id}>
-        <Loading />
-      </div>
-    );
-  } else {
-    return <div className="screen output-hide" id={props.id}></div>;
-  }
+const Screen = () => {
+  return <div className="output-hide" id="output"></div>;
 };
 
 export default Screen;

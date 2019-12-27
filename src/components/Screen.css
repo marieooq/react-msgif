@@ -1,23 +1,19 @@
-.screen {
+#output {
   color: #292929;
   width: var(--screenWidth);
   height: var(--screenHeight);
   padding: 30px 60px;
   background-color: #fff;
-  border-radius: 10px;
+  border: dashed 5px rgba(204, 204, 204, 0.7);
   font-size: 30px;
   box-sizing: border-box;
   margin: 0 auto;
 }
 
-#display-screen {
-  border: ridge 2px rgba(204, 204, 204, 0.7);
-}
-
-#output {
-  border: dashed 5px rgba(204, 204, 204, 0.7);
-}
-
 #output.output-hide {
   display: none;
+}
+
+#output.output-show {
+  display: block;
 }
