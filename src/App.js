@@ -107,10 +107,7 @@ export default class App extends Component {
   ////CAPTURE/////////////////////////////////////////////////////
 
   captureScreen = async () => {
-    console.log("-------");
-    console.log("inside captureScreen");
-    console.log("-------");
-
+    this.props.changeTextAreaVal("");
     if (store.getState().captureCount.counter === 0) {
       //shows the create gif button
       const createGifBtn = document.getElementById("createGif-btn");
@@ -118,10 +115,6 @@ export default class App extends Component {
       this.props.captureCountIncrement();
     }
 
-    //capture the canvas
-    console.log("inside captureScreen");
-    console.log(this.textArea);
-    // this.textArea.style.height = this.textArea.scrollHeight + "px";
     const textAreaCanvas = await html2canvas(this.textArea);
     const imgData = textAreaCanvas.toDataURL();
     const imgTag = document.createElement("img");

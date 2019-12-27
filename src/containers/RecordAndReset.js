@@ -42,6 +42,7 @@ class RecordAndReset extends Component {
   }
 
   reset = e => {
+    console.log("reset() in RecordAndReset.js");
     //scroll to top of the window
     window.scrollTo(0, 0);
     //before creating a gif animation
@@ -97,7 +98,7 @@ class RecordAndReset extends Component {
   startRec = e => {
     e.preventDefault();
     if (!store.getState().isRec) {
-      console.log("here!");
+      console.log("inside startRec!");
       //when the RECORD button has been pushed
 
       //change state.isRec to true
