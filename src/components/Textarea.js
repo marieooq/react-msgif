@@ -5,7 +5,8 @@ import "./Textarea.css";
 class Textarea extends Component {
   displayMessage = async e => {
     if (store.getState().isRec) {
-      console.log("inside displayMessage() in Textarea.js");
+      const textAreaScreen = document.getElementById("textareaMsg");
+      textAreaScreen.textContent = "";
       await this.props.captureScreen();
     } else {
       //when it's creating GIF show a snap bar

@@ -24,9 +24,6 @@ class RecordAndReset extends Component {
           action: this.startRec,
           name: "Record"
         });
-
-        //erase the screen
-        this.props.changeTextAreaVal("");
       } else {
         this.setState({
           id: "reset-btn",
@@ -34,9 +31,6 @@ class RecordAndReset extends Component {
           action: this.startRec,
           name: "Reset"
         });
-
-        //erase the screen
-        this.props.changeTextAreaVal("");
       }
     }
   }
@@ -45,6 +39,11 @@ class RecordAndReset extends Component {
     console.log("reset() in RecordAndReset.js");
     //scroll to top of the window
     window.scrollTo(0, 0);
+
+    //erase the textarea
+    const textAreaScreen = document.getElementById("textareaMsg");
+    textAreaScreen.textContent = "";
+
     //before creating a gif animation
     if (
       store.getState().captureCount.counter > 0 &&
