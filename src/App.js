@@ -119,9 +119,7 @@ export default class App extends Component {
     const imgData = textAreaCanvas.toDataURL();
     const imgTag = document.createElement("img");
     imgTag.src = `${imgData}`;
-    console.log(imgTag);
     this.props.pushToFrames(imgTag);
-    console.log(store.getState().frames);
   };
 
   ////CREATE GIF//////////////////////////////////////////////////

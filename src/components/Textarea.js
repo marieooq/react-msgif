@@ -1,41 +1,51 @@
 import React, { Component } from "react";
 import store from "../reducers/store";
 import "./Textarea.css";
-import { log } from "handlebars";
+// import { log } from "handlebars";
 
 class Textarea extends Component {
-  conponentDidUpdate() {}
+  textAreaScreen;
+  componentDidMount() {
+    this.textAreaScreen = document.getElementById("textareaMsg");
 
-  displayMessage = async () => {
-    console.log("inside displayMessage in Textarea.js");
-    if (store.getState().isRec) {
-      const textAreaScreen = document.getElementById("textareaMsg");
-      textAreaScreen.textContent = "";
-      textAreaScreen.addEventListener("input", async () => {
+    this.textAreaScreen.addEventListener("input", async () => {
+      if (store.getState().isRec) {
+        console.log(`store.getState().isRec: ${store.getState().isRec}`);
+        // this.textAreaScreen.textContent = "";
         console.log("input something!");
         await this.props.captureScreen();
-      });
-    } else {
-      //when it's creating GIF show a snap bar
-      this.props.setNotification(
-        "warning",
-        "It's a demo until you push the Record button."
-      );
-    }
-  };
+      } else {
+        console.log(`store.getState().isRec: ${store.getState().isRec}`);
+        //when it's creating GIF show a snap bar
+        this.props.setNotification(
+          "warning",
+          "It's a demo until you push the Record button."
+        );
+      }
+    });
+  }
 
-  handleChange = e => {
-    console.log("handleChange");
-  };
+  // displayMessage = () => {
+  //   if (store.getState().isRec) {
+  //     console.log(`store.getState().isRec: ${store.getState().isRec}`);
+  //     const textAreaScreen = document.getElementById("textareaMsg");
+  //     textAreaScreen.textContent = "";
+  //     textAreaScreen.addEventListener("input", async () => {
+  //       console.log("input something!");
+  //       await this.props.captureScreen();
+  //     });
+  //   } else {
+  //     console.log(`store.getState().isRec: ${store.getState().isRec}`);
+  //     //when it's creating GIF show a snap bar
+  //     this.props.setNotification(
+  //       "warning",
+  //       "It's a demo until you push the Record button."
+  //     );
+  //   }
+  // };
 
   render() {
-    return (
-      <div
-        id="textareaMsg"
-        contentEditable="true"
-        onChange={this.displayMessage()}
-      ></div>
-    );
+    return <div id="textareaMsg" contentEditable="true"></div>;
   }
 }
 
