@@ -96,6 +96,8 @@ class RecordAndReset extends Component {
 
   startRec = e => {
     e.preventDefault();
+    const textAreaScreen = document.getElementById("textareaMsg");
+    textAreaScreen.textContent = "";
     if (!store.getState().isRec) {
       console.log("inside startRec!");
       //when the RECORD button has been pushed

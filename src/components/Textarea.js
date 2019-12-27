@@ -11,7 +11,6 @@ class Textarea extends Component {
     this.textAreaScreen.addEventListener("input", async () => {
       if (store.getState().isRec) {
         console.log(`store.getState().isRec: ${store.getState().isRec}`);
-        // this.textAreaScreen.textContent = "";
         console.log("input something!");
         await this.props.captureScreen();
       } else {
