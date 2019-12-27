@@ -1,13 +1,20 @@
 import React, { Component } from "react";
 import store from "../reducers/store";
 import "./Textarea.css";
+import { log } from "handlebars";
 
 class Textarea extends Component {
-  displayMessage = async e => {
+  conponentDidUpdate() {}
+
+  displayMessage = async () => {
+    console.log("inside displayMessage in Textarea.js");
     if (store.getState().isRec) {
       const textAreaScreen = document.getElementById("textareaMsg");
       textAreaScreen.textContent = "";
-      await this.props.captureScreen();
+      textAreaScreen.addEventListener("input", async () => {
+        console.log("input something!");
+        await this.props.captureScreen();
+      });
     } else {
       //when it's creating GIF show a snap bar
       this.props.setNotification(
@@ -17,16 +24,15 @@ class Textarea extends Component {
     }
   };
 
-  setTextAreaVal = e => {
-    this.props.changeTextAreaVal(e.target.value);
-    this.displayMessage();
+  handleChange = e => {
+    console.log("handleChange");
   };
 
   render() {
     return (
       <div
         id="textareaMsg"
-        contenteditable="true"
+        contentEditable="true"
         onChange={this.displayMessage()}
       ></div>
     );
