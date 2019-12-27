@@ -119,7 +119,9 @@ export default class App extends Component {
     const imgData = textAreaCanvas.toDataURL();
     const imgTag = document.createElement("img");
     imgTag.src = `${imgData}`;
+    console.log(imgTag);
     this.props.pushToFrames(imgTag);
+    console.log(store.getState().frames);
   };
 
   ////CREATE GIF//////////////////////////////////////////////////
@@ -195,10 +197,10 @@ export default class App extends Component {
       //set width and height of the output image
       const outputImgWidth = getComputedStyle(document.documentElement)
         .getPropertyValue("--screenWidth")
-        .substring(0, 4);
+        .substring(0, 3);
       const outputImgHeight = getComputedStyle(document.documentElement)
         .getPropertyValue("--screenHeight")
-        .substring(0, 4);
+        .substring(0, 3);
 
       console.log(outputImgWidth);
       console.log(outputImgHeight);
@@ -238,7 +240,7 @@ export default class App extends Component {
       <div id="container">
         <Notification />
         <header>
-          <img src={logo} alt="logo" width="70px" id="logo" />
+          <img src={logo} alt="logo" id="logo" />
         </header>
         <div id="inner">
           {/* <Screen id="display-screen" status="" /> */}
