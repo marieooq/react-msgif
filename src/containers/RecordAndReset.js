@@ -97,6 +97,7 @@ class RecordAndReset extends Component {
   startRec = e => {
     e.preventDefault();
     if (!store.getState().isRec) {
+      console.log("here!");
       //when the RECORD button has been pushed
 
       //change state.isRec to true

@@ -107,6 +107,10 @@ export default class App extends Component {
   ////CAPTURE/////////////////////////////////////////////////////
 
   captureScreen = async () => {
+    console.log("-------");
+    console.log("inside captureScreen");
+    console.log("-------");
+
     if (store.getState().captureCount.counter === 0) {
       //shows the create gif button
       const createGifBtn = document.getElementById("createGif-btn");
@@ -115,8 +119,11 @@ export default class App extends Component {
     }
 
     //capture the canvas
-    const canvas = await html2canvas(this.textArea);
-    const imgData = canvas.toDataURL();
+    console.log("inside captureScreen");
+    console.log(this.textArea);
+    // this.textArea.style.height = this.textArea.scrollHeight + "px";
+    const textAreaCanvas = await html2canvas(this.textArea);
+    const imgData = textAreaCanvas.toDataURL();
     const imgTag = document.createElement("img");
     imgTag.src = `${imgData}`;
     this.props.pushToFrames(imgTag);
@@ -242,8 +249,11 @@ export default class App extends Component {
         </header>
         <div id="inner">
           {/* <Screen id="display-screen" status="" /> */}
-          <ScreenSize />
-          <ModeContainer />
+          <div id="size-mode-wrapper">
+            <ScreenSize />
+            <ModeContainer />
+          </div>
+          <div>test</div>
           <TextareaContainer captureScreen={this.captureScreen} />
           <div className="btn-wrapper">
             <RecordResetContainer />

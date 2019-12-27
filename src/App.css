@@ -27,6 +27,12 @@ header img#logo {
   background-color: aquamarine;
 }
 
+#size-mode-wrapper {
+  background-color: #707bf7;
+  display: block;
+  z-index: 99;
+}
+
 @media screen and (min-width: 480px) {
 }
 @media screen and (min-width: 768px) {

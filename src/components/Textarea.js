@@ -22,18 +22,11 @@ class Textarea extends Component {
 
   render() {
     return (
-      <div>
-        <textarea
-          id="textareaMsg"
-          name="user-msg"
-          rows="5"
-          cols="26"
-          value={store.getState().textAreaVal}
-          maxLength="140"
-          onChange={this.setTextAreaVal}
-          placeholder="Type your message here."
-        ></textarea>
-      </div>
+      <div
+        id="textareaMsg"
+        contenteditable="true"
+        onChange={this.displayMessage()}
+      ></div>
     );
   }
 }

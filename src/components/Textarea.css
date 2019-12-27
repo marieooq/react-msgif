@@ -1,4 +1,4 @@
-textarea#textareaMsg {
+div#textareaMsg {
   resize: none;
   width: var(--screenWidth);
   height: var(--screenHeight);
@@ -6,9 +6,11 @@ textarea#textareaMsg {
   box-sizing: border-box;
   font-size: 30px;
   display: block;
-  margin: 0 auto;
+  margin: auto;
+  background-color: #fff;
+  border: 1px solid rgb(168, 166, 166);
 }
 
-textarea#textareaMsg:focus {
+div#textareaMsg:focus {
   outline: none;
 }
