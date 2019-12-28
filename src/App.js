@@ -242,6 +242,7 @@ export default class App extends Component {
   ScrollDown = () => {
     const rect = this.outputScreen.getBoundingClientRect();
     const position = rect.top;
+
     window.scrollTo(0, position);
   };
 
@@ -282,6 +283,7 @@ export default class App extends Component {
           />
           <OutputScreen />
           <Download href={this.state.gifAnimation} />
+          <div id="down-to-here"></div>
         </div>
       </div>
     );

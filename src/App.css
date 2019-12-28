@@ -10,18 +10,14 @@
 
 header {
   width: 100%;
-  /* background-color: #707bf7; */
+  background-color: #707bf7;
 }
 
 header img#logo {
-  width: 100px;
+  width: 60px;
   display: block;
   margin: 0 auto;
-  padding: 2% 0;
-}
-
-header img#logo {
-  width: 70px;
+  padding: 1% 0;
 }
 
 #inner {
