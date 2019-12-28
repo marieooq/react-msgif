@@ -124,7 +124,7 @@ class RecordAndReset extends Component {
       this.props.setNotification("success", "Recording now...");
 
       //close the snackbar notifies it's resetting
-      this.props.closeNotification("warning", "Reset the setting.");
+      // this.props.closeNotification("warning", "Reset the setting.");
     } else {
       //when the RESET button has been pushed
 
@@ -132,7 +132,7 @@ class RecordAndReset extends Component {
       this.props.endRec();
 
       //close the snackbar notifies it's recording
-      this.props.closeNotification("success", "Recording now...");
+      // this.props.closeNotification("success", "Recording now...");
 
       //call a snackbar notifies it's resetting
       this.props.setNotification("warning", "Reset the setting.");
