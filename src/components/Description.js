@@ -4,9 +4,9 @@ import "./Description.css";
 const Description = props => {
   return (
     <>
-      <h3>
+      <p>
         STEP{props.step}: {props.title}
-      </h3>
+      </p>
     </>
   );
 };

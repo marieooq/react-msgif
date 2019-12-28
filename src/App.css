@@ -10,7 +10,7 @@
 
 header {
   width: 100%;
-  background-color: #707bf7;
+  /* background-color: #707bf7; */
 }
 
 header img#logo {
@@ -28,12 +28,6 @@ header img#logo {
   width: var(--screenWidth);
   margin: 0 auto;
   box-sizing: border-box;
-}
-
-#size-mode-wrapper {
-  background-color: #707bf7;
-  display: block;
-  z-index: 99;
 }
 
 @media screen and (min-width: 480px) {

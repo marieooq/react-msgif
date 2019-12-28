@@ -8,7 +8,6 @@
   font-weight: bold;
   padding: 10px 24px;
   border-radius: 4px;
-  margin-top: 10px;
 }
 
 .default {
@@ -21,7 +20,6 @@
   font-weight: bold;
   padding: 10px 24px;
   border-radius: 4px;
-  margin-top: 10px;
 }
 
 .default:active {
