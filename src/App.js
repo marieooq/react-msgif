@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Description from "./components/Description";
+import Note from "./components/Note";
 import OutputScreen from "./components/OutputScreen";
 import ScreenSize from "./containers/ScreenSize";
 import ModeContainer from "./components/ModeContainer";
@@ -209,19 +210,18 @@ export default class App extends Component {
         <div id="inner">
           <Description
             step="1"
-            title="Choose the size of the screen and style of design."
-            note="false"
+            title="Choose a size of the screen and style of design."
           />
           <div id="size-mode-wrapper">
             <ScreenSize />
             <ModeContainer />
           </div>
+
           <Description
             step="2"
-            title="Press the record button and type your message. Once you finish typing press the Create GIF button"
-            note="true"
-            noteDescription="It's a demo unless you press the Record button."
+            title="Press the record button and type your message. Once you finish typing press the Create GIF button."
           />
+          <Note noteDescription="It's a demo unless you press the Record button." />
           <div className="btn-wrapper">
             <RecordResetContainer />
             <CreateGif
@@ -236,7 +236,6 @@ export default class App extends Component {
           <Description
             step="3"
             title="Download the GIF animation you've created."
-            note="false"
           />
           <OutputScreen />
           <Download href={this.state.gifAnimation} />

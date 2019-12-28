@@ -1,6 +1,6 @@
-p {
+p.note-description {
   margin: 0;
-  font-size: 16px;
+  font-size: 12px;
   font-family: "PT Sans Caption", sans-serif;
   margin-bottom: 1em;
 }
