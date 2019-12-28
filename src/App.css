@@ -28,7 +28,6 @@ header img#logo {
   width: var(--screenWidth);
   margin: 0 auto;
   box-sizing: border-box;
-  background-color: aquamarine;
 }
 
 #size-mode-wrapper {
