@@ -10,7 +10,7 @@
 
 header {
   width: 100%;
-  background-color: #707bf7;
+  /* background-color: #707bf7; */
 }
 
 header img#logo {
@@ -24,6 +24,10 @@ header img#logo {
   width: var(--screenWidth);
   margin: 0 auto;
   box-sizing: border-box;
+}
+
+.btn-wrapper {
+  margin-bottom: 15px;
 }
 
 #down-to-here {

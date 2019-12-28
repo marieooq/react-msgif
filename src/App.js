@@ -210,6 +210,7 @@ export default class App extends Component {
           <Description
             step="1"
             title="Choose the size of the screen and style of design."
+            note="false"
           />
           <div id="size-mode-wrapper">
             <ScreenSize />
@@ -217,7 +218,9 @@ export default class App extends Component {
           </div>
           <Description
             step="2"
-            title="Press the record button and type your message."
+            title="Press the record button and type your message. Once you finish typing press the Create GIF button"
+            note="true"
+            noteDescription="It's a demo unless you press the Record button."
           />
           <div className="btn-wrapper">
             <RecordResetContainer />
@@ -233,6 +236,7 @@ export default class App extends Component {
           <Description
             step="3"
             title="Download the GIF animation you've created."
+            note="false"
           />
           <OutputScreen />
           <Download href={this.state.gifAnimation} />
