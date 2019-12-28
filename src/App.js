@@ -48,63 +48,6 @@ export default class App extends Component {
     window.scrollTo(0, 0);
   }
 
-  reset = e => {
-    //before creating a gif animation
-    if (
-      store.getState().captureCount.counter > 0 &&
-      store.getState().createGifCount.counter === 0
-    ) {
-      //hide the create gif button
-      const createGifBtn = document.getElementById("createGif-btn");
-      createGifBtn.classList.add("hide");
-      this.props.captureCountDecrement();
-    }
-
-    //after creating a gif animation
-    if (store.getState().createGifCount.counter > 0) {
-      //hide the create gif button and makes it valid
-      const createGifBtn = document.getElementById("createGif-btn-pushed");
-      createGifBtn.id = "createGif-btn";
-      createGifBtn.classList.add("default");
-      createGifBtn.classList.add("hide");
-      createGifBtn.classList.remove("invalid");
-      this.props.createGifCountDecrement();
-
-      //delete the output image
-      const outputImg = document.getElementById("outputImg");
-      outputImg.parentNode.removeChild(outputImg);
-
-      this.outputScreen.style.padding = "30px 60px";
-      this.outputScreen.style.border = "dashed 5px rgba(204, 204, 204, 0.7)";
-
-      //hide the download button
-      this.donwloadBtn.classList.add("hide");
-
-      //reset captureCount
-      this.props.captureCountDecrement();
-
-      //erase the screen
-      this.props.changeMode("note");
-    }
-
-    //hide the reset button itself
-    e.target.classList.add("hide");
-
-    //reset values
-    // this.setState({ isRec: false });
-    this.props.endRec();
-    this.props.changeTextAreaVal("");
-    // this.setState({ textAreaVal: "" });
-    this.frames = [];
-
-    //shows the record button
-    const recordingBtn = document.getElementById("recording-btn");
-    recordingBtn.textContent = "Record";
-    recordingBtn.classList.remove("recording");
-    recordingBtn.classList.add("default");
-    recordingBtn.id = "record-btn";
-  };
-
   ////CAPTURE/////////////////////////////////////////////////////
 
   captureScreen = async () => {
@@ -209,6 +152,7 @@ export default class App extends Component {
       console.log(outputImgWidth);
       console.log(outputImgHeight);
 
+      //create an output image
       const img = document.createElement("img");
       img.id = "outputImg";
       img.src = this.state.gifAnimation;
@@ -222,8 +166,11 @@ export default class App extends Component {
       this.outputScreen.classList.remove("output-hide");
       this.outputScreen.classList.add("output-show");
 
-      //when it's creating GIF show a snap bar
-      // this.props.setNotification("info", "Done!");
+      //show the div which has down-to-here-hide class
+      //so that scroll down to the download button
+      const downToHere = document.getElementById("down-to-here");
+      downToHere.classList.remove("down-to-here-hide");
+      downToHere.classList.add("down-to-here-show");
 
       //scroll down to the top of the output screen
       this.ScrollDown();
@@ -240,9 +187,15 @@ export default class App extends Component {
   };
 
   ScrollDown = () => {
-    const rect = this.outputScreen.getBoundingClientRect();
+    const rect = document
+      .getElementById("down-to-here")
+      .getBoundingClientRect();
+    console.log(rect);
+    // const rect = this.outputScreen.getBoundingClientRect();
     const position = rect.top;
-
+    console.log("---");
+    console.log(position);
+    console.log("---");
     window.scrollTo(0, position);
   };
 
@@ -283,7 +236,7 @@ export default class App extends Component {
           />
           <OutputScreen />
           <Download href={this.state.gifAnimation} />
-          <div id="down-to-here"></div>
+          <div id="down-to-here" className="down-to-here-hide"></div>
         </div>
       </div>
     );

@@ -36,7 +36,11 @@ class RecordAndReset extends Component {
   }
 
   reset = e => {
-    console.log("reset() in RecordAndReset.js");
+    console.log("------");
+    console.log("inside reset");
+    console.log(`createGifCount:${store.getState().createGifCount.counter}`);
+    console.log("------");
+
     //scroll to top of the window
     window.scrollTo(0, 0);
 
@@ -89,6 +93,13 @@ class RecordAndReset extends Component {
 
       //erase the screen
       this.props.changeMode("note");
+
+      //hide the div which has down-to-here-hide class
+      //so that the user can't scroll down to the download button
+      console.log("RESET is clicked! after creating the GIF");
+      const downToHere = document.getElementById("down-to-here");
+      downToHere.classList.remove("down-to-here-show");
+      downToHere.classList.add("down-to-here-hide");
     }
 
     // this.setState({ isRec: false });
