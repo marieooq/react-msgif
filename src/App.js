@@ -254,15 +254,17 @@ export default class App extends Component {
         </header>
         <div id="inner">
           <Description
-            chapter="1"
+            step="1"
             title="Choose the size of the screen and style of design."
           />
           <div id="size-mode-wrapper">
             <ScreenSize />
             <ModeContainer />
           </div>
-          <Description chapter="2" title="Type your message." />
-          <TextareaContainer captureScreen={this.captureScreen} />
+          <Description
+            step="2"
+            title="Press the record button and type your message."
+          />
           <div className="btn-wrapper">
             <RecordResetContainer />
             <CreateGif
@@ -272,8 +274,10 @@ export default class App extends Component {
               name="Create GIF"
             />
           </div>
+          <TextareaContainer captureScreen={this.captureScreen} />
+
           <Description
-            chapter="3"
+            step="3"
             title="Download the GIF animation you've created."
           />
           <OutputScreen />
