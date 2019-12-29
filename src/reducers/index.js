@@ -23,8 +23,6 @@ const textAreaVal = (state = "", action) => {
 const screenSize = (state = "twitter", action) => {
   switch (action.type) {
     case "CHANGE_SCREEN_SIZE":
-      console.log("inside reducer: screenSize()");
-      console.log(action.text);
       return action.text;
     default:
       return state;
