@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import store from "../reducers/store";
-import changeScreenSize from "./changeScreenSize";
-import "../components/Mode.css";
+import handleMediaQuery from "./handleMediaQuery";
 
 class ScreenSize extends Component {
   componentDidUpdate(prevState) {
+    //excecute if the width of window is less than 480px
+    const mq480 = window.matchMedia("(max-width: 480px)");
     if (store.getState().screenSize !== prevState.screenSize) {
-      changeScreenSize(store.getState().screenSize);
+      handleMediaQuery(mq480);
     }
   }
 

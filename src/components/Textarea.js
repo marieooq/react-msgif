@@ -14,7 +14,7 @@ class Textarea extends Component {
         //when it's creating GIF show a snap bar
         this.props.setNotification(
           "warning",
-          "It's a demo until you push the Record button."
+          "It's a demo unless you push the Record button."
         );
 
         this.props.changeTextAreaVal(this.textAreaScreen.textContent);
