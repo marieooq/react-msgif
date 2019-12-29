@@ -67,8 +67,11 @@ export default class App extends Component {
       createGifBtn.classList.remove("hide");
       this.props.captureCountIncrement();
     }
-
+    // const rect = this.textArea.getBoundingClientRect();
+    // const position = rect.top;
+    // console.log(position);
     const textAreaCanvas = await html2canvas(this.textArea);
+
     const imgData = textAreaCanvas.toDataURL();
     const imgTag = document.createElement("img");
     imgTag.src = `${imgData}`;

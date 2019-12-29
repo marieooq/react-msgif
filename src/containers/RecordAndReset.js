@@ -36,9 +36,6 @@ class RecordAndReset extends Component {
   }
 
   reset = e => {
-    //scroll to top of the window
-    window.scrollTo(0, 0);
-
     //erase the textarea
     const textAreaScreen = document.getElementById("textareaMsg");
     textAreaScreen.textContent = "";
@@ -104,6 +101,9 @@ class RecordAndReset extends Component {
   };
 
   startRec = e => {
+    //go to top
+    window.scrollTo(0, 0);
+
     e.preventDefault();
     const textAreaScreen = document.getElementById("textareaMsg");
     textAreaScreen.textContent = "";
