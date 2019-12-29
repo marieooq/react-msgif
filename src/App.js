@@ -17,9 +17,7 @@ import logo from "./img/logo.png";
 import encode64 from "./b64";
 import store from "./reducers/store";
 import Notification from "./containers/Notification";
-// import "@material/react-snackbar/dist/snackbar.css";
-// import Snackbar from "@material/react-snackbar";
-// import SnackBarControl from "./components/SnackBarControl";
+import changeScreenSize from "./containers/changeScreenSize";
 
 export default class App extends Component {
   constructor(props) {
@@ -57,7 +55,7 @@ export default class App extends Component {
   handleMediaQuery = mq => {
     const docStyle = document.documentElement.style;
 
-    // changeScreenSize(store.getState().screenSize);
+    changeScreenSize(store.getState().screenSize);
     if (mq.matches) {
       console.log("LESS THAN 480px");
       if (store.getState().screenSize === "twitter") {
