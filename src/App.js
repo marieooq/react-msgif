@@ -207,39 +207,46 @@ export default class App extends Component {
         <header>
           <img src={logo} alt="logo" id="logo" />
         </header>
+
         <div id="inner">
-          <Description
-            step="1"
-            title="Choose a size of the screen and style of design."
-          />
-          <div id="size-mode-wrapper">
-            <ScreenSize />
-            <ModeContainer />
-          </div>
-
-          <Description
-            step="2"
-            title="Press the record button and type your message. Once you finish typing press the Create GIF button."
-          />
-          <Note noteDescription="It's a demo unless you press the Record button." />
-          <div className="btn-wrapper">
-            <RecordResetContainer />
-            <CreateGif
-              id="createGif-btn"
-              class="btn-push default hide"
-              action={this.createGIF}
-              name="Create GIF"
+          <div className="wrapper-by-step">
+            <Description
+              step="1"
+              title="Choose a size of the screen and style of design."
             />
+            <div id="size-mode-wrapper">
+              <ScreenSize />
+              <ModeContainer />
+            </div>
           </div>
-          <TextareaContainer captureScreen={this.captureScreen} />
 
-          <Description
-            step="3"
-            title="Download the GIF animation you've created."
-          />
-          <OutputScreen />
-          <Download href={this.state.gifAnimation} />
-          <div id="down-to-here" className="down-to-here-hide"></div>
+          <div className="wrapper-by-step">
+            <Description
+              step="2"
+              title="Press the Record button and type your message in the box below. Once you finish typing press the Create GIF button."
+            />
+            <Note noteDescription="It's a demo unless you press the Record button." />
+            <div className="btn-wrapper">
+              <RecordResetContainer />
+              <CreateGif
+                id="createGif-btn"
+                class="btn-push default hide"
+                action={this.createGIF}
+                name="Create GIF"
+              />
+            </div>
+            <TextareaContainer captureScreen={this.captureScreen} />
+          </div>
+
+          <div className="wrapper-by-step">
+            <Description
+              step="3"
+              title="Download the GIF animation you've created."
+            />
+            <OutputScreen />
+            <Download href={this.state.gifAnimation} />
+            <div id="down-to-here" className="down-to-here-hide"></div>
+          </div>
         </div>
       </div>
     );
