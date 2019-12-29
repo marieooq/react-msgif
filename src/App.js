@@ -47,7 +47,37 @@ export default class App extends Component {
 
     //go to top
     window.scrollTo(0, 0);
+
+    //excecute if the width of window is less than 480px
+    this.mq480 = window.matchMedia("(max-width: 480px)");
+    this.handleMediaQuery(this.mq480);
+    this.mq480.addListener(this.handleMediaQuery);
   }
+
+  handleMediaQuery = mq => {
+    const docStyle = document.documentElement.style;
+
+    // changeScreenSize(store.getState().screenSize);
+    if (mq.matches) {
+      console.log("LESS THAN 480px");
+      if (store.getState().screenSize === "twitter") {
+        docStyle.setProperty("--screenWidth", "256px");
+        docStyle.setProperty("--screenHeight", "128px");
+      } else if (store.getState().screenSize === "social") {
+        docStyle.setProperty("--screenWidth", "200px");
+        docStyle.setProperty("--screenHeight", "200px");
+      }
+    } else {
+      console.log("MORE THAN 480px");
+      if (store.getState().screenSize === "twitter") {
+        docStyle.setProperty("--screenWidth", "512px");
+        docStyle.setProperty("--screenHeight", "256px");
+      } else if (store.getState().screenSize === "social") {
+        docStyle.setProperty("--screenWidth", "400px");
+        docStyle.setProperty("--screenHeight", "400px");
+      }
+    }
+  };
 
   ////CAPTURE/////////////////////////////////////////////////////
 
