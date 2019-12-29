@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../components/Mode.css";
 import store from "../reducers/store";
+import changeScreenSize from "./changeScreenSize";
 
 class ScreenSize extends Component {
   state = {
@@ -8,30 +9,25 @@ class ScreenSize extends Component {
   };
 
   componentDidUpdate(prevState) {
-    // if (this.state.size !== prevState.size) {
-    //   this.changeScreenSize(this.state.size);
-    // }
-
     if (store.getState().screenSize !== prevState.screenSize) {
-      this.changeScreenSize(store.getState().screenSize);
+      changeScreenSize(store.getState().screenSize);
     }
   }
 
-  changeScreenSize(size) {
-    console.log(size);
-    let docStyle = document.documentElement.style;
+  // changeScreenSize(size) {
+  //   console.log(size);
+  //   let docStyle = document.documentElement.style;
 
-    if (size === "twitter") {
-      docStyle.setProperty("--screenWidth", "512px");
-      docStyle.setProperty("--screenHeight", "256px");
-    } else if (size === "social") {
-      docStyle.setProperty("--screenWidth", "400px");
-      docStyle.setProperty("--screenHeight", "400px");
-    }
-  }
+  //   if (size === "twitter") {
+  //     docStyle.setProperty("--screenWidth", "512px");
+  //     docStyle.setProperty("--screenHeight", "256px");
+  //   } else if (size === "social") {
+  //     docStyle.setProperty("--screenWidth", "400px");
+  //     docStyle.setProperty("--screenHeight", "400px");
+  //   }
+  // }
 
   handleScreenSize = e => {
-    // this.setState({ size: e.target.value });
     this.props.changeScreenSize(e.target.value);
   };
 

@@ -3,6 +3,7 @@ import {
   startRec,
   endRec,
   changeTextAreaVal,
+  changeScreenSize,
   changeMode,
   captureCountIncrement,
   captureCountDecrement,
@@ -18,6 +19,7 @@ const mapStateToProps = state => {
   return {
     isRec: state.isRec,
     textAreaVal: state.textAreaVal,
+    screenSize: state.screenSize,
     mode: state.mode,
     captureCount: state.captureCount,
     createGifCount: state.createGifCount,
@@ -31,6 +33,7 @@ const mapDispatchToProps = dispatch => {
     startRec: () => dispatch(startRec),
     endRec: () => dispatch(endRec),
     changeTextAreaVal: text => dispatch(changeTextAreaVal(text)),
+    changeScreenSize: text => dispatch(changeScreenSize(text)),
     changeMode: text => dispatch(changeMode(text)),
     captureCountIncrement: () => dispatch(captureCountIncrement()),
     captureCountDecrement: () => dispatch(captureCountDecrement()),
