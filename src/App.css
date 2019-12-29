@@ -37,7 +37,8 @@ header img#logo {
 }
 
 .btn-wrapper {
-  margin-bottom: 15px;
+  margin-top: 15px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: flex-end;
 }
