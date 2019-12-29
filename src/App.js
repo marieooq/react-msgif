@@ -212,7 +212,7 @@ export default class App extends Component {
           <div className="wrapper-by-step">
             <Description
               step="1"
-              title="Choose the size of the textarea and style of design."
+              title="Choose the size of the text area and style of design."
             />
             <div id="size-mode-wrapper">
               <ScreenSize />
@@ -223,7 +223,7 @@ export default class App extends Component {
           <div className="wrapper-by-step">
             <Description
               step="2"
-              title="Press the Record button and type your message in the textarea below. Once you finish typing press the Create GIF button."
+              title="Press the Record button and type your message in the textarea below. Once you finish typing, press the Create GIF button."
             />
             <Note
               number="1"
@@ -231,7 +231,7 @@ export default class App extends Component {
             />
             <Note
               number="2"
-              noteDescription="If you press the reset button, everything is reset. (including the size of the textarea, design, and a message you typed)"
+              noteDescription="If you press the reset button, everything is reset. (including the size of the text area, design, and a message you typed)"
             />
             <div className="btn-wrapper">
               <RecordResetContainer />
