@@ -9,16 +9,15 @@ class Textarea extends Component {
 
     this.textAreaScreen.addEventListener("input", async () => {
       if (store.getState().isRec) {
-        console.log(`store.getState().isRec: ${store.getState().isRec}`);
-        console.log("input something!");
         await this.props.captureScreen();
       } else {
-        console.log(`store.getState().isRec: ${store.getState().isRec}`);
         //when it's creating GIF show a snap bar
         this.props.setNotification(
           "warning",
           "It's a demo until you push the Record button."
         );
+
+        this.props.changeTextAreaVal(this.textAreaScreen.textContent);
       }
     });
   }

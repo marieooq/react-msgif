@@ -52,7 +52,6 @@ export default class App extends Component {
   ////CAPTURE/////////////////////////////////////////////////////
 
   captureScreen = async () => {
-    console.log("inside captureScreen");
     if (store.getState().captureCount.counter === 0) {
       //shows the create gif button
       const createGifBtn = document.getElementById("createGif-btn");
@@ -64,9 +63,7 @@ export default class App extends Component {
     const imgData = textAreaCanvas.toDataURL();
     const imgTag = document.createElement("img");
     imgTag.src = `${imgData}`;
-    console.log(imgTag);
     this.props.pushToFrames(imgTag);
-    console.log(store.getState().frames);
   };
 
   ////CREATE GIF//////////////////////////////////////////////////
@@ -150,9 +147,6 @@ export default class App extends Component {
         .getPropertyValue("--screenHeight")
         .substring(0, 3);
 
-      console.log(outputImgWidth);
-      console.log(outputImgHeight);
-
       //create an output image
       const img = document.createElement("img");
       img.id = "outputImg";
@@ -191,12 +185,8 @@ export default class App extends Component {
     const rect = document
       .getElementById("down-to-here")
       .getBoundingClientRect();
-    console.log(rect);
     // const rect = this.outputScreen.getBoundingClientRect();
     const position = rect.top;
-    console.log("---");
-    console.log(position);
-    console.log("---");
     window.scrollTo(0, position);
   };
 
@@ -231,7 +221,7 @@ export default class App extends Component {
             />
             <Note
               number="2"
-              noteDescription="If you press the reset button, everything is reset. (including the size of the text area, design, and a message you typed)"
+              noteDescription="If you press the reset button, your message is going to be undone."
             />
             <div className="btn-wrapper">
               <RecordResetContainer />
