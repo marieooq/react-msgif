@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Description from "./components/Description";
 import Note from "./components/Note";
 import OutputScreen from "./components/OutputScreen";
-import ScreenSize from "./containers/ScreenSize";
+import ScreenSizeContainer from "./containers/ScreenSizeContainer";
 import ModeContainer from "./components/ModeContainer";
 import TextareaContainer from "./components/TextareaContainer";
 import RecordResetContainer from "./containers/RecordResetContainer";
@@ -235,7 +235,7 @@ export default class App extends Component {
               title="Choose the size of the text area and style of design."
             />
             <div id="size-mode-wrapper">
-              <ScreenSize />
+              <ScreenSizeContainer />
               <ModeContainer />
             </div>
           </div>

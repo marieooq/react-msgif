@@ -20,6 +20,17 @@ const textAreaVal = (state = "", action) => {
   }
 };
 
+const screenSize = (state = "twitter", action) => {
+  switch (action.type) {
+    case "CHANGE_SCREEN_SIZE":
+      console.log("inside reducer: screenSize()");
+      console.log(action.text);
+      return action.text;
+    default:
+      return state;
+  }
+};
+
 const mode = (state = "note", action) => {
   switch (action.type) {
     case "CHANGE_MODE":
@@ -89,6 +100,7 @@ const NotificationReducer = (
 export default combineReducers({
   isRec,
   textAreaVal,
+  screenSize,
   mode,
   captureCount,
   createGifCount,
