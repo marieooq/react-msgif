@@ -1,0 +1,18 @@
+#output {
+  color: #292929;
+  width: var(--screenWidth);
+  height: var(--screenHeight);
+  padding: 30px 60px;
+  background-color: #fff;
+  font-size: 30px;
+  box-sizing: border-box;
+  margin: 30px auto 0;
+}
+
+#output.output-hide {
+  display: none;
+}
+
+#output.output-show {
+  display: block;
+}

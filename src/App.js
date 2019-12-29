@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import Screen from "./components/Screen";
+import Description from "./components/Description";
+import Note from "./components/Note";
+import OutputScreen from "./components/OutputScreen";
 import ScreenSizeContainer from "./containers/ScreenSizeContainer";
 import ModeContainer from "./components/ModeContainer";
 import TextareaContainer from "./components/TextareaContainer";
@@ -15,11 +17,7 @@ import logo from "./img/logo.png";
 import encode64 from "./b64";
 import store from "./reducers/store";
 import Notification from "./containers/Notification";
-import { log } from "util";
 import changeScreenSize from "./containers/changeScreenSize";
-// import "@material/react-snackbar/dist/snackbar.css";
-// import Snackbar from "@material/react-snackbar";
-// import SnackBarControl from "./components/SnackBarControl";
 
 export default class App extends Component {
   constructor(props) {
@@ -27,7 +25,7 @@ export default class App extends Component {
     this.state = {
       recordingFlg: false,
       encoder: "",
-      outputScreenStatus: "",
+      // outputScreenStatus: "",
       gifAnimation: ""
     };
   }
@@ -53,34 +51,20 @@ export default class App extends Component {
 
     //go to top
     window.scrollTo(0, 0);
+
+    //excecute if the width of window is less than 480px
+    this.mq480 = window.matchMedia("(max-width: 480px)");
+    this.handleMediaQuery(this.mq480);
+    this.mq480.addListener(this.handleMediaQuery);
   }
 
   handleMediaQuery = mq => {
     const docStyle = document.documentElement.style;
-    const inner = document.getElementById("inner");
-    const side = document.getElementById("side");
-    const logo = document.getElementById("logo");
-    const left = document.getElementById("left");
-    const leftLeft = document.getElementById("left-left");
-    const leftRight = document.getElementById("left-right");
-    const textArea = document.getElementById("textareaMsg");
-    const right = document.getElementById("right");
 
     changeScreenSize(store.getState().screenSize);
     if (mq.matches) {
       console.log("LESS THAN 480px");
-
       if (store.getState().screenSize === "twitter") {
-        // inner.style.width = "256px";
-        // side.style.width = "0";
-        // // logo.style.width = "70px";
-        // // left.style.width = "512px";
-        // // left.style.display = "block";
-        // // left.style.justifyContent = "";
-        // // leftLeft.style.width = "100%";
-        // // leftRight.style.width = "100%";
-        // // textArea.style.marginTop = "0px";
-        // // right.style.width = "512px";
         docStyle.setProperty("--screenWidth", "256px");
         docStyle.setProperty("--screenHeight", "128px");
       } else if (store.getState().screenSize === "social") {
@@ -99,63 +83,6 @@ export default class App extends Component {
     }
   };
 
-  reset = e => {
-    //before creating a gif animation
-    if (
-      store.getState().captureCount.counter > 0 &&
-      store.getState().createGifCount.counter === 0
-    ) {
-      //hide the create gif button
-      const createGifBtn = document.getElementById("createGif-btn");
-      createGifBtn.classList.add("hide");
-      this.props.captureCountDecrement();
-    }
-
-    //after creating a gif animation
-    if (store.getState().createGifCount.counter > 0) {
-      //hide the create gif button and makes it valid
-      const createGifBtn = document.getElementById("createGif-btn-pushed");
-      createGifBtn.id = "createGif-btn";
-      createGifBtn.classList.add("default");
-      createGifBtn.classList.add("hide");
-      createGifBtn.classList.remove("invalid");
-      this.props.createGifCountDecrement();
-
-      //delete the output image
-      const outputImg = document.getElementById("outputImg");
-      outputImg.parentNode.removeChild(outputImg);
-
-      this.outputScreen.style.padding = "30px 60px";
-      this.outputScreen.style.border = "dashed 5px rgba(204, 204, 204, 0.7)";
-
-      //hide the download button
-      this.donwloadBtn.classList.add("hide");
-
-      //reset captureCount
-      this.props.captureCountDecrement();
-
-      //erase the screen
-      this.props.changeMode("note");
-    }
-
-    //hide the reset button itself
-    e.target.classList.add("hide");
-
-    //reset values
-    // this.setState({ isRec: false });
-    this.props.endRec();
-    this.props.changeTextAreaVal("");
-    // this.setState({ textAreaVal: "" });
-    this.frames = [];
-
-    //shows the record button
-    const recordingBtn = document.getElementById("recording-btn");
-    recordingBtn.textContent = "Record";
-    recordingBtn.classList.remove("recording");
-    recordingBtn.classList.add("default");
-    recordingBtn.id = "record-btn";
-  };
-
   ////CAPTURE/////////////////////////////////////////////////////
 
   captureScreen = async () => {
@@ -166,9 +93,8 @@ export default class App extends Component {
       this.props.captureCountIncrement();
     }
 
-    //capture the canvas
-    const canvas = await html2canvas(document.getElementById("display-screen"));
-    const imgData = canvas.toDataURL();
+    const textAreaCanvas = await html2canvas(this.textArea);
+    const imgData = textAreaCanvas.toDataURL();
     const imgTag = document.createElement("img");
     imgTag.src = `${imgData}`;
     this.props.pushToFrames(imgTag);
@@ -186,6 +112,9 @@ export default class App extends Component {
   createGIF = async e => {
     e.preventDefault();
     if (store.getState().createGifCount.counter === 0) {
+      //when it's creating GIF show a snap bar
+      this.props.setNotification("info", "Creating GIF...");
+
       //make the createGIF button invalid
       const createGifBtn = document.getElementById("createGif-btn");
       createGifBtn.id = "createGif-btn-pushed";
@@ -196,7 +125,7 @@ export default class App extends Component {
       this.props.createGifCountIncrement();
 
       //start loading
-      this.switchLoading("start");
+      // this.switchLoading("start");
 
       await this.captureScreen();
 
@@ -237,16 +166,12 @@ export default class App extends Component {
       await proseccing();
 
       //stop loading
-      this.switchLoading("stop");
+      // this.switchLoading("stop");
 
       this.setState({
         gifAnimation:
           "data:image/gif;base64," + encode64(encoder.stream().getData())
       });
-
-      const img = document.createElement("img");
-      img.id = "outputImg";
-      img.src = this.state.gifAnimation;
 
       //set width and height of the output image
       const outputImgWidth = getComputedStyle(document.documentElement)
@@ -256,19 +181,32 @@ export default class App extends Component {
         .getPropertyValue("--screenHeight")
         .substring(0, 3);
 
+      //create an output image
+      const img = document.createElement("img");
+      img.id = "outputImg";
+      img.src = this.state.gifAnimation;
       img.width = outputImgWidth;
       img.height = outputImgHeight;
 
-      //set a style of outputScreen
+      //set a style to outputScreen
       this.outputScreen.style.padding = 0;
       this.outputScreen.style.border = "none";
       this.outputScreen.appendChild(img);
+      this.outputScreen.classList.remove("output-hide");
+      this.outputScreen.classList.add("output-show");
 
-      //when it's creating GIF show a snap bar
-      this.props.setNotification("info", "Done!");
+      //show the div which has down-to-here-hide class
+      //so that scroll down to the download button
+      const downToHere = document.getElementById("down-to-here");
+      downToHere.classList.remove("down-to-here-hide");
+      downToHere.classList.add("down-to-here-show");
 
       //scroll down to the top of the output screen
       this.ScrollDown();
+
+      //when it finish creating GIF erase the old snap bar and show new one
+      this.props.closeNotification("info", "Creating GIF...");
+      this.props.setNotification("info", "Done!");
 
       //shows a download button
       this.donwloadBtn.classList.remove("hide");
@@ -278,7 +216,10 @@ export default class App extends Component {
   };
 
   ScrollDown = () => {
-    const rect = this.outputScreen.getBoundingClientRect();
+    const rect = document
+      .getElementById("down-to-here")
+      .getBoundingClientRect();
+    // const rect = this.outputScreen.getBoundingClientRect();
     const position = rect.top;
     window.scrollTo(0, position);
   };
@@ -287,33 +228,55 @@ export default class App extends Component {
     return (
       <div id="container">
         <Notification />
-        <div id="side">
-          <img src={logo} alt="logo" width="70px" id="logo" />
-        </div>
+        <header>
+          <img src={logo} alt="logo" id="logo" />
+        </header>
+
         <div id="inner">
-          <div id="left">
-            <div id="left-left">
-              <Screen id="display-screen" status="" />
+          <div className="wrapper-by-step">
+            <Description
+              step="1"
+              title="Choose the size of the text area and style of design."
+            />
+            <div id="size-mode-wrapper">
               <ScreenSizeContainer />
               <ModeContainer />
             </div>
-            <div id="left-right">
-              <TextareaContainer captureScreen={this.captureScreen} />
-              <div className="btn-wrapper">
-                <RecordResetContainer />
-                <CreateGif
-                  id="createGif-btn"
-                  class="btn-push default hide"
-                  action={this.createGIF}
-                  name="Create GIF"
-                />
-              </div>
-            </div>
           </div>
 
-          <div id="right">
-            <Screen id="output" status={this.state.outputScreenStatus} />
+          <div className="wrapper-by-step">
+            <Description
+              step="2"
+              title="Press the Record button and type your message in the textarea below. Once you finish typing, press the Create GIF button."
+            />
+            <Note
+              number="1"
+              noteDescription="It's a demo unless you press the Record button."
+            />
+            <Note
+              number="2"
+              noteDescription="If you press the reset button, your message is going to be undone."
+            />
+            <div className="btn-wrapper">
+              <RecordResetContainer />
+              <CreateGif
+                id="createGif-btn"
+                class="btn-push default hide"
+                action={this.createGIF}
+                name="Create GIF"
+              />
+            </div>
+            <TextareaContainer captureScreen={this.captureScreen} />
+          </div>
+
+          <div className="wrapper-by-step">
+            <Description
+              step="3"
+              title="Download the GIF animation you've created."
+            />
+            <OutputScreen />
             <Download href={this.state.gifAnimation} />
+            <div id="down-to-here" className="down-to-here-hide"></div>
           </div>
         </div>
       </div>

@@ -8,13 +8,7 @@
   font-weight: bold;
   padding: 10px 24px;
   border-radius: 4px;
-  margin-top: 10px;
 }
-
-/* .btn-push:active {
-  transform: translateY(4px);
-  border-bottom: none;
-} */
 
 .default {
   display: inline-block;
@@ -26,7 +20,6 @@
   font-weight: bold;
   padding: 10px 24px;
   border-radius: 4px;
-  margin-top: 10px;
 }
 
 .default:active {
@@ -42,11 +35,6 @@
 #record-btn {
   background-color: #44e451;
   border-bottom: 4px solid #24aa2b;
-  margin-left: 15px;
-}
-
-#record-btn {
-  margin-left: 15px;
 }
 
 #createGif-btn {

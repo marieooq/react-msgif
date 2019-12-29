@@ -24,9 +24,6 @@ class RecordAndReset extends Component {
           action: this.startRec,
           name: "Record"
         });
-
-        //erase the screen
-        this.props.changeTextAreaVal("");
       } else {
         this.setState({
           id: "reset-btn",
@@ -34,9 +31,6 @@ class RecordAndReset extends Component {
           action: this.startRec,
           name: "Reset"
         });
-
-        //erase the screen
-        this.props.changeTextAreaVal("");
       }
     }
   }
@@ -44,6 +38,11 @@ class RecordAndReset extends Component {
   reset = e => {
     //scroll to top of the window
     window.scrollTo(0, 0);
+
+    //erase the textarea
+    const textAreaScreen = document.getElementById("textareaMsg");
+    textAreaScreen.textContent = "";
+
     //before creating a gif animation
     if (
       store.getState().captureCount.counter > 0 &&
@@ -80,11 +79,21 @@ class RecordAndReset extends Component {
       const donwloadBtn = document.getElementById("ssgif");
       donwloadBtn.classList.add("hide");
 
+      //hide the output screen
+      this.outputScreen.classList.remove("output-show");
+      this.outputScreen.classList.add("output-hide");
+
       //reset captureCount
       this.props.captureCountDecrement();
 
       //erase the screen
       this.props.changeMode("note");
+
+      //hide the div which has down-to-here-hide class
+      //so that the user can't scroll down to the download button
+      const downToHere = document.getElementById("down-to-here");
+      downToHere.classList.remove("down-to-here-show");
+      downToHere.classList.add("down-to-here-hide");
     }
 
     // this.setState({ isRec: false });
@@ -96,6 +105,8 @@ class RecordAndReset extends Component {
 
   startRec = e => {
     e.preventDefault();
+    const textAreaScreen = document.getElementById("textareaMsg");
+    textAreaScreen.textContent = "";
     if (!store.getState().isRec) {
       //when the RECORD button has been pushed
 
@@ -103,7 +114,10 @@ class RecordAndReset extends Component {
       this.props.startRec();
 
       //call a snackbar notifies it's recording
-      this.props.setNotification("success", "Successfully recording.");
+      this.props.setNotification("success", "Recording now...");
+
+      //close the snackbar notifies it's resetting
+      // this.props.closeNotification("warning", "Reset the setting.");
     } else {
       //when the RESET button has been pushed
 
@@ -111,9 +125,9 @@ class RecordAndReset extends Component {
       this.props.endRec();
 
       //close the snackbar notifies it's recording
-      this.props.closeNotification("success", "Successfully recording.");
+      // this.props.closeNotification("success", "Recording now...");
 
-      //call a snackbar notifies it's recording
+      //call a snackbar notifies it's resetting
       this.props.setNotification("warning", "Reset the setting.");
 
       this.reset();

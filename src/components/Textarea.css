@@ -1,12 +1,16 @@
-textarea#textareaMsg {
+div#textareaMsg {
   resize: none;
   width: var(--screenWidth);
   height: var(--screenHeight);
   padding: 30px 60px;
   box-sizing: border-box;
   font-size: 30px;
+  display: block;
+  margin: auto;
+  background-color: #fff;
+  border: 1px solid rgb(168, 166, 166);
 }
 
-textarea#textareaMsg:focus {
+div#textareaMsg:focus {
   outline: none;
 }

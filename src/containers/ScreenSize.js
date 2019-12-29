@@ -12,7 +12,6 @@ class ScreenSize extends Component {
 
   handleScreenSize = e => {
     this.props.changeScreenSize(e.target.value);
-    changeScreenSize(store.getState().screenSize);
   };
 
   render() {
