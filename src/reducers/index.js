@@ -38,6 +38,17 @@ const mode = (state = "note", action) => {
   }
 };
 
+const mqFlag = (state = { flag: false }, action) => {
+  switch (action.type) {
+    case "MQ_FLAG_TRUE":
+      return { flag: true };
+    case "MQ_FLAG_FALSE":
+      return { flag: false };
+    default:
+      return state;
+  }
+};
+
 const captureCount = (state = { counter: 0 }, action) => {
   switch (action.type) {
     case "CAPTURE_COUNT_INCREMENT":
@@ -100,6 +111,7 @@ export default combineReducers({
   textAreaVal,
   screenSize,
   mode,
+  mqFlag,
   captureCount,
   createGifCount,
   frames,

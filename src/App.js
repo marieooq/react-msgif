@@ -17,7 +17,7 @@ import logo from "./img/logo.png";
 import encode64 from "./b64";
 import store from "./reducers/store";
 import Notification from "./containers/Notification";
-import handleMediaQuery from "./containers/handleMediaQuery";
+// import handleMediaQuery from "./containers/handleMediaQuery";
 
 export default class App extends Component {
   constructor(props) {
@@ -54,9 +54,40 @@ export default class App extends Component {
 
     //excecute if the width of window is less than 480px
     this.mq480 = window.matchMedia("(max-width: 480px)");
-    handleMediaQuery(this.mq480);
-    this.mq480.addListener(handleMediaQuery);
+    this.handleMediaQuery(
+      this.mq480,
+      this.props.mqFlagTrue,
+      this.props.mqFlagFalse
+    );
+    this.mq480.addListener(this.handleMediaQuery);
   }
+
+  handleMediaQuery = mq => {
+    const docStyle = document.documentElement.style;
+
+    // changeScreenSize(store.getState().screenSize);
+    if (mq.matches) {
+      this.props.mqFlagTrue();
+      console.log(store.getState().mqFlag.flag);
+      if (store.getState().screenSize === "twitter") {
+        docStyle.setProperty("--screenWidth", "256px");
+        docStyle.setProperty("--screenHeight", "128px");
+      } else if (store.getState().screenSize === "social") {
+        docStyle.setProperty("--screenWidth", "200px");
+        docStyle.setProperty("--screenHeight", "200px");
+      }
+    } else {
+      this.props.mqFlagFalse();
+      console.log(store.getState().mqFlag.flag);
+      if (store.getState().screenSize === "twitter") {
+        docStyle.setProperty("--screenWidth", "512px");
+        docStyle.setProperty("--screenHeight", "256px");
+      } else if (store.getState().screenSize === "social") {
+        docStyle.setProperty("--screenWidth", "400px");
+        docStyle.setProperty("--screenHeight", "400px");
+      }
+    }
+  };
 
   ////CAPTURE/////////////////////////////////////////////////////
 
@@ -67,10 +98,20 @@ export default class App extends Component {
       createGifBtn.classList.remove("hide");
       this.props.captureCountIncrement();
     }
-    // const rect = this.textArea.getBoundingClientRect();
-    // const position = rect.top;
-    // console.log(position);
-    const textAreaCanvas = await html2canvas(this.textArea);
+
+    let textAreaCanvas;
+    const rect = this.textArea.getBoundingClientRect();
+    const position = rect.top;
+    console.log(position);
+    if (store.getState().mqFlag) {
+      console.log("mobile");
+      textAreaCanvas = await html2canvas(this.textArea, {
+        scrollY: position
+      });
+    } else {
+      console.log("pc");
+      textAreaCanvas = await html2canvas(this.textArea);
+    }
 
     const imgData = textAreaCanvas.toDataURL();
     const imgTag = document.createElement("img");
