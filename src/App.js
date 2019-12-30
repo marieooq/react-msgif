@@ -92,10 +92,20 @@ export default class App extends Component {
       createGifBtn.classList.remove("hide");
       this.props.captureCountIncrement();
     }
-    // const rect = this.textArea.getBoundingClientRect();
-    // const position = rect.top;
-    // console.log(position);
-    const textAreaCanvas = await html2canvas(this.textArea);
+
+    let textAreaCanvas;
+    const rect = this.textArea.getBoundingClientRect();
+    const position = rect.top;
+    console.log(position);
+    if (store.getState().mqFlag) {
+      console.log("mobile");
+      textAreaCanvas = await html2canvas(this.textArea, {
+        scrollY: position
+      });
+    } else {
+      console.log("pc");
+      textAreaCanvas = await html2canvas(this.textArea);
+    }
 
     const imgData = textAreaCanvas.toDataURL();
     const imgTag = document.createElement("img");
