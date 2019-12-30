@@ -18,6 +18,14 @@ export const changeMode = text => {
   return { type: "CHANGE_MODE", text };
 };
 
+export const mqFlagTrue = () => {
+  return { type: "MQ_FLAG_TRUE" };
+};
+
+export const mqFlagFalse = () => {
+  return { type: "MQ_FLAG_FALSE" };
+};
+
 export const captureCountIncrement = () => {
   return { type: "CAPTURE_COUNT_INCREMENT" };
 };
