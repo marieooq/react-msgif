@@ -43,8 +43,8 @@ export default class App extends Component {
 
     //excecute if the width of window is less than 480px
     this.mq480 = window.matchMedia("(max-width: 480px)");
-    handleMediaQuery(this.mq480);
-    this.mq480.addListener(handleMediaQuery);
+    this.handleMediaQuery(this.mq480);
+    this.mq480.addListener(this.handleMediaQuery);
 
     //initiate mode
     this.setState({ mode: store.getState().mode });
