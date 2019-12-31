@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../components/Mode.css";
 import store from "../reducers/store";
 // import handleMediaQuery from "./handleMediaQuery";
 

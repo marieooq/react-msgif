@@ -9,7 +9,7 @@ import RecordResetContainer from "./containers/RecordResetContainer";
 import CreateGif from "./containers/CreateGif";
 import Download from "./components/Download";
 // import Loading from "./Loading";
-// import html2canvas from "html2canvas";
+import html2canvas from "html2canvas";
 /* eslint-disable no-undef */
 // import GIFEncoder from "./GIFEncoder";
 import "./App.css";
@@ -36,17 +36,11 @@ export default class App extends Component {
   textArea;
   outputScreen;
   donwloadBtn;
-  mq480;
 
   componentDidMount() {
     this.textArea = document.getElementById("textareaMsg");
     this.outputScreen = document.getElementById("output");
     this.donwloadBtn = document.getElementById("ssgif");
-
-    //excecute if the width of window is less than 480px
-    this.mq480 = window.matchMedia("(max-width: 480px)");
-    this.handleMediaQuery(this.mq480);
-    this.mq480.addListener(this.handleMediaQuery);
 
     //initiate mode
     this.setState({ mode: store.getState().mode });
@@ -115,19 +109,19 @@ export default class App extends Component {
     //   textAreaCanvas = await html2canvas(this.textArea);
     // }
 
-    try {
-      const imgData = await domtoimage.toPng(this.textArea);
-      const imgTag = document.createElement("img");
-      imgTag.src = `${imgData}`;
-      this.props.pushToFrames(imgTag);
-    } catch (e) {
-      console.error("oops, something went wrong!", error);
-    }
-    // const textAreaCanvas = await html2canvas(this.textArea);
-    // const imgData = textAreaCanvas.toDataURL();
-    // const imgTag = document.createElement("img");
-    // imgTag.src = `${imgData}`;
-    // this.props.pushToFrames(imgTag);
+    // try {
+    //   const imgData = await domtoimage.toPng(this.textArea);
+    //   const imgTag = document.createElement("img");
+    //   imgTag.src = `${imgData}`;
+    //   this.props.pushToFrames(imgTag);
+    // } catch (e) {
+    //   console.error("oops, something went wrong!", error);
+    // }
+    const textAreaCanvas = await html2canvas(this.textArea);
+    const imgData = textAreaCanvas.toDataURL();
+    const imgTag = document.createElement("img");
+    imgTag.src = `${imgData}`;
+    this.props.pushToFrames(imgTag);
   };
 
   ////CREATE GIF//////////////////////////////////////////////////
