@@ -9,7 +9,7 @@ import RecordResetContainer from "./containers/RecordResetContainer";
 import CreateGif from "./containers/CreateGif";
 import Download from "./components/Download";
 // import Loading from "./Loading";
-import html2canvas from "html2canvas";
+// import html2canvas from "html2canvas";
 /* eslint-disable no-undef */
 // import GIFEncoder from "./GIFEncoder";
 import "./App.css";
@@ -18,6 +18,8 @@ import encode64 from "./b64";
 import store from "./reducers/store";
 import Notification from "./containers/Notification";
 // import handleMediaQuery from "./containers/handleMediaQuery";
+// import htmlToImage from "html-to-image";
+import domtoimage from "dom-to-image";
 
 export default class App extends Component {
   constructor(props) {
@@ -107,11 +109,19 @@ export default class App extends Component {
     //   textAreaCanvas = await html2canvas(this.textArea);
     // }
 
-    const textAreaCanvas = await html2canvas(this.textArea);
-    const imgData = textAreaCanvas.toDataURL();
-    const imgTag = document.createElement("img");
-    imgTag.src = `${imgData}`;
-    this.props.pushToFrames(imgTag);
+    try {
+      const imgData = await domtoimage.toPng(this.textArea);
+      const imgTag = document.createElement("img");
+      imgTag.src = `${imgData}`;
+      this.props.pushToFrames(imgTag);
+    } catch (e) {
+      console.error("oops, something went wrong!", error);
+    }
+    // const textAreaCanvas = await html2canvas(this.textArea);
+    // const imgData = textAreaCanvas.toDataURL();
+    // const imgTag = document.createElement("img");
+    // imgTag.src = `${imgData}`;
+    // this.props.pushToFrames(imgTag);
   };
 
   ////CREATE GIF//////////////////////////////////////////////////
