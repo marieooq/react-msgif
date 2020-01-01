@@ -64,7 +64,8 @@ export default class App extends Component {
     // changeScreenSize(store.getState().screenSize);
     if (mq.matches) {
       this.props.mqFlagTrue();
-      console.log(store.getState().mqFlag.flag);
+      this.textArea.style.padding = "15px 30px";
+      this.textArea.style.fontSize = "15px";
       if (store.getState().screenSize === "twitter") {
         docStyle.setProperty("--screenWidth", "256px");
         docStyle.setProperty("--screenHeight", "128px");
@@ -74,7 +75,8 @@ export default class App extends Component {
       }
     } else {
       this.props.mqFlagFalse();
-      console.log(store.getState().mqFlag.flag);
+      this.textArea.style.padding = "30px 60px";
+      this.textArea.style.fontSize = "30px";
       if (store.getState().screenSize === "twitter") {
         docStyle.setProperty("--screenWidth", "512px");
         docStyle.setProperty("--screenHeight", "256px");
@@ -94,28 +96,6 @@ export default class App extends Component {
       createGifBtn.classList.remove("hide");
       this.props.captureCountIncrement();
     }
-
-    // let textAreaCanvas;
-    // const rect = this.textArea.getBoundingClientRect();
-    // const position = rect.top;
-    // console.log(position);
-    // if (store.getState().mqFlag) {
-    //   console.log("mobile");
-    //   textAreaCanvas = await html2canvas(this.textArea, {
-    //     scrollY: position
-    //   });
-    // } else {
-    //   console.log("pc");
-    //   textAreaCanvas = await html2canvas(this.textArea);
-    // }
-
-    // try {
-    //   const imgData = await domtoimage.toPng(this.textArea);
-    //   const imgTag = document.createElement("img");
-    //   imgTag.src = `${imgData}`;
-    //   this.props.pushToFrames(imgTag);
-    // } catch (e) {
-    //   console.error("oops, something went wrong!", error);
     // }
     const textAreaCanvas = await html2canvas(this.textArea);
     const imgData = textAreaCanvas.toDataURL();

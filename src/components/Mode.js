@@ -43,15 +43,15 @@ class Mode extends Component {
           coloredTextClass[i].style.color = "#292929";
           break;
 
-        case "pop":
+        case "pop-yellow":
           coloredTextClass[i].style.color = "#292929";
           break;
 
-        case "xmas-green":
-          coloredTextClass[i].style.color = "#fff";
+        case "pop-blue":
+          coloredTextClass[i].style.color = "#292929";
           break;
 
-        case "xmas-red":
+        case "pop-pink":
           coloredTextClass[i].style.color = "#fff";
           break;
 
@@ -102,18 +102,16 @@ class Mode extends Component {
         this.displayScreen.style.fontFamily = '"Noto Serif", serif';
         break;
 
-      case "pop":
+      case "pop-yellow":
         this.displayScreen.style.fontFamily = "'Anton', 'Kosugi', sans-serif";
         break;
 
-      case "xmas-green":
-        this.displayScreen.style.fontFamily =
-          "'Abril Fatface', cursive, 'Kosugi', sans-serif";
+      case "pop-blue":
+        this.displayScreen.style.fontFamily = "'Anton', 'Kosugi', sans-serif";
         break;
 
-      case "xmas-red":
-        this.displayScreen.style.fontFamily =
-          "'Courgette', cursive, 'Kosugi', sans-serif";
+      case "pop-pink":
+        this.displayScreen.style.fontFamily = "'Anton', 'Kosugi', sans-serif";
         break;
 
       default:
@@ -135,16 +133,16 @@ class Mode extends Component {
         this.displayScreen.style.backgroundColor = "#fff";
         break;
 
-      case "pop":
+      case "pop-yellow":
         this.displayScreen.style.backgroundColor = "#fef734";
         break;
 
-      case "xmas-green":
-        this.displayScreen.style.backgroundColor = "#006400";
+      case "pop-blue":
+        this.displayScreen.style.backgroundColor = "#34ccfe";
         break;
 
-      case "xmas-red":
-        this.displayScreen.style.backgroundColor = "#dc143c";
+      case "pop-pink":
+        this.displayScreen.style.backgroundColor = "#fe34a6";
         break;
 
       default:
@@ -168,9 +166,9 @@ class Mode extends Component {
           <option value="developer">Developer</option>
           <option value="neon">Neon</option>
           <option value="note">Note</option>
-          <option value="pop">Pop</option>
-          <option value="xmas-green">X'mas(green)</option>
-          <option value="xmas-red">X'mas(red)</option>
+          <option value="pop-yellow">Pop(yellow)</option>
+          <option value="pop-blue">Pop(blue)</option>
+          <option value="pop-pink">Pop(pink)</option>
         </select>
       </div>
     );
