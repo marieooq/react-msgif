@@ -97,7 +97,12 @@ export default class App extends Component {
       this.props.captureCountIncrement();
     }
     // }
-    const textAreaCanvas = await html2canvas(this.textArea);
+    const textAreaCanvas = await html2canvas(this.textArea, {
+      windowWidth: this.textArea.scrollWidth,
+      windowHeight: this.textArea.scrollHeight,
+      x: 0,
+      y: this.textArea.offsetTop
+    });
     const imgData = textAreaCanvas.toDataURL();
     const imgTag = document.createElement("img");
     imgTag.src = `${imgData}`;
