@@ -101,11 +101,13 @@ class RecordAndReset extends Component {
   };
 
   startRec = e => {
-    //go to top
-    window.scrollTo(0, 0);
-
     e.preventDefault();
     const textAreaScreen = document.getElementById("textareaMsg");
+
+    //go to top of the textarea
+    // window.scrollTo(0, 0);
+    window.scrollTo(0, textAreaScreen.offsetTop);
+
     textAreaScreen.textContent = "";
     if (!store.getState().isRec) {
       //when the RECORD button has been pushed

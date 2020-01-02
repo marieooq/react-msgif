@@ -19,7 +19,7 @@ import store from "./reducers/store";
 import Notification from "./containers/Notification";
 // import handleMediaQuery from "./containers/handleMediaQuery";
 // import htmlToImage from "html-to-image";
-import domtoimage from "dom-to-image";
+// import domtoimage from "dom-to-image";
 
 export default class App extends Component {
   constructor(props) {
