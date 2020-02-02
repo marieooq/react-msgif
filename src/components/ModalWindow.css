@@ -65,9 +65,9 @@ button#start {
   width: 100%;
   text-decoration: none;
   color: #fff;
-  font-size: 30px;
+  font-size: 1.2rem;
   font-weight: bold;
-  padding: 3% 6%;
+  padding: 9% 6%;
   border-radius: 8px;
   background: rgba(70, 83, 225, 1);
 }
@@ -100,6 +100,11 @@ button#close:hover {
   button#close {
     font-size: 1.5rem;
   }
+
+  button#start {
+    font-size: 2rem;
+    padding: 3% 6%;
+  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -119,6 +124,18 @@ button#close:hover {
     top: 3%;
     right: 3%;
   }
+
+  button#start {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 3% 6%;
+    border-radius: 8px;
+    background: rgba(70, 83, 225, 1);
+  }
 }
 @media screen and (min-width: 1024px) {
   .modal-inner {
@@ -136,5 +153,17 @@ button#close:hover {
     position: absolute;
     top: 3%;
     right: 3%;
+  }
+
+  button#start {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding: 3% 6%;
+    border-radius: 8px;
+    background: rgba(70, 83, 225, 1);
   }
 }
