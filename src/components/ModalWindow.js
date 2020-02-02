@@ -9,16 +9,16 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./ModalWindow.css";
 const customStyles = {
   content: {
-    width: "60%",
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-    overflowY: "scroll",
-    height: "100%",
-    margin: "60px auto"
+    // width: "60%",
+    // top: "50%",
+    // left: "50%",
+    // right: "auto",
+    // bottom: "auto",
+    // marginRight: "-50%",
+    // transform: "translate(-50%, -50%)",
+    // overflowY: "scroll",
+    // height: "100%",
+    // margin: "60px auto"
   }
 };
 
@@ -53,8 +53,8 @@ class ModalWindow extends React.Component {
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
-          style={customStyles}
           contentLabel="Landing Page"
+          style={customStyles}
           overlayClassName="Overlay"
         >
           <div className="modal-inner">
@@ -71,14 +71,14 @@ class ModalWindow extends React.Component {
               width="300px"
             />
 
-            <p>
+            <p className="modal-p">
               Msgif is a GIF generator that converts your message into a GIF
               animation.{" "}
             </p>
 
             <img src={image1} alt="messagif1" className="media" />
 
-            <p>
+            <p className="modal-p">
               You can download a GIF message that you create. Once you download
               it you can share it on social media, chat apps or wherever you
               want! The GIF message stands out more than normal images. It's
