@@ -1,6 +1,7 @@
 .Modal {
   width: 300px;
   margin: 0 auto;
+  position: relative;
 }
 
 .Overlay {
@@ -10,7 +11,10 @@
   right: 0;
   bottom: 0;
   /* background-color: rebeccapurple; */
-  background: rgba(70, 83, 225, 0.6);
+  background: rgb(120, 128, 221);
+}
+.ReactModal__Body--open {
+  position: fixed;
 }
 
 .modal-inner {
@@ -31,12 +35,18 @@ p {
   font-size: 1.2rem;
   padding: 0;
   margin: 0 0 2rem;
+  line-height: 1.4;
 }
 
 img.media {
   display: block;
   max-width: 100%;
   margin: 0 auto 2rem;
+}
+
+img#image2 {
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 4rem;
 }
 
 button#start {
@@ -54,4 +64,18 @@ button#start {
 button#start:hover {
   cursor: pointer;
   opacity: 0.8;
+}
+
+button#close {
+  border-style: none;
+  font-size: 2rem;
+  /* font-weight: bold; */
+  color: rgb(115, 115, 117);
+  position: absolute;
+  top: 3%;
+  right: 3%;
+}
+
+button#close:hover {
+  cursor: pointer;
 }

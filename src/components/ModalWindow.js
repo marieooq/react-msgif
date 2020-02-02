@@ -4,6 +4,8 @@ import ReactModal from "react-modal";
 import image1 from "../img/messagif1.gif";
 import image2 from "../img/msgif_twitter.gif";
 import illustration from "../img/msgif_illustration.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./ModalWindow.css";
 const customStyles = {
   content: {
@@ -15,7 +17,8 @@ const customStyles = {
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     overflowY: "scroll",
-    height: "100%"
+    height: "100%",
+    margin: "60px auto"
   }
 };
 
@@ -44,7 +47,7 @@ class ModalWindow extends React.Component {
     console.log("inside ModalWindow.js");
     return (
       <div>
-        <button onClick={this.openModal}>Open Modal!!</button>
+        {/* <button onClick={this.openModal}>Open Modal!!</button> */}
 
         <ReactModal
           isOpen={this.state.modalIsOpen}
@@ -55,6 +58,10 @@ class ModalWindow extends React.Component {
           overlayClassName="Overlay"
         >
           <div className="modal-inner">
+            <button onClick={this.closeModal} id="close">
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
+
             <h1>Welcome to Msgif!</h1>
 
             <img
@@ -78,7 +85,7 @@ class ModalWindow extends React.Component {
               totally free, so just try it!
             </p>
 
-            <img src={image2} alt="messagif2" className="media" />
+            <img src={image2} alt="messagif2" className="media" id="image2" />
 
             <button onClick={this.closeModal} id="start">
               GET STARTED
