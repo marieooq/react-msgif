@@ -1,0 +1,57 @@
+.Modal {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background-color: rebeccapurple; */
+  background: rgba(70, 83, 225, 0.6);
+}
+
+.modal-inner {
+  width: 55%;
+  padding: 5% 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: rgb(29, 45, 221);
+  padding: 0;
+  margin: 0 0 2.5rem;
+}
+
+p {
+  font-size: 1.2rem;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+
+img.media {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto 2rem;
+}
+
+button#start {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 5% 10%;
+  border-radius: 8px;
+  background: rgba(70, 83, 225, 1);
+}
+
+button#start:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}

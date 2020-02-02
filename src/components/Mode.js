@@ -55,6 +55,10 @@ class Mode extends Component {
           coloredTextClass[i].style.color = "#fff";
           break;
 
+        case "navy":
+          coloredTextClass[i].style.color = "#fff";
+          break;
+
         default:
           console.log("mode is undefined");
       }
@@ -114,6 +118,10 @@ class Mode extends Component {
         this.displayScreen.style.fontFamily = "'Anton', 'Kosugi', sans-serif";
         break;
 
+      case "navy":
+        this.displayScreen.style.fontFamily = "'PT Sans', 'Kosugi', sans-serif";
+        break;
+
       default:
         console.log("mode is undefined");
     }
@@ -145,6 +153,10 @@ class Mode extends Component {
         this.displayScreen.style.backgroundColor = "#fe34a6";
         break;
 
+      case "navy":
+        this.displayScreen.style.backgroundColor = "#043364";
+        break;
+
       default:
         console.log("mode is undefined");
     }
@@ -169,6 +181,7 @@ class Mode extends Component {
           <option value="pop-yellow">Pop(yellow)</option>
           <option value="pop-blue">Pop(blue)</option>
           <option value="pop-pink">Pop(pink)</option>
+          <option value="navy">Pop(navy)</option>
         </select>
       </div>
     );

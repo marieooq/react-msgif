@@ -16,6 +16,8 @@ import "./App.css";
 import logo from "./img/logo.png";
 import encode64 from "./b64";
 import store from "./reducers/store";
+// import Modal from "./components/Modal";
+import ModalWindow from "./components/ModalWindow";
 import Notification from "./containers/Notification";
 // import handleMediaQuery from "./containers/handleMediaQuery";
 // import htmlToImage from "html-to-image";
@@ -236,6 +238,9 @@ export default class App extends Component {
   render() {
     return (
       <div id="container">
+        {/* <Modal /> */}
+        <ModalWindow />
+        <div id="main"></div>
         <Notification />
         <header>
           <img src={logo} alt="logo" id="logo" />
