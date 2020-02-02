@@ -1,0 +1,140 @@
+.Modal {
+  /* width: 60%;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  overflow-y: scroll;
+  height: 100%;
+  margin: 60px auto; */
+  /* margin: 0 auto; */
+  position: relative;
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background-color: rebeccapurple; */
+  background: rgb(120, 128, 221);
+}
+.ReactModal__Body--open {
+  position: fixed;
+}
+
+.modal-inner {
+  width: 90%;
+  padding: 8% 0;
+  margin: 0 auto;
+  text-align: center;
+  /* background-color: aqua; */
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: rgb(29, 45, 221);
+  padding: 0;
+  margin: 0 0 2.5rem;
+}
+
+p.modal-p {
+  color: rgb(58, 58, 58);
+  font-size: 1.2rem;
+  padding: 0;
+  margin: 0 0 2rem;
+  line-height: 1.4;
+}
+
+img.media {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto 2rem;
+}
+
+img#image2 {
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 4rem;
+}
+
+button#start {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 3% 6%;
+  border-radius: 8px;
+  background: rgba(70, 83, 225, 1);
+}
+
+button#start:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+button#close {
+  border-style: none;
+  font-size: 1.2rem;
+  /* font-weight: bold; */
+  color: rgb(115, 115, 117);
+  position: absolute;
+  top: 3%;
+  right: 3%;
+}
+
+button#close:hover {
+  cursor: pointer;
+}
+
+@media screen and (min-width: 480px) {
+  .modal-inner {
+    width: 80%;
+    /* padding: % 0; */
+  }
+
+  button#close {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .modal-inner {
+    width: 55%;
+    padding: 5% 0;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  button#close {
+    border-style: none;
+    font-size: 2rem;
+    /* font-weight: bold; */
+    color: rgb(115, 115, 117);
+    position: absolute;
+    top: 3%;
+    right: 3%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .modal-inner {
+    width: 55%;
+    padding: 5% 0;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  button#close {
+    border-style: none;
+    font-size: 2rem;
+    /* font-weight: bold; */
+    color: rgb(115, 115, 117);
+    position: absolute;
+    top: 3%;
+    right: 3%;
+  }
+}
