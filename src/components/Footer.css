@@ -1,0 +1,15 @@
+footer {
+  color: #fff;
+  /* color: rgb(138, 136, 136); */
+  text-align: center;
+  padding: 2%;
+  background-color: #7880dd;
+  font-size: 14px;
+  /* border-top: 1px solid #000; */
+}
+
+footer a {
+  color: #fff;
+  /* color: rgb(138, 136, 136); */
+  text-decoration: underline;
+}

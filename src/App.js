@@ -18,6 +18,7 @@ import encode64 from "./b64";
 import store from "./reducers/store";
 import ModalWindow from "./components/ModalWindow";
 import Notification from "./containers/Notification";
+import Footer from "./components/Footer";
 // import handleMediaQuery from "./containers/handleMediaQuery";
 // import htmlToImage from "html-to-image";
 // import domtoimage from "dom-to-image";
@@ -248,7 +249,7 @@ export default class App extends Component {
           <div className="wrapper-by-step">
             <Description
               step="1"
-              title="Choose the size of the text area and style of design."
+              title="Choose the size of the text area and style of design.🎨"
             />
             <div id="size-mode-wrapper">
               <ScreenSizeContainer />
@@ -259,7 +260,7 @@ export default class App extends Component {
           <div className="wrapper-by-step">
             <Description
               step="2"
-              title="Press the Record button and type your message in the textarea below. Once you finish typing, press the Create GIF button."
+              title="Press the Record button and type your message in the text area below. Once you finish typing, press the Create GIF button.👆"
             />
             <Note
               number="1"
@@ -284,13 +285,15 @@ export default class App extends Component {
           <div className="wrapper-by-step">
             <Description
               step="3"
-              title="Download the GIF animation you've created."
+              title="Download the GIF animation you've created. You can share it on Twitter, Facebook, chat apps or wherever you want!🎉"
             />
             <OutputScreen />
             <Download href={this.state.gifAnimation} />
             <div id="down-to-here" className="down-to-here-hide"></div>
           </div>
         </div>
+
+        <Footer />
       </div>
     );
   }
