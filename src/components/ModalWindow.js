@@ -44,7 +44,6 @@ class ModalWindow extends React.Component {
     this.setState({ modalIsOpen: false });
   }
   render() {
-    console.log("inside ModalWindow.js");
     return (
       <div>
         {/* <button onClick={this.openModal}>Open Modal!!</button> */}
