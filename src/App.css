@@ -46,8 +46,8 @@ header img#logo {
 #down-to-here {
   overflow-y: auto;
   width: 100%;
-  height: 100px;
-  margin-top: 50px;
+  height: 30px;
+  /* margin-top: 50px; */
 }
 
 .down-to-here-hide {
