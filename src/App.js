@@ -19,6 +19,7 @@ import store from "./reducers/store";
 import ModalWindow from "./components/ModalWindow";
 import Notification from "./containers/Notification";
 import Footer from "./components/Footer";
+import { blockStatement } from "@babel/types";
 // import handleMediaQuery from "./containers/handleMediaQuery";
 // import htmlToImage from "html-to-image";
 // import domtoimage from "dom-to-image";
@@ -247,7 +248,13 @@ export default class App extends Component {
           <img
             src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=183178&theme=light"
             alt="Msgif - A GIF generator that converts your message into a GIF | Product Hunt Embed"
-            style={{ width: "250px", height: "54px" }}
+            style={{
+              width: "250px",
+              height: "54px",
+              display: "block",
+              marginTop: "1%",
+              marginLeft: "1%"
+            }}
           />
         </a>
         <div id="main"></div>
