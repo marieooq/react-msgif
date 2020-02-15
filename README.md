@@ -4,7 +4,7 @@ Once you download it, you can share it on social media, chat apps, or wherever y
  
 ![msgif_img](https://msgif.net/static/media/messagif1.116aaf4a.gif "sample image") 
  
-I launched this web app on [Product Hunt](https://www.producthunt.com/posts/msgif) on February 7th, 2020.🎉<br>
+I launched this web app on [Product Hunt](https://www.producthunt.com/posts/msgif) on February 3rd, 2020.🎉<br>
 Thankfully, I got a lot of feedback and also some inquiries about making it OSS.<br>
 I decided to make it OSS eventually because I am not going to do this for living and spare a lot of time to maintain this project. <br>
 
