@@ -1,25 +1,25 @@
-import React, { Component } from "react";
-import Description from "./components/Description";
-import Note from "./components/Note";
-import OutputScreen from "./components/OutputScreen";
-import ScreenSizeContainer from "./containers/ScreenSizeContainer";
-import ModeContainer from "./components/ModeContainer";
-import TextareaContainer from "./components/TextareaContainer";
-import RecordResetContainer from "./containers/RecordResetContainer";
-import CreateGif from "./containers/CreateGif";
-import Download from "./components/Download";
+import React, { Component } from 'react';
+import Description from './components/Description';
+import Note from './components/Note';
+import OutputScreen from './components/OutputScreen';
+import ScreenSizeContainer from './containers/ScreenSizeContainer';
+import ModeContainer from './components/ModeContainer';
+import TextareaContainer from './components/TextareaContainer';
+import RecordResetContainer from './containers/RecordResetContainer';
+import CreateGif from './containers/CreateGif';
+import Download from './components/Download';
 // import Loading from "./Loading";
-import html2canvas from "html2canvas";
+import html2canvas from 'html2canvas';
 /* eslint-disable no-undef */
 // import GIFEncoder from "./GIFEncoder";
-import "./App.css";
-import logo from "./img/logo.png";
-import encode64 from "./b64";
-import store from "./reducers/store";
-import ModalWindow from "./components/ModalWindow";
-import Notification from "./containers/Notification";
-import Footer from "./components/Footer";
-import { blockStatement } from "@babel/types";
+import './App.css';
+import logo from './img/logo.png';
+import encode64 from './b64';
+import store from './reducers/store';
+import ModalWindow from './components/ModalWindow';
+import Notification from './containers/Notification';
+import Footer from './components/Footer';
+// import { blockStatement } from "@babel/types";
 // import handleMediaQuery from "./containers/handleMediaQuery";
 // import htmlToImage from "html-to-image";
 // import domtoimage from "dom-to-image";
@@ -29,9 +29,9 @@ export default class App extends Component {
     super(props);
     this.state = {
       recordingFlg: false,
-      encoder: "",
+      encoder: '',
       // outputScreenStatus: "",
-      gifAnimation: ""
+      gifAnimation: ''
     };
   }
 
@@ -41,9 +41,9 @@ export default class App extends Component {
   donwloadBtn;
 
   componentDidMount() {
-    this.textArea = document.getElementById("textareaMsg");
-    this.outputScreen = document.getElementById("output");
-    this.donwloadBtn = document.getElementById("ssgif");
+    this.textArea = document.getElementById('textareaMsg');
+    this.outputScreen = document.getElementById('output');
+    this.donwloadBtn = document.getElementById('ssgif');
 
     //initiate mode
     this.setState({ mode: store.getState().mode });
@@ -52,7 +52,7 @@ export default class App extends Component {
     window.scrollTo(0, 0);
 
     //excecute if the width of window is less than 480px
-    this.mq480 = window.matchMedia("(max-width: 480px)");
+    this.mq480 = window.matchMedia('(max-width: 480px)');
     this.handleMediaQuery(
       this.mq480,
       this.props.mqFlagTrue,
@@ -67,25 +67,25 @@ export default class App extends Component {
     // changeScreenSize(store.getState().screenSize);
     if (mq.matches) {
       this.props.mqFlagTrue();
-      this.textArea.style.padding = "15px 30px";
-      this.textArea.style.fontSize = "15px";
-      if (store.getState().screenSize === "twitter") {
-        docStyle.setProperty("--screenWidth", "256px");
-        docStyle.setProperty("--screenHeight", "128px");
-      } else if (store.getState().screenSize === "social") {
-        docStyle.setProperty("--screenWidth", "200px");
-        docStyle.setProperty("--screenHeight", "200px");
+      this.textArea.style.padding = '15px 30px';
+      this.textArea.style.fontSize = '15px';
+      if (store.getState().screenSize === 'twitter') {
+        docStyle.setProperty('--screenWidth', '256px');
+        docStyle.setProperty('--screenHeight', '128px');
+      } else if (store.getState().screenSize === 'social') {
+        docStyle.setProperty('--screenWidth', '200px');
+        docStyle.setProperty('--screenHeight', '200px');
       }
     } else {
       this.props.mqFlagFalse();
-      this.textArea.style.padding = "30px 60px";
-      this.textArea.style.fontSize = "30px";
-      if (store.getState().screenSize === "twitter") {
-        docStyle.setProperty("--screenWidth", "512px");
-        docStyle.setProperty("--screenHeight", "256px");
-      } else if (store.getState().screenSize === "social") {
-        docStyle.setProperty("--screenWidth", "400px");
-        docStyle.setProperty("--screenHeight", "400px");
+      this.textArea.style.padding = '30px 60px';
+      this.textArea.style.fontSize = '30px';
+      if (store.getState().screenSize === 'twitter') {
+        docStyle.setProperty('--screenWidth', '512px');
+        docStyle.setProperty('--screenHeight', '256px');
+      } else if (store.getState().screenSize === 'social') {
+        docStyle.setProperty('--screenWidth', '400px');
+        docStyle.setProperty('--screenHeight', '400px');
       }
     }
   };
@@ -95,8 +95,8 @@ export default class App extends Component {
   captureScreen = async () => {
     if (store.getState().captureCount.counter === 0) {
       //shows the create gif button
-      const createGifBtn = document.getElementById("createGif-btn");
-      createGifBtn.classList.remove("hide");
+      const createGifBtn = document.getElementById('createGif-btn');
+      createGifBtn.classList.remove('hide');
       this.props.captureCountIncrement();
     }
     // }
@@ -107,17 +107,17 @@ export default class App extends Component {
       y: this.textArea.offsetTop
     });
     const imgData = textAreaCanvas.toDataURL();
-    const imgTag = document.createElement("img");
+    const imgTag = document.createElement('img');
     imgTag.src = `${imgData}`;
     this.props.pushToFrames(imgTag);
   };
 
   ////CREATE GIF//////////////////////////////////////////////////
   switchLoading = status => {
-    if (status === "start") {
-      this.setState({ outputScreenStatus: "loading" });
-    } else if (status === "stop") {
-      this.setState({ outputScreenStatus: "" });
+    if (status === 'start') {
+      this.setState({ outputScreenStatus: 'loading' });
+    } else if (status === 'stop') {
+      this.setState({ outputScreenStatus: '' });
     }
   };
 
@@ -125,13 +125,13 @@ export default class App extends Component {
     e.preventDefault();
     if (store.getState().createGifCount.counter === 0) {
       //when it's creating GIF show a snap bar
-      this.props.setNotification("info", "Creating GIF...");
+      this.props.setNotification('info', 'Creating GIF...');
 
       //make the createGIF button invalid
-      const createGifBtn = document.getElementById("createGif-btn");
-      createGifBtn.id = "createGif-btn-pushed";
-      createGifBtn.classList.remove("default");
-      createGifBtn.classList.add("invalid");
+      const createGifBtn = document.getElementById('createGif-btn');
+      createGifBtn.id = 'createGif-btn-pushed';
+      createGifBtn.classList.remove('default');
+      createGifBtn.classList.add('invalid');
 
       //increment createGIF counter
       this.props.createGifCountIncrement();
@@ -142,8 +142,8 @@ export default class App extends Component {
       await this.captureScreen();
 
       //get canvas
-      const canvas = document.getElementById("canvas");
-      const ctx = canvas.getContext("2d");
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
 
       //initiate GiTEncoder
       const encoder = new GIFEncoder();
@@ -171,7 +171,7 @@ export default class App extends Component {
           //create a gif animation
           encoder.finish();
 
-          resolve("ok");
+          resolve('ok');
         });
       };
 
@@ -182,46 +182,46 @@ export default class App extends Component {
 
       this.setState({
         gifAnimation:
-          "data:image/gif;base64," + encode64(encoder.stream().getData())
+          'data:image/gif;base64,' + encode64(encoder.stream().getData())
       });
 
       //set width and height of the output image
       const outputImgWidth = getComputedStyle(document.documentElement)
-        .getPropertyValue("--screenWidth")
+        .getPropertyValue('--screenWidth')
         .substring(0, 3);
       const outputImgHeight = getComputedStyle(document.documentElement)
-        .getPropertyValue("--screenHeight")
+        .getPropertyValue('--screenHeight')
         .substring(0, 3);
 
       //create an output image
-      const img = document.createElement("img");
-      img.id = "outputImg";
+      const img = document.createElement('img');
+      img.id = 'outputImg';
       img.src = this.state.gifAnimation;
       img.width = outputImgWidth;
       img.height = outputImgHeight;
 
       //set a style to outputScreen
       this.outputScreen.style.padding = 0;
-      this.outputScreen.style.border = "none";
+      this.outputScreen.style.border = 'none';
       this.outputScreen.appendChild(img);
-      this.outputScreen.classList.remove("output-hide");
-      this.outputScreen.classList.add("output-show");
+      this.outputScreen.classList.remove('output-hide');
+      this.outputScreen.classList.add('output-show');
 
       //show the div which has down-to-here-hide class
       //so that scroll down to the download button
-      const downToHere = document.getElementById("down-to-here");
-      downToHere.classList.remove("down-to-here-hide");
-      downToHere.classList.add("down-to-here-show");
+      const downToHere = document.getElementById('down-to-here');
+      downToHere.classList.remove('down-to-here-hide');
+      downToHere.classList.add('down-to-here-show');
 
       //scroll down to the top of the output screen
       this.ScrollDown();
 
       //when it finish creating GIF erase the old snap bar and show new one
-      this.props.closeNotification("info", "Creating GIF...");
-      this.props.setNotification("info", "Done!");
+      this.props.closeNotification('info', 'Creating GIF...');
+      this.props.setNotification('info', 'Done!');
 
       //shows a download button
-      this.donwloadBtn.classList.remove("hide");
+      this.donwloadBtn.classList.remove('hide');
     } else {
       return;
     }
@@ -229,7 +229,7 @@ export default class App extends Component {
 
   ScrollDown = () => {
     const rect = document
-      .getElementById("down-to-here")
+      .getElementById('down-to-here')
       .getBoundingClientRect();
     // const rect = this.outputScreen.getBoundingClientRect();
     const position = rect.top;
@@ -249,11 +249,11 @@ export default class App extends Component {
             src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=183178&theme=light"
             alt="Msgif - A GIF generator that converts your message into a GIF | Product Hunt Embed"
             style={{
-              width: "250px",
-              height: "54px",
-              display: "block",
-              marginTop: "1%",
-              marginLeft: "1%"
+              width: '250px',
+              height: '54px',
+              display: 'block',
+              marginTop: '1%',
+              marginLeft: '1%'
             }}
           />
         </a>

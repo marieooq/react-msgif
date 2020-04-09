@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import store from '../reducers/store';
 import './Mode.css';
 
-class Mode extends Component {
+class CustomizedMode extends Component {
   displayScreen;
 
   componentDidMount() {
@@ -193,4 +193,4 @@ class Mode extends Component {
   }
 }
 
-export default Mode;
+export default CustomizedMode;

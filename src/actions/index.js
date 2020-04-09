@@ -1,58 +1,62 @@
 export const startRec = {
-  type: "START_REC"
+  type: 'START_REC'
 };
 
 export const endRec = {
-  type: "END_REC"
+  type: 'END_REC'
 };
 
 export const changeTextAreaVal = text => {
-  return { type: "CHANGE_TEXT_AREA_VAL", text };
+  return { type: 'CHANGE_TEXT_AREA_VAL', text };
 };
 
 export const changeScreenSize = text => {
-  return { type: "CHANGE_SCREEN_SIZE", text };
+  return { type: 'CHANGE_SCREEN_SIZE', text };
 };
 
 export const changeMode = text => {
-  return { type: "CHANGE_MODE", text };
+  return { type: 'CHANGE_MODE', text };
+};
+
+export const isCustomized = text => {
+  return { type: 'IS_CUSTOMIZED', text };
 };
 
 export const mqFlagTrue = () => {
-  return { type: "MQ_FLAG_TRUE" };
+  return { type: 'MQ_FLAG_TRUE' };
 };
 
 export const mqFlagFalse = () => {
-  return { type: "MQ_FLAG_FALSE" };
+  return { type: 'MQ_FLAG_FALSE' };
 };
 
 export const captureCountIncrement = () => {
-  return { type: "CAPTURE_COUNT_INCREMENT" };
+  return { type: 'CAPTURE_COUNT_INCREMENT' };
 };
 
 export const captureCountDecrement = () => {
-  return { type: "CAPTURE_COUNT_DECREMENT" };
+  return { type: 'CAPTURE_COUNT_DECREMENT' };
 };
 
 export const createGifCountIncrement = () => {
-  return { type: "CREATE_GIT_COUNT_INCREMENT" };
+  return { type: 'CREATE_GIT_COUNT_INCREMENT' };
 };
 
 export const createGifCountDecrement = () => {
-  return { type: "CREATE_GIT_COUNT_DECREMENT" };
+  return { type: 'CREATE_GIT_COUNT_DECREMENT' };
 };
 
 export const pushToFrames = image => {
-  return { type: "PUSH_TO_FRAMES", image };
+  return { type: 'PUSH_TO_FRAMES', image };
 };
 
 export const deleteAllFromFrames = () => {
-  return { type: "DELETE_ALL_FROM_FRAMES" };
+  return { type: 'DELETE_ALL_FROM_FRAMES' };
 };
 
 export const setNotification = (variant, message) => {
   return {
-    type: "SET_NOTIFICATION",
+    type: 'SET_NOTIFICATION',
     variant: variant,
     message: message
   };
@@ -60,7 +64,7 @@ export const setNotification = (variant, message) => {
 
 export const closeNotification = (variant, message) => {
   return {
-    type: "CLOSE_NOTIFICATION",
+    type: 'CLOSE_NOTIFICATION',
     variant: variant,
     message: message
   };
