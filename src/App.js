@@ -4,6 +4,7 @@ import Note from './components/Note';
 import OutputScreen from './components/OutputScreen';
 import ScreenSizeContainer from './containers/ScreenSizeContainer';
 import ModeContainer from './components/ModeContainer';
+import CustomizedContainer from './components/CustomizedContainer';
 import TextareaContainer from './components/TextareaContainer';
 import RecordResetContainer from './containers/RecordResetContainer';
 import CreateGif from './containers/CreateGif';
@@ -272,6 +273,7 @@ export default class App extends Component {
             <div id="size-mode-wrapper">
               <ScreenSizeContainer />
               <ModeContainer />
+              <CustomizedContainer />
             </div>
           </div>
 
