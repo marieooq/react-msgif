@@ -14,13 +14,22 @@ class Mode extends Component {
       this.switchMode(store.getState().mode);
     }
 
+    if (
+      store.getState().customizedBackgroundColor !==
+      prevState.customizedBackgroundColor
+    ) {
+      this.switchMode(store.getState().mode);
+    }
+
     if (store.getState().textAreaVal !== prevState.textAreaVal) {
       this.switchMode(store.getState().mode);
     }
   }
   switchMode = mode => {
     if (mode === 'customized') {
-      // console.log(`mode: ${mode}`);
+      console.log(`mode: ${mode}`);
+      console.log('customized mode is selected');
+      this.changeBackground(mode);
     } else {
       this.changeTextColor(mode);
       this.changeTextShadow(mode);
@@ -159,6 +168,10 @@ class Mode extends Component {
 
       case 'navy':
         this.displayScreen.style.backgroundColor = '#043364';
+        break;
+
+      case 'customized':
+        this.displayScreen.style.backgroundColor = store.getState().customizedBackgroundColor;
         break;
 
       default:
