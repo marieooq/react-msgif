@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import store from '../reducers/store';
 
-class ColorPickerButton extends Component {
+class BackgroundColorPickerButton extends Component {
   state = {
     buttonContent: 'Open the color picker'
   };
@@ -32,4 +32,4 @@ class ColorPickerButton extends Component {
   }
 }
 
-export default ColorPickerButton;
+export default BackgroundColorPickerButton;

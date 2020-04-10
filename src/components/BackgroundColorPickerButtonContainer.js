@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { isColorPickerTrue, isColorPickerFalse } from '../actions';
-import ColorPickerButton from './ColorPickerButton';
+import BackgroundColorPickerButton from './BackgroundColorPickerButton';
 
 const mapStateToProps = state => {
   return {
@@ -15,4 +15,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ColorPickerButton);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BackgroundColorPickerButton);

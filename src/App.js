@@ -5,7 +5,7 @@ import OutputScreen from './components/OutputScreen';
 import ScreenSizeContainer from './containers/ScreenSizeContainer';
 import ModeContainer from './components/ModeContainer';
 import ColorPickerContainer from './components/ColorPickerContainer';
-import ColorPickerButtonContainer from './components/ColorPickerButtonContainer';
+import BackgroundColorPickerButtonContainer from './components/BackgroundColorPickerButtonContainer';
 import TextareaContainer from './components/TextareaContainer';
 import RecordResetContainer from './containers/RecordResetContainer';
 import CreateGif from './containers/CreateGif';
@@ -275,7 +275,7 @@ export default class App extends Component {
               <ScreenSizeContainer />
               <ModeContainer />
               {store.getState().mode === 'customized' ? (
-                <ColorPickerButtonContainer />
+                <BackgroundColorPickerButtonContainer />
               ) : (
                 <></>
               )}
