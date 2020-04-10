@@ -20,7 +20,7 @@ class Mode extends Component {
   }
   switchMode = mode => {
     if (mode === 'customized') {
-      console.log(`mode: ${mode}`);
+      // console.log(`mode: ${mode}`);
     } else {
       this.changeTextColor(mode);
       this.changeTextShadow(mode);
@@ -168,6 +168,7 @@ class Mode extends Component {
 
   handleMode = e => {
     this.props.changeMode(e.target.value);
+    console.log(store.getState().mode);
   };
 
   render() {

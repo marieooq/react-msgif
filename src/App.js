@@ -4,7 +4,8 @@ import Note from './components/Note';
 import OutputScreen from './components/OutputScreen';
 import ScreenSizeContainer from './containers/ScreenSizeContainer';
 import ModeContainer from './components/ModeContainer';
-import CustomizedContainer from './components/CustomizedContainer';
+import ColorPickerContainer from './components/ColorPickerContainer';
+import ColorPickerButtonContainer from './components/ColorPickerButtonContainer';
 import TextareaContainer from './components/TextareaContainer';
 import RecordResetContainer from './containers/RecordResetContainer';
 import CreateGif from './containers/CreateGif';
@@ -47,7 +48,7 @@ export default class App extends Component {
     this.donwloadBtn = document.getElementById('ssgif');
 
     //initiate mode
-    this.setState({ mode: store.getState().mode });
+    // this.setState({ mode: store.getState().mode });
 
     //go to top
     window.scrollTo(0, 0);
@@ -240,7 +241,7 @@ export default class App extends Component {
   render() {
     return (
       <div id="container">
-        <ModalWindow />
+        {/* <ModalWindow /> */}
         <a
           href="https://www.producthunt.com/posts/msgif?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-msgif"
           target="_blank"
@@ -273,7 +274,16 @@ export default class App extends Component {
             <div id="size-mode-wrapper">
               <ScreenSizeContainer />
               <ModeContainer />
-              <CustomizedContainer />
+              {store.getState().mode === 'customized' ? (
+                <ColorPickerButtonContainer />
+              ) : (
+                <></>
+              )}
+              {store.getState().isColorPicker === true ? (
+                <ColorPickerContainer />
+              ) : (
+                <></>
+              )}
             </div>
           </div>
 

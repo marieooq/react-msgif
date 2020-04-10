@@ -1,10 +1,12 @@
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import {
   startRec,
   endRec,
   changeTextAreaVal,
   changeScreenSize,
   changeMode,
+  isColorPickerTrue,
+  isColorPickerFalse,
   mqFlagTrue,
   mqFlagFalse,
   captureCountIncrement,
@@ -14,8 +16,8 @@ import {
   pushToFrames,
   setNotification,
   closeNotification
-} from "./actions";
-import App from "./App";
+} from './actions';
+import App from './App';
 
 const mapStateToProps = state => {
   return {
@@ -23,6 +25,7 @@ const mapStateToProps = state => {
     textAreaVal: state.textAreaVal,
     screenSize: state.screenSize,
     mode: state.mode,
+    isColorPicker: state.isColorPicker,
     mqFlag: state.mqFlag,
     captureCount: state.captureCount,
     createGifCount: state.createGifCount,
@@ -38,6 +41,8 @@ const mapDispatchToProps = dispatch => {
     changeTextAreaVal: text => dispatch(changeTextAreaVal(text)),
     changeScreenSize: text => dispatch(changeScreenSize(text)),
     changeMode: text => dispatch(changeMode(text)),
+    isColorPickerTrue: () => dispatch(isColorPickerTrue()),
+    isColorPickerFalse: () => dispatch(isColorPickerFalse()),
     mqFlagTrue: () => dispatch(mqFlagTrue()),
     mqFlagFalse: () => dispatch(mqFlagFalse()),
     captureCountIncrement: () => dispatch(captureCountIncrement()),

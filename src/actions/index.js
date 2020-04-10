@@ -18,8 +18,12 @@ export const changeMode = text => {
   return { type: 'CHANGE_MODE', text };
 };
 
-export const isCustomized = text => {
-  return { type: 'IS_CUSTOMIZED', text };
+export const isColorPickerTrue = () => {
+  return { type: 'IS_COLOR_PICKER_TRUE' };
+};
+
+export const isColorPickerFalse = () => {
+  return { type: 'IS_COLOR_PICKER_FALSE' };
 };
 
 export const mqFlagTrue = () => {
