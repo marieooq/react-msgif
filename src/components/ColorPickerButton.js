@@ -2,13 +2,6 @@ import React, { Component } from 'react';
 import store from '../reducers/store';
 
 class ColorPickerButton extends Component {
-  componentDidMount() {
-    console.log(store.getState().mode);
-  }
-
-  componentDidUpdate() {
-    console.log(store.getState().mode);
-  }
   handleSketchPicker = e => {
     if (store.getState().isColorPicker) {
       this.props.isColorPickerFalse();

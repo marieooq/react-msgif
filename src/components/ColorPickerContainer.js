@@ -1,17 +1,24 @@
 import { connect } from 'react-redux';
-import { isColorPickerTrue, isColorPickerFalse } from '../actions';
+import {
+  isColorPickerTrue,
+  isColorPickerFalse,
+  changeCustomizedBackgroundColor
+} from '../actions';
 import ColorPicker from './ColorPicker';
 
 const mapStateToProps = state => {
   return {
-    isColorPicker: state.isColorPicker
+    isColorPicker: state.isColorPicker,
+    customizedBackgroundColor: state.customizedBackgroundColor
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     isColorPickerTrue: () => dispatch(isColorPickerTrue()),
-    isColorPickerFalse: () => dispatch(isColorPickerFalse())
+    isColorPickerFalse: () => dispatch(isColorPickerFalse()),
+    changeCustomizedBackgroundColor: text =>
+      dispatch(changeCustomizedBackgroundColor(text))
   };
 };
 

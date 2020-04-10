@@ -49,6 +49,15 @@ const isColorPicker = (state = false, action) => {
   }
 };
 
+const customizedBackgroundColor = (state = '#fff', action) => {
+  switch (action.type) {
+    case 'CHANGE_CUSTOMIZED_BACKGROUND_COLOR':
+      return action.text;
+    default:
+      return state;
+  }
+};
+
 const mqFlag = (state = { flag: false }, action) => {
   switch (action.type) {
     case 'MQ_FLAG_TRUE':
@@ -123,6 +132,7 @@ export default combineReducers({
   screenSize,
   mode,
   isColorPicker,
+  customizedBackgroundColor,
   mqFlag,
   captureCount,
   createGifCount,

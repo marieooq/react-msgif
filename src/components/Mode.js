@@ -168,7 +168,6 @@ class Mode extends Component {
 
   handleMode = e => {
     this.props.changeMode(e.target.value);
-    console.log(store.getState().mode);
   };
 
   render() {

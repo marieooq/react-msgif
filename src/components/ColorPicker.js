@@ -9,29 +9,16 @@ class ColorPicker extends React.Component {
     background: '#fff'
   };
 
-  // componentDidMount() {
-  //   console.log(store.getState().isColorPicker);
-  // }
-
-  // componentDidUpdate() {
-  //   console.log(store.getState().isColorPicker);
-  // }
-
   handleChangeComplete = color => {
     this.setState({ background: color.hex });
     console.log(this.state.background);
+    this.props.changeCustomizedBackgroundColor(color.hex);
+    console.log(
+      `store.getState().customizedBackgroundColor : ${
+        store.getState().customizedBackgroundColor
+      }`
+    );
   };
-
-  // handleSketchPicker = e => {
-  //   console.log('clicked!');
-  //   if (store.getState().isColorPicker) {
-  //     this.props.isColorPickerFalse();
-  //     console.log(`isColorPicker: ${store.getState().isColorPicker}`);
-  //   } else {
-  //     this.props.isColorPickerTrue();
-  //     console.log(`isColorPicker: ${store.getState().isColorPicker}`);
-  //   }
-  // };
 
   render() {
     return (

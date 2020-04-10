@@ -26,6 +26,10 @@ export const isColorPickerFalse = () => {
   return { type: 'IS_COLOR_PICKER_FALSE' };
 };
 
+export const changeCustomizedBackgroundColor = text => {
+  return { type: 'CHANGE_CUSTOMIZED_BACKGROUND_COLOR', text };
+};
+
 export const mqFlagTrue = () => {
   return { type: 'MQ_FLAG_TRUE' };
 };
