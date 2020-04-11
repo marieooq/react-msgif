@@ -38,11 +38,11 @@ const mode = (state = 'note', action) => {
   }
 };
 
-const isColorPicker = (state = false, action) => {
+const isBackgroundColorPicker = (state = false, action) => {
   switch (action.type) {
-    case 'IS_COLOR_PICKER_TRUE':
+    case 'IS_BACKGROUNDCOLOR_PICKER_TRUE':
       return true;
-    case 'IS_COLOR_PICKER_FALSE':
+    case 'IS_BACKGROUNDCOLOR_PICKER_FALSE':
       return false;
     default:
       return state;
@@ -131,7 +131,7 @@ export default combineReducers({
   textAreaVal,
   screenSize,
   mode,
-  isColorPicker,
+  isBackgroundColorPicker,
   customizedBackgroundColor,
   mqFlag,
   captureCount,

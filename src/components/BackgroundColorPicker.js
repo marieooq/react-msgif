@@ -4,7 +4,7 @@ import './Mode.css';
 import { SketchPicker } from 'react-color';
 import { blockParams } from 'handlebars';
 
-class ColorPicker extends React.Component {
+class BackgroundColorPicker extends React.Component {
   state = {
     background: '#fff'
   };
@@ -32,4 +32,4 @@ class ColorPicker extends React.Component {
   }
 }
 
-export default ColorPicker;
+export default BackgroundColorPicker;

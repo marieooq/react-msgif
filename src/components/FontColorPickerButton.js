@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import store from '../reducers/store';
 
-class BackgroundColorPickerButton extends Component {
+class FontColorPickerButton extends Component {
   state = {
-    buttonContent: 'Open the BACKGROUND COLOR picker'
+    buttonContent: 'Open the FONT COLOR picker'
   };
 
   componentDidUpdate(prevState) {
@@ -15,11 +15,11 @@ class BackgroundColorPickerButton extends Component {
     if (store.getState().isBackgroundColorPicker) {
       this.props.isBackgroundColorPickerFalse();
       console.log(`isBackgroundColorPicker: ${store.getState().isBackgroundColorPicker}`);
-      this.setState({ buttonContent: 'Open the BACKGROUND COLOR picker' });
+      this.setState({ buttonContent: 'Open the FONT COLOR picker' });
     } else {
       this.props.isBackgroundColorPickerTrue();
       console.log(`isBackgroundColorPicker: ${store.getState().isBackgroundColorPicker}`);
-      this.setState({ buttonContent: 'Close the BACKGROUND COLOR picker' });
+      this.setState({ buttonContent: 'Close the FONT COLOR picker' });
     }
   };
 
@@ -32,4 +32,4 @@ class BackgroundColorPickerButton extends Component {
   }
 }
 
-export default BackgroundColorPickerButton;
+export default FontColorPickerButton;

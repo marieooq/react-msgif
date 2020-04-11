@@ -4,8 +4,9 @@ import Note from './components/Note';
 import OutputScreen from './components/OutputScreen';
 import ScreenSizeContainer from './containers/ScreenSizeContainer';
 import ModeContainer from './components/ModeContainer';
-import ColorPickerContainer from './components/ColorPickerContainer';
+import BackgroundColorPicker from './components/BackgroundColorPickerContainer';
 import BackgroundColorPickerButtonContainer from './components/BackgroundColorPickerButtonContainer';
+import FontColorPickerButtonContainer from './components/FontColorPickerButtonContainer';
 import TextareaContainer from './components/TextareaContainer';
 import RecordResetContainer from './containers/RecordResetContainer';
 import CreateGif from './containers/CreateGif';
@@ -279,8 +280,13 @@ export default class App extends Component {
               ) : (
                 <></>
               )}
-              {store.getState().isColorPicker === true ? (
-                <ColorPickerContainer />
+              {store.getState().mode === 'customized' ? (
+                <FontColorPickerButtonContainer />
+              ) : (
+                <></>
+              )}
+              {store.getState().isBackgroundColorPicker === true ? (
+                <BackgroundColorPicker />
               ) : (
                 <></>
               )}

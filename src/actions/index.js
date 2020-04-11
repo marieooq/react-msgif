@@ -18,16 +18,28 @@ export const changeMode = text => {
   return { type: 'CHANGE_MODE', text };
 };
 
-export const isColorPickerTrue = () => {
-  return { type: 'IS_COLOR_PICKER_TRUE' };
+export const isBackgroundColorPickerTrue = () => {
+  return { type: 'IS_BACKGROUNDCOLOR_PICKER_TRUE' };
 };
 
-export const isColorPickerFalse = () => {
-  return { type: 'IS_COLOR_PICKER_FALSE' };
+export const isBackgroundColorPickerFalse = () => {
+  return { type: 'IS_BACKGROUNDCOLOR_PICKER_FALSE' };
 };
 
 export const changeCustomizedBackgroundColor = text => {
   return { type: 'CHANGE_CUSTOMIZED_BACKGROUND_COLOR', text };
+};
+
+export const isFontColorPickerTrue = () => {
+  return { type: 'IS_FONTCOLOR_PICKER_TRUE' };
+};
+
+export const isFontColorPickerFalse = () => {
+  return { type: 'IS_FONTCOLOR_PICKER_FALSE' };
+};
+
+export const changeCustomizedFontColor = text => {
+  return { type: 'CHANGE_CUSTOMIZED_FONT_COLOR', text };
 };
 
 export const mqFlagTrue = () => {
