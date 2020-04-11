@@ -29,6 +29,7 @@ class Mode extends Component {
     if (mode === 'customized') {
       console.log(`mode: ${mode}`);
       console.log('customized mode is selected');
+      this.changeTextColor(mode);
       this.changeBackground(mode);
     } else {
       this.changeTextColor(mode);
@@ -43,6 +44,7 @@ class Mode extends Component {
     const coloredTextClass = document.getElementsByClassName('coloredText');
 
     for (let i = 0; i < coloredTextClass.length; i++) {
+      console.log(store.getState().customizedFontColor);
       switch (mode) {
         case 'developer':
           coloredTextClass[i].style.color = '#00c200';
@@ -70,6 +72,12 @@ class Mode extends Component {
 
         case 'navy':
           coloredTextClass[i].style.color = '#fff';
+          break;
+
+        case 'customized':
+          coloredTextClass[
+            i
+          ].style.color = store.getState().customizedFontColor;
           break;
 
         default:

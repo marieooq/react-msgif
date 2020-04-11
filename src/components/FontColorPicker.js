@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import store from '../reducers/store';
 import './Mode.css';
 import { SketchPicker } from 'react-color';
-import { blockParams } from 'handlebars';
 
 class FontColorPicker extends React.Component {
   state = {
