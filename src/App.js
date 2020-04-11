@@ -4,10 +4,11 @@ import Note from './components/Note';
 import OutputScreen from './components/OutputScreen';
 import ScreenSizeContainer from './containers/ScreenSizeContainer';
 import ModeContainer from './components/ModeContainer';
-import BackgroundColorPicker from './components/BackgroundColorPickerContainer';
-import BackgroundColorPickerButtonContainer from './components/BackgroundColorPickerButtonContainer';
-import FontColorPickerButtonContainer from './components/FontColorPickerButtonContainer';
-import FontColorPickerContainer from './components/FontColorPickerContainer';
+import FontSelector from './components/CustomizedMode/FontSelector';
+import BackgroundColorPicker from './components/CustomizedMode/BackgroundColorPickerContainer';
+import BackgroundColorPickerButtonContainer from './components/CustomizedMode/BackgroundColorPickerButtonContainer';
+import FontColorPickerButtonContainer from './components/CustomizedMode/FontColorPickerButtonContainer';
+import FontColorPickerContainer from './components/CustomizedMode/FontColorPickerContainer';
 import TextareaContainer from './components/TextareaContainer';
 import RecordResetContainer from './containers/RecordResetContainer';
 import CreateGif from './containers/CreateGif';
@@ -276,6 +277,7 @@ export default class App extends Component {
             <div id="size-mode-wrapper">
               <ScreenSizeContainer />
               <ModeContainer />
+              {/* <FontSelector /> */}
               {store.getState().mode === 'customized' ? (
                 <BackgroundColorPickerButtonContainer />
               ) : (

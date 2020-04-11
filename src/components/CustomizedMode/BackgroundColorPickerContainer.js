@@ -3,7 +3,7 @@ import {
   isBackgroundColorPickerTrue,
   isBackgroundColorPickerFalse,
   changeCustomizedBackgroundColor
-} from '../actions';
+} from '../../actions';
 import BackgroundColorPicker from './BackgroundColorPicker';
 
 const mapStateToProps = state => {

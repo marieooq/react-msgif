@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import store from '../reducers/store';
+import store from '../../reducers/store';
 
 class BackgroundColorPickerButton extends Component {
   state = {
@@ -14,11 +14,15 @@ class BackgroundColorPickerButton extends Component {
   handleSketchPicker = e => {
     if (store.getState().isBackgroundColorPicker) {
       this.props.isBackgroundColorPickerFalse();
-      console.log(`isBackgroundColorPicker: ${store.getState().isBackgroundColorPicker}`);
+      console.log(
+        `isBackgroundColorPicker: ${store.getState().isBackgroundColorPicker}`
+      );
       this.setState({ buttonContent: 'Open the BACKGROUND COLOR picker' });
     } else {
       this.props.isBackgroundColorPickerTrue();
-      console.log(`isBackgroundColorPicker: ${store.getState().isBackgroundColorPicker}`);
+      console.log(
+        `isBackgroundColorPicker: ${store.getState().isBackgroundColorPicker}`
+      );
       this.setState({ buttonContent: 'Close the BACKGROUND COLOR picker' });
     }
   };
