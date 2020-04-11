@@ -7,6 +7,7 @@ import ModeContainer from './components/ModeContainer';
 import BackgroundColorPicker from './components/BackgroundColorPickerContainer';
 import BackgroundColorPickerButtonContainer from './components/BackgroundColorPickerButtonContainer';
 import FontColorPickerButtonContainer from './components/FontColorPickerButtonContainer';
+import FontColorPickerContainer from './components/FontColorPickerContainer';
 import TextareaContainer from './components/TextareaContainer';
 import RecordResetContainer from './containers/RecordResetContainer';
 import CreateGif from './containers/CreateGif';
@@ -287,6 +288,11 @@ export default class App extends Component {
               )}
               {store.getState().isBackgroundColorPicker === true ? (
                 <BackgroundColorPicker />
+              ) : (
+                <></>
+              )}
+              {store.getState().isFontColorPicker === true ? (
+                <FontColorPickerContainer />
               ) : (
                 <></>
               )}

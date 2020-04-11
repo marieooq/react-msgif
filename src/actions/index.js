@@ -39,6 +39,7 @@ export const isFontColorPickerFalse = () => {
 };
 
 export const changeCustomizedFontColor = text => {
+  console.log(`inside action: ${text}`);
   return { type: 'CHANGE_CUSTOMIZED_FONT_COLOR', text };
 };
 

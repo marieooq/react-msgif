@@ -12,13 +12,13 @@ class FontColorPickerButton extends Component {
     }
   }
   handleSketchPicker = e => {
-    if (store.getState().isBackgroundColorPicker) {
-      this.props.isBackgroundColorPickerFalse();
-      console.log(`isBackgroundColorPicker: ${store.getState().isBackgroundColorPicker}`);
+    if (store.getState().isFontColorPicker) {
+      this.props.isFontColorPickerFalse();
+      console.log(`isFontColorPicker: ${store.getState().isFontColorPicker}`);
       this.setState({ buttonContent: 'Open the FONT COLOR picker' });
     } else {
-      this.props.isBackgroundColorPickerTrue();
-      console.log(`isBackgroundColorPicker: ${store.getState().isBackgroundColorPicker}`);
+      this.props.isFontColorPickerTrue();
+      console.log(`isFontColorPicker: ${store.getState().isFontColorPicker}`);
       this.setState({ buttonContent: 'Close the FONT COLOR picker' });
     }
   };

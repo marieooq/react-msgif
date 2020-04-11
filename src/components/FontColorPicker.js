@@ -6,16 +6,15 @@ import { blockParams } from 'handlebars';
 
 class FontColorPicker extends React.Component {
   state = {
-    background: '#fff'
+    fontColor: '#fff'
   };
 
   handleChangeComplete = color => {
-    this.setState({ background: color.hex });
-    console.log(this.state.background);
-    this.props.changeCustomizedBackgroundColor(color.hex);
+    console.log(`inside FontColorPicker: ${color.hex}`);
+    this.props.changeCustomizedFontColor(color.hex);
     console.log(
-      `store.getState().customizedBackgroundColor : ${
-        store.getState().customizedBackgroundColor
+      `store.getState().customizedFontColor: ${
+        store.getState().customizedFontColor
       }`
     );
   };
@@ -23,7 +22,7 @@ class FontColorPicker extends React.Component {
   render() {
     return (
       <SketchPicker
-        color={this.state.background}
+        color={this.state.fontColor}
         onChangeComplete={this.handleChangeComplete}
         disableAlpha={true}
         style={{ zIndex: '100' }}

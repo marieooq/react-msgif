@@ -1,29 +1,24 @@
 import { connect } from 'react-redux';
 import {
-  isBackgroundColorPickerTrue,
-  isBackgroundColorPickerFalse,
-  changeCustomizedBackgroundColor
+  isFontColorPickerTrue,
+  isFontColorPickerFalse,
+  changeCustomizedFontColor
 } from '../actions';
-import BackgroundColorPicker from './BackgroundColorPicker';
+import FontColorPicker from './FontColorPicker';
 
 const mapStateToProps = state => {
   return {
-    isBackgroundColorPicker: state.isBackgroundColorPicker,
-    customizedBackgroundColor: state.customizedBackgroundColor
+    isFontColorPicker: state.isFontColorPicker,
+    customizedFontColor: state.customizedFontColor
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    isBackgroundColorPickerTrue: () => dispatch(isBackgroundColorPickerTrue()),
-    isBackgroundColorPickerFalse: () =>
-      dispatch(isBackgroundColorPickerFalse()),
-    changeCustomizedBackgroundColor: text =>
-      dispatch(changeCustomizedBackgroundColor(text))
+    isFontColorPickerTrue: () => dispatch(isFontColorPickerTrue()),
+    isFontColorPickerFalse: () => dispatch(isFontColorPickerFalse()),
+    changeCustomizedFontColor: text => dispatch(changeCustomizedFontColor(text))
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(BackgroundColorPicker);
+export default connect(mapStateToProps, mapDispatchToProps)(FontColorPicker);

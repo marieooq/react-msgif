@@ -58,6 +58,26 @@ const customizedBackgroundColor = (state = '#fff', action) => {
   }
 };
 
+const isFontColorPicker = (state = false, action) => {
+  switch (action.type) {
+    case 'IS_FONTCOLOR_PICKER_TRUE':
+      return true;
+    case 'IS_FONTCOLOR_PICKER_FALSE':
+      return false;
+    default:
+      return state;
+  }
+};
+
+const customizedFontColor = (state = '#fff', action) => {
+  switch (action.type) {
+    case 'CHANGE_CUSTOMIZED_FONT_COLOR':
+      return action.text;
+    default:
+      return state;
+  }
+};
+
 const mqFlag = (state = { flag: false }, action) => {
   switch (action.type) {
     case 'MQ_FLAG_TRUE':
@@ -133,6 +153,8 @@ export default combineReducers({
   mode,
   isBackgroundColorPicker,
   customizedBackgroundColor,
+  isFontColorPicker,
+  customizedFontColor,
   mqFlag,
   captureCount,
   createGifCount,

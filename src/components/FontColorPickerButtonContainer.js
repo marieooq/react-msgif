@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
-import { isBackgroundColorPickerTrue, isBackgroundColorPickerFalse } from '../actions';
+import { isFontColorPickerTrue, isFontColorPickerFalse } from '../actions';
 import FontColorPickerButton from './FontColorPickerButton';
 
 const mapStateToProps = state => {
   return {
-    isBackgroundColorPicker: state.isBackgroundColorPicker
+    isFontColorPicker: state.isFontColorPicker
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    isBackgroundColorPickerTrue: () => dispatch(isBackgroundColorPickerTrue()),
-    isBackgroundColorPickerFalse: () => dispatch(isBackgroundColorPickerFalse())
+    isFontColorPickerTrue: () => dispatch(isFontColorPickerTrue()),
+    isFontColorPickerFalse: () => dispatch(isFontColorPickerFalse())
   };
 };
 
