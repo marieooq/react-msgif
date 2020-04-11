@@ -3,7 +3,7 @@ import {
   isFontColorPickerTrue,
   isFontColorPickerFalse,
   changeCustomizedFontColor
-} from '../../actions';
+} from '../../../actions';
 import FontColorPicker from './FontColorPicker';
 
 const mapStateToProps = state => {

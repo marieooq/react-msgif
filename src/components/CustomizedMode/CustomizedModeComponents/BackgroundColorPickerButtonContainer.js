@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import {
   isBackgroundColorPickerTrue,
   isBackgroundColorPickerFalse
-} from '../../actions';
+} from '../../../actions';
 import BackgroundColorPickerButton from './BackgroundColorPickerButton';
 
 const mapStateToProps = state => {

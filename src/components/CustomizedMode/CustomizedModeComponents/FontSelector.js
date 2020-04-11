@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import store from '../../reducers/store';
-import '../Mode.css';
+import store from '../../../reducers/store';
+import '../../Mode.css';
 
 class FontSelector extends Component {
   render() {

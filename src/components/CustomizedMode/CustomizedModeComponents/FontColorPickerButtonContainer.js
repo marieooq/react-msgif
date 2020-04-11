@@ -1,5 +1,8 @@
 import { connect } from 'react-redux';
-import { isFontColorPickerTrue, isFontColorPickerFalse } from '../../actions';
+import {
+  isFontColorPickerTrue,
+  isFontColorPickerFalse
+} from '../../../actions';
 import FontColorPickerButton from './FontColorPickerButton';
 
 const mapStateToProps = state => {

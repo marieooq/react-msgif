@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import store from '../../reducers/store';
+import store from '../../../reducers/store';
 
 class FontColorPickerButton extends Component {
   state = {
