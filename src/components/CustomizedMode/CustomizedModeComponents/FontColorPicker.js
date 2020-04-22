@@ -15,14 +15,18 @@ class FontColorPicker extends React.Component {
   };
 
   render() {
-    return (
-      <SketchPicker
-        color={store.getState().customizedFontColor}
-        onChangeComplete={this.handleChangeComplete}
-        disableAlpha={true}
-        style={{ zIndex: '100' }}
-      />
-    );
+    if (store.getState().isFontColorPicker) {
+      return (
+        <SketchPicker
+          color={store.getState().customizedFontColor}
+          onChangeComplete={this.handleChangeComplete}
+          disableAlpha={true}
+          style={{ zIndex: '100' }}
+        />
+      );
+    } else {
+      return <></>;
+    }
   }
 }
 
