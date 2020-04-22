@@ -23,7 +23,7 @@ class BackgroundColorPicker extends React.Component {
   render() {
     return (
       <SketchPicker
-        color={this.state.background}
+        color={store.getState().customizedBackgroundColor}
         onChangeComplete={this.handleChangeComplete}
         disableAlpha={true}
         style={{ zIndex: '100' }}

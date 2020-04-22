@@ -4,6 +4,7 @@ import Note from './components/Note';
 import OutputScreen from './components/OutputScreen';
 import ScreenSizeContainer from './containers/ScreenSizeContainer';
 import ModeContainer from './components/ModeContainer';
+import CustomizedModeContainer from './components/CustomizedMode/CustomizedModeContainer';
 import FontSelector from './components/CustomizedMode/CustomizedModeComponents/FontSelector';
 import BackgroundColorPicker from './components/CustomizedMode/CustomizedModeComponents/BackgroundColorPickerContainer';
 import BackgroundColorPickerButtonContainer from './components/CustomizedMode/CustomizedModeComponents/BackgroundColorPickerButtonContainer';
@@ -277,8 +278,9 @@ export default class App extends Component {
             <div id="size-mode-wrapper">
               <ScreenSizeContainer />
               <ModeContainer />
+              <CustomizedModeContainer />
               {/* <FontSelector /> */}
-              {store.getState().mode === 'customized' ? (
+              {/* {store.getState().mode === 'customized' ? (
                 <BackgroundColorPickerButtonContainer />
               ) : (
                 <></>
@@ -297,7 +299,7 @@ export default class App extends Component {
                 <FontColorPickerContainer />
               ) : (
                 <></>
-              )}
+              )} */}
             </div>
           </div>
 
