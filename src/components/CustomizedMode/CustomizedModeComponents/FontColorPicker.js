@@ -4,10 +4,6 @@ import '../../Mode.css';
 import { SketchPicker } from 'react-color';
 
 class FontColorPicker extends React.Component {
-  state = {
-    fontColor: '#fff'
-  };
-
   handleChangeComplete = color => {
     console.log(`inside FontColorPicker: ${color.hex}`);
     this.props.changeCustomizedFontColor(color.hex);
@@ -21,7 +17,7 @@ class FontColorPicker extends React.Component {
   render() {
     return (
       <SketchPicker
-        color={this.state.fontColor}
+        color={store.getState().customizedFontColor}
         onChangeComplete={this.handleChangeComplete}
         disableAlpha={true}
         style={{ zIndex: '100' }}
