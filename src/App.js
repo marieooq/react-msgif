@@ -280,16 +280,7 @@ export default class App extends Component {
               <ModeContainer />
               <CustomizedModeContainer />
               {/* <FontSelector /> */}
-              {/* {store.getState().mode === 'customized' ? (
-                <BackgroundColorPickerButtonContainer />
-              ) : (
-                <></>
-              )}
-              {store.getState().mode === 'customized' ? (
-                <FontColorPickerButtonContainer />
-              ) : (
-                <></>
-              )}
+
               {store.getState().isBackgroundColorPicker === true ? (
                 <BackgroundColorPicker />
               ) : (
@@ -299,7 +290,7 @@ export default class App extends Component {
                 <FontColorPickerContainer />
               ) : (
                 <></>
-              )} */}
+              )}
             </div>
           </div>
 
