@@ -5,12 +5,16 @@ import FontColorPickerButtonContainer from './CustomizedModeComponents/FontColor
 
 class CustomizedMode extends Component {
   render() {
-    return (
-      <div>
-        <BackgroundColorPickerButtonContainer />
-        <FontColorPickerButtonContainer />
-      </div>
-    );
+    if (store.getState().mode === 'customized') {
+      return (
+        <div>
+          <BackgroundColorPickerButtonContainer />
+          <FontColorPickerButtonContainer />
+        </div>
+      );
+    } else {
+      return <></>;
+    }
   }
 }
 
