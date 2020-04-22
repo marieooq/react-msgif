@@ -78,6 +78,17 @@ const customizedFontColor = (state = '#fff', action) => {
   }
 };
 
+const isFontFamilyPicker = (state = false, action) => {
+  switch (action.type) {
+    case 'IS_FONT_FAMILY_SELECTOR_TRUE':
+      return true;
+    case 'IS_FONT_FAMILY_SELECTOR_FALSE':
+      return false;
+    default:
+      return state;
+  }
+};
+
 const mqFlag = (state = { flag: false }, action) => {
   switch (action.type) {
     case 'MQ_FLAG_TRUE':
@@ -155,6 +166,7 @@ export default combineReducers({
   customizedBackgroundColor,
   isFontColorPicker,
   customizedFontColor,
+  isFontFamilyPicker,
   mqFlag,
   captureCount,
   createGifCount,

@@ -43,6 +43,18 @@ export const changeCustomizedFontColor = text => {
   return { type: 'CHANGE_CUSTOMIZED_FONT_COLOR', text };
 };
 
+export const isFontFamilySelectorTrue = () => {
+  return { type: 'IS_FONT_FAMILY_SELECTOR_TRUE' };
+};
+
+export const isFontFamilySelectorFalse = () => {
+  return { type: 'IS_FONT_FAMILY_SELECTOR_FALSE' };
+};
+
+export const changeCutomizedFontFamily = text => {
+  return { type: 'CHANGE_CUSTOMIZED_FONT_FAMILY', text };
+};
+
 export const mqFlagTrue = () => {
   return { type: 'MQ_FLAG_TRUE' };
 };
