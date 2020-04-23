@@ -145,8 +145,7 @@ class Mode extends Component {
         break;
 
       case 'customized':
-        this.displayScreen.style.fontFamily =
-          "font-family: 'Comic Neue', cursive;";
+        this.displayScreen.style.fontFamily = "'Comic Neue', cursive";
         break;
 
       default:
