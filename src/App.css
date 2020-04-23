@@ -34,6 +34,7 @@ header img#logo {
 #size-mode-wrapper {
   width: 100%;
   height: 90px;
+  margin-bottom: 100px;
 }
 
 .btn-wrapper {

@@ -6,23 +6,16 @@ class BackgroundColorPickerButton extends Component {
     buttonContent: 'Open the BACKGROUND COLOR picker'
   };
 
-  componentDidUpdate(prevState) {
-    if (this.state.buttonContent !== prevState.buttonContent) {
-      console.log('state is changed!!!');
-    }
-  }
+  // componentDidUpdate(prevState) {
+  //   if (this.state.buttonContent !== prevState.buttonContent) {
+  //   }
+  // }
   handleSketchPicker = e => {
     if (store.getState().isBackgroundColorPicker) {
       this.props.isBackgroundColorPickerFalse();
-      console.log(
-        `isBackgroundColorPicker: ${store.getState().isBackgroundColorPicker}`
-      );
       this.setState({ buttonContent: 'Open the BACKGROUND COLOR picker' });
     } else {
       this.props.isBackgroundColorPickerTrue();
-      console.log(
-        `isBackgroundColorPicker: ${store.getState().isBackgroundColorPicker}`
-      );
       this.setState({ buttonContent: 'Close the BACKGROUND COLOR picker' });
     }
   };

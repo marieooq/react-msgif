@@ -3,18 +3,6 @@ import store from '../../../reducers/store';
 import '../../Mode.css';
 
 class FontSelector extends Component {
-  componentDidUpdate(prevState) {
-    // if (
-    //   store.getState().customizedFontFamily !== prevState.customizedFontFamily
-    // ) {
-    //   this.changeCustomizedFontFamily();
-    // }
-  }
-
-  changeCustomizedFontFamily = () => {
-    // console.log(store.getState().customizedFontFamily);
-  };
-
   //   font-family: 'Abril Fatface', cursive;
   // font-family: 'Archivo Black', sans-serif;
   // font-family: 'Concert One', cursive;
@@ -45,11 +33,12 @@ class FontSelector extends Component {
     if (store.getState().mode === 'customized') {
       return (
         <div className="selectdiv">
+          <label for="select_customized_font">Font type</label>
           <select
             value={store.getState().customizedFontFamily}
             name="display-mode"
             onChange={this.handleFontFamily}
-            id="mode"
+            id="select_customized_font"
           >
             <option value="'Comic Neue', cursive">Comic Neue</option>
             <option value="'Abril Fatface', cursive">Abril</option>

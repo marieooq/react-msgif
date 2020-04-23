@@ -278,8 +278,8 @@ export default class App extends Component {
             <div id="size-mode-wrapper">
               <ScreenSizeContainer />
               <ModeContainer />
-              <CustomizedModeContainer />
               <FontSelectorContainer />
+              <CustomizedModeContainer />
               <BackgroundColorPicker />
               <FontColorPickerContainer />
             </div>

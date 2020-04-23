@@ -201,11 +201,12 @@ class Mode extends Component {
   render() {
     return (
       <div className="selectdiv">
+        <label for="select_mode">Design style</label>
         <select
           value={store.getState().mode}
           name="display-mode"
           onChange={this.handleMode}
-          id="mode"
+          id="select_mode"
         >
           <option value="developer">Developer</option>
           <option value="neon">Neon</option>
@@ -214,7 +215,7 @@ class Mode extends Component {
           <option value="pop-blue">Pop(blue)</option>
           <option value="pop-pink">Pop(pink)</option>
           <option value="navy">Pop(navy)</option>
-          <option value="customized">customized</option>
+          <option value="customized">Customized</option>
         </select>
       </div>
     );
