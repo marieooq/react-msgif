@@ -89,7 +89,7 @@ const isFontFamilySelector = (state = false, action) => {
   }
 };
 
-const customizedFontFamily = (state, action) => {
+const customizedFontFamily = (state = 'fontFamilyA', action) => {
   switch (action.type) {
     case 'CHANGE_CUSTOMIZED_FONT_FAMILY':
       return action.text;

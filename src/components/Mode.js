@@ -31,6 +31,7 @@ class Mode extends Component {
       console.log('customized mode is selected');
       this.changeTextColor(mode);
       this.changeBackground(mode);
+      this.changeFontFamily(mode);
     } else {
       this.changeTextColor(mode);
       this.changeTextShadow(mode);
@@ -141,6 +142,11 @@ class Mode extends Component {
 
       case 'navy':
         this.displayScreen.style.fontFamily = "'PT Sans', 'Kosugi', sans-serif";
+        break;
+
+      case 'customized':
+        this.displayScreen.style.fontFamily =
+          "font-family: 'Comic Neue', cursive;";
         break;
 
       default:

@@ -5,7 +5,7 @@ import OutputScreen from './components/OutputScreen';
 import ScreenSizeContainer from './containers/ScreenSizeContainer';
 import ModeContainer from './components/ModeContainer';
 import CustomizedModeContainer from './components/CustomizedMode/CustomizedModeContainer';
-import FontSelector from './components/CustomizedMode/CustomizedModeComponents/FontSelector';
+import FontSelectorContainer from './components/CustomizedMode/CustomizedModeComponents/FontSelectorContainer';
 import BackgroundColorPicker from './components/CustomizedMode/CustomizedModeComponents/BackgroundColorPickerContainer';
 import BackgroundColorPickerButtonContainer from './components/CustomizedMode/CustomizedModeComponents/BackgroundColorPickerButtonContainer';
 import FontColorPickerButtonContainer from './components/CustomizedMode/CustomizedModeComponents/FontColorPickerButtonContainer';
@@ -279,8 +279,7 @@ export default class App extends Component {
               <ScreenSizeContainer />
               <ModeContainer />
               <CustomizedModeContainer />
-              {/* <FontSelector /> */}
-
+              <FontSelectorContainer />
               <BackgroundColorPicker />
               <FontColorPickerContainer />
             </div>

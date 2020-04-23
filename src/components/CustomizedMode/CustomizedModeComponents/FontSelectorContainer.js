@@ -1,13 +1,15 @@
 import { connect } from 'react-redux';
 import {
+  changeMode,
   isFontFamilySelectorTrue,
   isFontFamilySelectorFalse,
   changeCutomizedFontFamily
-} from '../../actions';
+} from '../../../actions';
 import FontSelector from './FontSelector';
 
 const mapStateToProps = state => {
   return {
+    mode: state.mode,
     isFontFamilySelector: state.isFontFamilySelector,
     customizedFontFamily: state.customizedFontFamily
   };
@@ -15,6 +17,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    changeMode: () => dispatch(changeMode()),
     isFontFamilySelectorTrue: () => dispatch(isFontFamilySelectorTrue()),
     isFontFamilySelectorFalse: () => dispatch(isFontFamilySelectorFalse()),
     changeCutomizedFontFamily: () => dispatch(changeCutomizedFontFamily())
