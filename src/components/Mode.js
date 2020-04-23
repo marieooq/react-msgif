@@ -153,6 +153,8 @@ class Mode extends Component {
     }
   };
 
+  changeCustomizedFontFamily = () => {};
+
   changeBackground = mode => {
     switch (mode) {
       case 'developer':

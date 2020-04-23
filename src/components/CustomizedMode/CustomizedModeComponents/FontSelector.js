@@ -3,6 +3,11 @@ import store from '../../../reducers/store';
 import '../../Mode.css';
 
 class FontSelector extends Component {
+  componentDidUpdate(prevState) {}
+  handleFontFamily = e => {
+    console.log(e.target.value);
+    this.props.changeCutomizedFontFamily(e.target.value);
+  };
   render() {
     if (store.getState().mode === 'customized') {
       return (

@@ -20,7 +20,7 @@ const mapDispatchToProps = dispatch => {
     changeMode: () => dispatch(changeMode()),
     isFontFamilySelectorTrue: () => dispatch(isFontFamilySelectorTrue()),
     isFontFamilySelectorFalse: () => dispatch(isFontFamilySelectorFalse()),
-    changeCutomizedFontFamily: () => dispatch(changeCutomizedFontFamily())
+    changeCutomizedFontFamily: text => dispatch(changeCutomizedFontFamily(text))
   };
 };
 
