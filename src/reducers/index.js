@@ -69,7 +69,7 @@ const isFontColorPicker = (state = false, action) => {
   }
 };
 
-const customizedFontColor = (state = '#fff', action) => {
+const customizedFontColor = (state = '#000', action) => {
   switch (action.type) {
     case 'CHANGE_CUSTOMIZED_FONT_COLOR':
       return action.text;
@@ -89,7 +89,7 @@ const isFontFamilySelector = (state = false, action) => {
   }
 };
 
-const customizedFontFamily = (state = 'fontFamilyA', action) => {
+const customizedFontFamily = (state = "'Comic Neue', cursive", action) => {
   switch (action.type) {
     case 'CHANGE_CUSTOMIZED_FONT_FAMILY':
       return action.text;

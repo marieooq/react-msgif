@@ -145,15 +145,15 @@ class Mode extends Component {
         break;
 
       case 'customized':
-        this.displayScreen.style.fontFamily = "'Comic Neue', cursive";
+        console.log('customized font-family is choosen.');
+        this.displayScreen.style.fontFamily = store.getState().customizedFontFamily;
         break;
 
       default:
-        console.log('mode is undefined');
+        console.log('apply for the default font family.');
+        this.displayScreen.style.fontFamily = '"Noto Serif", serif';
     }
   };
-
-  changeCustomizedFontFamily = () => {};
 
   changeBackground = mode => {
     switch (mode) {

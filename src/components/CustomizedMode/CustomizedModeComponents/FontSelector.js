@@ -3,10 +3,22 @@ import store from '../../../reducers/store';
 import '../../Mode.css';
 
 class FontSelector extends Component {
-  componentDidUpdate(prevState) {}
+  componentDidUpdate(prevState) {
+    // if (
+    //   store.getState().customizedFontFamily !== prevState.customizedFontFamily
+    // ) {
+    //   this.changeCustomizedFontFamily();
+    // }
+  }
+
+  changeCustomizedFontFamily = () => {
+    // console.log(store.getState().customizedFontFamily);
+  };
+
   handleFontFamily = e => {
     console.log(e.target.value);
     this.props.changeCutomizedFontFamily(e.target.value);
+    console.log(store.getState().customizedFontFamily);
   };
   render() {
     if (store.getState().mode === 'customized') {
@@ -18,7 +30,7 @@ class FontSelector extends Component {
             onChange={this.handleFontFamily}
             id="mode"
           >
-            <option value="fontFamilyA">fontFamilyA</option>
+            <option value="'Comic Neue', cursive">Comic Neue</option>
             <option value="fontFamilyB">fontFamilyB</option>
           </select>
         </div>

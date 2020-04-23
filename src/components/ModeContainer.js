@@ -3,7 +3,8 @@ import {
   changeMode,
   changeTextAreaVal,
   changeCustomizedBackgroundColor,
-  changeCustomizedFontColor
+  changeCustomizedFontColor,
+  changeCutomizedFontFamily
 } from '../actions';
 import Mode from './Mode';
 
@@ -12,7 +13,8 @@ const mapStateToProps = state => {
     mode: state.mode,
     textAreaVal: state.textAreaVal,
     customizedBackgroundColor: state.customizedBackgroundColor,
-    customizedFontColor: state.customizedFontColor
+    customizedFontColor: state.customizedFontColor,
+    customizedFontFamily: state.customizedFontFamily
   };
 };
 
@@ -22,7 +24,9 @@ const mapDispatchToProps = dispatch => {
     changeTextAreaVal: text => dispatch(changeTextAreaVal(text)),
     changeCustomizedBackgroundColor: text =>
       dispatch(changeCustomizedBackgroundColor(text)),
-    changeCustomizedFontColor: text => dispatch(changeCustomizedFontColor(text))
+    changeCustomizedFontColor: text =>
+      dispatch(changeCustomizedFontColor(text)),
+    changeCutomizedFontFamily: text => dispatch(changeCutomizedFontFamily(text))
   };
 };
 
