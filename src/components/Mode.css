@@ -11,8 +11,8 @@ select::-ms-expand {
 }
 
 .selectdiv:after {
-  content: "<>";
-  font: 17px "Consolas", monospace;
+  content: '<>';
+  font: 17px 'Consolas', monospace;
   color: #333;
   -webkit-transform: rotate(90deg);
   -moz-transform: rotate(90deg);
@@ -21,7 +21,7 @@ select::-ms-expand {
   right: 11px;
   /*Adjust for position however you want*/
 
-  top: 10px;
+  top: 28px;
   padding: 0 0 2px;
   border-bottom: 1px solid #999;
   /*left line */
