@@ -1,6 +1,5 @@
 import React from 'react';
 import store from '../../../reducers/store';
-import '../../Mode.css';
 import { SketchPicker } from 'react-color';
 
 class BackgroundColorPicker extends React.Component {

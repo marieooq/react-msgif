@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import store from '../../../reducers/store';
+import './ColorPicker.css';
 
 class FontColorPickerButton extends Component {
   state = {
-    buttonContent: 'Open the FONT COLOR picker'
+    buttonContent: 'Font color picker'
   };
 
   componentDidUpdate(prevState) {
@@ -15,17 +16,20 @@ class FontColorPickerButton extends Component {
     if (store.getState().isFontColorPicker) {
       this.props.isFontColorPickerFalse();
       console.log(`isFontColorPicker: ${store.getState().isFontColorPicker}`);
-      this.setState({ buttonContent: 'Open the FONT COLOR picker' });
+      this.setState({ buttonContent: 'Font color picker' });
     } else {
       this.props.isFontColorPickerTrue();
       console.log(`isFontColorPicker: ${store.getState().isFontColorPicker}`);
-      this.setState({ buttonContent: 'Close the FONT COLOR picker' });
+      this.setState({ buttonContent: 'Close the font color picker' });
     }
   };
 
   render() {
     return (
-      <button onClick={this.handleSketchPicker}>
+      <button
+        onClick={this.handleSketchPicker}
+        className="color_picker_button "
+      >
         {this.state.buttonContent}
       </button>
     );

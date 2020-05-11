@@ -1,0 +1,9 @@
+.color_picker_button {
+  font-size: 14px;
+  background-color: #fff;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  height: 32px;
+  margin: 5px 0px;
+  padding: 0 24px;
+}
