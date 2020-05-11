@@ -6,10 +6,9 @@ import ScreenSizeContainer from './containers/ScreenSizeContainer';
 import ModeContainer from './components/ModeContainer';
 import CustomizedModeContainer from './components/CustomizedMode/CustomizedModeContainer';
 import FontSelectorContainer from './components/CustomizedMode/CustomizedModeComponents/FontSelectorContainer';
-import BackgroundColorPickerContainer from './components/CustomizedMode/CustomizedModeComponents/BackgroundColorPickerContainer';
-import BackgroundColorPickerButtonContainer from './components/CustomizedMode/CustomizedModeComponents/BackgroundColorPickerButtonContainer';
-import FontColorPickerButtonContainer from './components/CustomizedMode/CustomizedModeComponents/FontColorPickerButtonContainer';
-import FontColorPickerContainer from './components/CustomizedMode/CustomizedModeComponents/FontColorPickerContainer';
+import BackgroundColorPickerContainer from './components/CustomizedMode/CustomizedModeComponents/ColorPicker/BackgroundColorPickerContainer';
+import FontColorPickerContainer from './components/CustomizedMode/CustomizedModeComponents/ColorPicker/FontColorPickerContainer';
+import ColorPicker from './components/CustomizedMode/CustomizedModeComponents/ColorPicker/ColorPicker';
 import TextareaContainer from './components/TextareaContainer';
 import RecordResetContainer from './containers/RecordResetContainer';
 import CreateGif from './containers/CreateGif';
@@ -280,8 +279,9 @@ export default class App extends Component {
               <ModeContainer />
               <FontSelectorContainer />
               <CustomizedModeContainer />
-              <BackgroundColorPickerContainer />
-              <FontColorPickerContainer />
+              {/* <BackgroundColorPickerContainer />
+              <FontColorPickerContainer /> */}
+              <ColorPicker />
             </div>
           </div>
 
