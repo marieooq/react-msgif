@@ -279,8 +279,6 @@ export default class App extends Component {
               <ModeContainer />
               <FontSelectorContainer />
               <CustomizedModeContainer />
-              {/* <BackgroundColorPickerContainer />
-              <FontColorPickerContainer /> */}
               <ColorPicker />
             </div>
           </div>

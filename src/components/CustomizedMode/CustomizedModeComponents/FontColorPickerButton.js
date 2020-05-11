@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import store from '../../../reducers/store';
-import './ColorPicker.css';
+import './ColorPickerButton.css';
 
 class FontColorPickerButton extends Component {
   state = {

@@ -7,3 +7,7 @@
   margin: 5px 0px;
   padding: 0 24px;
 }
+
+.color_picker_button:hover {
+  cursor: pointer;
+}
