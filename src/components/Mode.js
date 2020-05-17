@@ -12,6 +12,7 @@ class Mode extends Component {
   componentDidUpdate(prevState) {
     if (store.getState().mode !== prevState.mode) {
       this.switchMode(store.getState().mode);
+      console.log(store.getState().mode);
     }
 
     if (
@@ -24,20 +25,28 @@ class Mode extends Component {
     if (store.getState().textAreaVal !== prevState.textAreaVal) {
       this.switchMode(store.getState().mode);
     }
+
+    if (store.getState().isFontColorPicker) {
+      this.switchMode(store.getState().mode);
+    }
+
+    if (store.getState().isBackgroundColorPicker) {
+      this.switchMode(store.getState().mode);
+    }
   }
   switchMode = mode => {
-    if (mode === 'customized') {
-      console.log(`mode: ${mode}`);
-      console.log('customized mode is selected');
-      this.changeTextColor(mode);
-      this.changeBackground(mode);
-      this.changeFontFamily(mode);
-    } else {
-      this.changeTextColor(mode);
-      this.changeTextShadow(mode);
-      this.changeFontFamily(mode);
-      this.changeBackground(mode);
+    console.log(`mode: ${mode}`);
+    if (mode !== 'customized') {
+      this.props.isFontColorPickerFalse();
+      this.props.isBackgroundColorPickerFalse();
+
+      console.log(store.getState().isFontColorPicker);
+      console.log(store.getState().isBackgroundColorPicker);
     }
+    this.changeTextColor(mode);
+    this.changeTextShadow(mode);
+    this.changeFontFamily(mode);
+    this.changeBackground(mode);
   };
 
   changeTextColor = mode => {
@@ -45,7 +54,6 @@ class Mode extends Component {
     const coloredTextClass = document.getElementsByClassName('coloredText');
 
     for (let i = 0; i < coloredTextClass.length; i++) {
-      console.log(store.getState().customizedFontColor);
       switch (mode) {
         case 'developer':
           coloredTextClass[i].style.color = '#00c200';
@@ -145,7 +153,6 @@ class Mode extends Component {
         break;
 
       case 'customized':
-        console.log('customized font-family is choosen.');
         this.displayScreen.style.fontFamily = store.getState().customizedFontFamily;
         break;
 

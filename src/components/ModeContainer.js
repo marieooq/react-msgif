@@ -4,7 +4,11 @@ import {
   changeTextAreaVal,
   changeCustomizedBackgroundColor,
   changeCustomizedFontColor,
-  changeCutomizedFontFamily
+  changeCutomizedFontFamily,
+  isFontColorPickerTrue,
+  isFontColorPickerFalse,
+  isBackgroundColorPickerTrue,
+  isBackgroundColorPickerFalse
 } from '../actions';
 import Mode from './Mode';
 
@@ -14,7 +18,9 @@ const mapStateToProps = state => {
     textAreaVal: state.textAreaVal,
     customizedBackgroundColor: state.customizedBackgroundColor,
     customizedFontColor: state.customizedFontColor,
-    customizedFontFamily: state.customizedFontFamily
+    customizedFontFamily: state.customizedFontFamily,
+    isFontColorPicker: state.isFontColorPicker,
+    isBackgroundColorPicker: state.isBackgroundColorPicker
   };
 };
 
@@ -26,7 +32,12 @@ const mapDispatchToProps = dispatch => {
       dispatch(changeCustomizedBackgroundColor(text)),
     changeCustomizedFontColor: text =>
       dispatch(changeCustomizedFontColor(text)),
-    changeCutomizedFontFamily: text => dispatch(changeCutomizedFontFamily(text))
+    changeCutomizedFontFamily: text =>
+      dispatch(changeCutomizedFontFamily(text)),
+    isFontColorPickerTrue: () => dispatch(isFontColorPickerTrue()),
+    isFontColorPickerFalse: () => dispatch(isFontColorPickerFalse()),
+    isBackgroundColorPickerTrue: () => dispatch(isBackgroundColorPickerTrue()),
+    isBackgroundColorPickerFalse: () => dispatch(isBackgroundColorPickerFalse())
   };
 };
 

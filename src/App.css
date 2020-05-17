@@ -35,6 +35,21 @@ header img#logo {
   width: 100%;
 }
 
+/* .select-wrapper:before {
+  content: “”;
+  display: block;
+  clear: both;
+}
+.select-wrapper:after {
+  content: “”;
+  display: block;
+  clear: both;
+}
+
+.select-wrapper {
+  display: block;
+} */
+
 .btn-wrapper {
   margin-top: 15px;
   margin-bottom: 10px;
