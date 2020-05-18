@@ -17,7 +17,8 @@ import {
   createGifCountDecrement,
   pushToFrames,
   setNotification,
-  closeNotification
+  closeNotification,
+  marginBackgroundColor
 } from './actions';
 import App from './App';
 
@@ -33,7 +34,8 @@ const mapStateToProps = state => {
     captureCount: state.captureCount,
     createGifCount: state.createGifCount,
     frames: state.frames,
-    NotificationReducer: state.NotificationReducer
+    NotificationReducer: state.NotificationReducer,
+    marginBackgroundColor: state.marginBackgroundColor
   };
 };
 
@@ -59,7 +61,8 @@ const mapDispatchToProps = dispatch => {
     setNotification: (variant, message) =>
       dispatch(setNotification(variant, message)),
     closeNotification: (variant, message) =>
-      dispatch(closeNotification(variant, message))
+      dispatch(closeNotification(variant, message)),
+    marginBackgroundColor: text => dispatch(marginBackgroundColor(text))
   };
 };
 

@@ -39,7 +39,6 @@ export const isFontColorPickerFalse = () => {
 };
 
 export const changeCustomizedFontColor = text => {
-  console.log(`inside action: ${text}`);
   return { type: 'CHANGE_CUSTOMIZED_FONT_COLOR', text };
 };
 
@@ -53,6 +52,10 @@ export const isFontFamilySelectorFalse = () => {
 
 export const changeCutomizedFontFamily = text => {
   return { type: 'CHANGE_CUSTOMIZED_FONT_FAMILY', text };
+};
+
+export const marginBackgroundColor = text => {
+  return { type: 'MARGIN_BACKGROUND_COLOR', text };
 };
 
 export const mqFlagTrue = () => {

@@ -33,7 +33,7 @@ class FontSelector extends Component {
     if (store.getState().mode === 'customized') {
       return (
         <div className="selectdiv">
-          <label for="select_customized_font">Font type</label>
+          <label htmlFor="select_customized_font">Font type</label>
           <select
             value={store.getState().customizedFontFamily}
             name="display-mode"

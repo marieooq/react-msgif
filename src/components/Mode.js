@@ -163,42 +163,53 @@ class Mode extends Component {
   };
 
   changeBackground = mode => {
+    let margin_background_color;
     switch (mode) {
       case 'developer':
         this.displayScreen.style.backgroundColor = 'rgb(12, 5, 32)';
+        margin_background_color = 'rgb(12, 5, 32)';
         break;
 
       case 'neon':
         this.displayScreen.style.backgroundColor = 'rgb(12, 5, 32)';
+        margin_background_color = 'rgb(12, 5, 32)';
         break;
 
       case 'note':
         this.displayScreen.style.backgroundColor = '#fff';
+        margin_background_color = '#fff';
         break;
 
       case 'pop-yellow':
         this.displayScreen.style.backgroundColor = '#fef734';
+        margin_background_color = '#fef734';
         break;
 
       case 'pop-blue':
         this.displayScreen.style.backgroundColor = '#34ccfe';
+        margin_background_color = '#34ccfe';
         break;
 
       case 'pop-pink':
         this.displayScreen.style.backgroundColor = '#fe34a6';
+        margin_background_color = '#fe34a6';
         break;
 
       case 'navy':
         this.displayScreen.style.backgroundColor = '#043364';
+        margin_background_color = '#043364';
         break;
 
       case 'customized':
         this.displayScreen.style.backgroundColor = store.getState().customizedBackgroundColor;
+        margin_background_color = store.getState().customizedBackgroundColor;
         break;
 
       default:
         console.log('mode is undefined');
     }
+
+    this.props.marginBackgroundColor(margin_background_color);
   };
 
   handleMode = e => {
@@ -208,7 +219,7 @@ class Mode extends Component {
   render() {
     return (
       <div className="selectdiv">
-        <label for="select_mode">Design style</label>
+        <label htmlFor="select_mode">Design style</label>
         <select
           value={store.getState().mode}
           name="display-mode"

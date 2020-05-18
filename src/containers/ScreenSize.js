@@ -47,7 +47,7 @@ class ScreenSize extends Component {
     const ScreenSizeVal = this.props.size;
     return (
       <div className="selectdiv">
-        <label for="select_screen_size">Screen size</label>
+        <label htmlFor="select_screen_size">Screen size</label>
         <select
           size={store.getState().screenSize}
           value={ScreenSizeVal}

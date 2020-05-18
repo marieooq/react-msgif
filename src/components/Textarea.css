@@ -6,9 +6,9 @@ div#textareaMsg {
   box-sizing: border-box;
   font-size: 30px;
   display: block;
-  margin: auto;
+  margin: 0;
   background-color: #fff;
-  border: 1px solid rgb(168, 166, 166);
+  /* border: 1px solid rgb(168, 166, 166); */
 }
 
 div#textareaMsg:focus {

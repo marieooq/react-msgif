@@ -109,11 +109,13 @@ export default class App extends Component {
       windowWidth: this.textArea.scrollWidth,
       windowHeight: this.textArea.scrollHeight,
       x: 0,
-      y: this.textArea.offsetTop
+      y: this.textArea.offsetTop,
+      backgroundColor: store.getState().marginBackgroundColor,
+      scale: 1
     });
     const imgData = textAreaCanvas.toDataURL();
     const imgTag = document.createElement('img');
-    imgTag.src = `${imgData}`;
+    imgTag.src = imgData;
     this.props.pushToFrames(imgTag);
   };
 

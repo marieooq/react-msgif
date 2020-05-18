@@ -3,6 +3,10 @@
   --screenHeight: 256px;
 }
 
+body {
+  background-color: #f7f6f3;
+}
+
 #container {
   width: 100%;
   box-sizing: border-box;

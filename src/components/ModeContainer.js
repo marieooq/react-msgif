@@ -8,7 +8,8 @@ import {
   isFontColorPickerTrue,
   isFontColorPickerFalse,
   isBackgroundColorPickerTrue,
-  isBackgroundColorPickerFalse
+  isBackgroundColorPickerFalse,
+  marginBackgroundColor
 } from '../actions';
 import Mode from './Mode';
 
@@ -20,7 +21,8 @@ const mapStateToProps = state => {
     customizedFontColor: state.customizedFontColor,
     customizedFontFamily: state.customizedFontFamily,
     isFontColorPicker: state.isFontColorPicker,
-    isBackgroundColorPicker: state.isBackgroundColorPicker
+    isBackgroundColorPicker: state.isBackgroundColorPicker,
+    marginBackgroundColor: state.marginBackgroundColor
   };
 };
 
@@ -37,7 +39,9 @@ const mapDispatchToProps = dispatch => {
     isFontColorPickerTrue: () => dispatch(isFontColorPickerTrue()),
     isFontColorPickerFalse: () => dispatch(isFontColorPickerFalse()),
     isBackgroundColorPickerTrue: () => dispatch(isBackgroundColorPickerTrue()),
-    isBackgroundColorPickerFalse: () => dispatch(isBackgroundColorPickerFalse())
+    isBackgroundColorPickerFalse: () =>
+      dispatch(isBackgroundColorPickerFalse()),
+    marginBackgroundColor: text => dispatch(marginBackgroundColor(text))
   };
 };
 

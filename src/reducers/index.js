@@ -98,6 +98,15 @@ const customizedFontFamily = (state = "'Comic Neue', cursive", action) => {
   }
 };
 
+const marginBackgroundColor = (state = '#fff', action) => {
+  switch (action.type) {
+    case 'MARGIN_BACKGROUND_COLOR':
+      return action.text;
+    default:
+      return state;
+  }
+};
+
 const mqFlag = (state = { flag: false }, action) => {
   switch (action.type) {
     case 'MQ_FLAG_TRUE':
@@ -177,6 +186,7 @@ export default combineReducers({
   customizedFontColor,
   isFontFamilySelector,
   customizedFontFamily,
+  marginBackgroundColor,
   mqFlag,
   captureCount,
   createGifCount,
