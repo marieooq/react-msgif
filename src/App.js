@@ -244,7 +244,7 @@ export default class App extends Component {
   render() {
     return (
       <div id="container">
-        {/* <ModalWindow /> */}
+        <ModalWindow />
         <a
           href="https://www.producthunt.com/posts/msgif?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-msgif"
           target="_blank"

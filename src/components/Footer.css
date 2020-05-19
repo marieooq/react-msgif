@@ -1,5 +1,6 @@
 footer {
-  color: #fff;
+  /* color: #fff; */
+  color: #000;
   /* color: rgb(138, 136, 136); */
   text-align: center;
   padding: 2%;
@@ -10,7 +11,8 @@ footer {
 }
 
 footer a {
-  color: #fff;
+  /* color: #fff; */
+  color: #000;
   /* color: rgb(138, 136, 136); */
   text-decoration: underline;
 }
