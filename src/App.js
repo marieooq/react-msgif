@@ -6,8 +6,6 @@ import ScreenSizeContainer from './containers/ScreenSizeContainer';
 import ModeContainer from './components/ModeContainer';
 import CustomizedModeContainer from './components/CustomizedMode/CustomizedModeContainer';
 import FontSelectorContainer from './components/CustomizedMode/CustomizedModeComponents/FontSelectorContainer';
-import BackgroundColorPickerContainer from './components/CustomizedMode/CustomizedModeComponents/ColorPicker/BackgroundColorPickerContainer';
-import FontColorPickerContainer from './components/CustomizedMode/CustomizedModeComponents/ColorPicker/FontColorPickerContainer';
 import ColorPicker from './components/CustomizedMode/CustomizedModeComponents/ColorPicker/ColorPicker';
 import TextareaContainer from './components/TextareaContainer';
 import RecordResetContainer from './containers/RecordResetContainer';
@@ -295,6 +293,7 @@ export default class App extends Component {
             <Note
               number="1"
               noteDescription="It's a demo unless you press the Record button."
+              id="note_about_record"
             />
             <Note
               number="2"

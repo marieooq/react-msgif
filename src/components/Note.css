@@ -1,6 +1,13 @@
 p.note-description {
   margin: 0;
   font-size: 12px;
-  font-family: "PT Sans Caption", sans-serif;
+  font-family: 'PT Sans Caption', sans-serif;
   margin-bottom: 0.5em;
+}
+
+p.warning {
+  color: #000;
+  font-weight: 900;
+  padding: 0.5em 0;
+  background-color: yellow;
 }
