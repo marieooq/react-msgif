@@ -25,9 +25,7 @@ class FontSelector extends Component {
   // font-family: 'Bangers', cursive;
 
   handleFontFamily = e => {
-    console.log(e.target.value);
     this.props.changeCutomizedFontFamily(e.target.value);
-    console.log(store.getState().customizedFontFamily);
   };
   render() {
     if (store.getState().mode === 'customized') {

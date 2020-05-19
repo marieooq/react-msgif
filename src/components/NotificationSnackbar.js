@@ -5,7 +5,7 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import ErrorIcon from '@material-ui/icons/Error';
 import InfoIcon from '@material-ui/icons/Info';
 import CloseIcon from '@material-ui/icons/Close';
-import red from '@material-ui/core/colors/red';
+import yellow from '@material-ui/core/colors/yellow';
 import lightGreen from '@material-ui/core/colors/green';
 import indigo from '@material-ui/core/colors/indigo';
 import IconButton from '@material-ui/core/IconButton';
@@ -26,7 +26,8 @@ const styles = theme => ({
     backgroundColor: lightGreen['A700']
   },
   warning: {
-    backgroundColor: red[600]
+    backgroundColor: yellow[500],
+    color: '#000'
   },
   info: {
     backgroundColor: indigo[700]

@@ -4,13 +4,7 @@ import { SketchPicker } from 'react-color';
 
 class FontColorPicker extends React.Component {
   handleChangeComplete = color => {
-    console.log(`inside FontColorPicker: ${color.hex}`);
     this.props.changeCustomizedFontColor(color.hex);
-    console.log(
-      `store.getState().customizedFontColor: ${
-        store.getState().customizedFontColor
-      }`
-    );
   };
 
   render() {

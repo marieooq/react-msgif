@@ -9,17 +9,14 @@ class FontColorPickerButton extends Component {
 
   componentDidUpdate(prevState) {
     if (this.state.buttonContent !== prevState.buttonContent) {
-      console.log('state is changed!!!');
     }
   }
   handleSketchPicker = e => {
     if (store.getState().isFontColorPicker) {
       this.props.isFontColorPickerFalse();
-      console.log(`isFontColorPicker: ${store.getState().isFontColorPicker}`);
       this.setState({ buttonContent: 'Font color picker' });
     } else {
       this.props.isFontColorPickerTrue();
-      console.log(`isFontColorPicker: ${store.getState().isFontColorPicker}`);
       this.setState({ buttonContent: 'Close the font color picker' });
     }
   };

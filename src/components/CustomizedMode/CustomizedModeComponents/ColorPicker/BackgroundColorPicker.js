@@ -5,11 +5,6 @@ import { SketchPicker } from 'react-color';
 class BackgroundColorPicker extends React.Component {
   handleChangeComplete = color => {
     this.props.changeCustomizedBackgroundColor(color.hex);
-    console.log(
-      `store.getState().customizedBackgroundColor : ${
-        store.getState().customizedBackgroundColor
-      }`
-    );
   };
 
   render() {

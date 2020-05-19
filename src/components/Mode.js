@@ -12,7 +12,6 @@ class Mode extends Component {
   componentDidUpdate(prevState) {
     if (store.getState().mode !== prevState.mode) {
       this.switchMode(store.getState().mode);
-      console.log(store.getState().mode);
     }
 
     if (
@@ -35,13 +34,9 @@ class Mode extends Component {
     }
   }
   switchMode = mode => {
-    console.log(`mode: ${mode}`);
     if (mode !== 'customized') {
       this.props.isFontColorPickerFalse();
       this.props.isBackgroundColorPickerFalse();
-
-      console.log(store.getState().isFontColorPicker);
-      console.log(store.getState().isBackgroundColorPicker);
     }
     this.changeTextColor(mode);
     this.changeTextShadow(mode);
