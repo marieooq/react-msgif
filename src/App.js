@@ -275,7 +275,7 @@ export default class App extends Component {
               title="Choose the size of the text area and style of design.🎨"
             />
             <div id="size-mode-wrapper">
-              <div className="select-wrapper">
+              <div className="select-wrapper clearfix">
                 <ScreenSizeContainer />
                 <ModeContainer />
                 <FontSelectorContainer />
