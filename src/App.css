@@ -39,7 +39,7 @@ header img#logo {
   width: 100%;
 }
 
-/* .select-wrapper:before {
+.select-wrapper:before {
   content: “”;
   display: block;
   clear: both;
@@ -52,7 +52,7 @@ header img#logo {
 
 .select-wrapper {
   display: block;
-} */
+}
 
 .btn-wrapper {
   margin-top: 15px;
