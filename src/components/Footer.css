@@ -1,18 +1,18 @@
 footer {
   /* color: #fff; */
-  color: #000;
+  color: #fff;
   /* color: rgb(138, 136, 136); */
   text-align: center;
   padding: 2%;
   /* background-color: #7880dd; */
-  background-color: #aaa9a5;
+  background-color: rgb(120, 128, 221);
   font-size: 14px;
   /* border-top: 1px solid #000; */
 }
 
 footer a {
   /* color: #fff; */
-  color: #000;
+  color: #fff;
   /* color: rgb(138, 136, 136); */
   text-decoration: underline;
 }

@@ -4,7 +4,7 @@
 }
 
 body {
-  background-color: #f7f6f3;
+  background-color: rgb(240, 240, 250);
 }
 
 #container {
@@ -44,7 +44,7 @@ header img#logo {
 }
 
 .clearfix:after {
-  content: "";
+  content: '';
   display: table;
   clear: both;
 }
