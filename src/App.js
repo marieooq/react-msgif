@@ -4,11 +4,7 @@ import ProductHuntStecker from './components/ProductHuntStecker';
 import Description from './components/Description';
 import Note from './components/Note';
 import OutputScreen from './components/OutputScreen';
-import ScreenSizeContainer from './containers/ScreenSizeContainer';
-import ModeContainer from './components/ModeContainer';
-import CustomizedModeContainer from './components/CustomizedMode/CustomizedModeContainer';
-import FontSelectorContainer from './components/CustomizedMode/CustomizedModeComponents/FontSelectorContainer';
-import ColorPicker from './components/CustomizedMode/CustomizedModeComponents/ColorPicker/ColorPicker';
+import Step1 from './components/Step1';
 import TextareaContainer from './components/TextareaContainer';
 import RecordResetContainer from './containers/RecordResetContainer';
 import CreateGif from './containers/CreateGif';
@@ -251,22 +247,8 @@ export default class App extends Component {
         <Header />
 
         <div id="inner">
-          <div className="wrapper-by-step">
-            <Description
-              step="1"
-              title="Choose the size of the text area and style of design.🎨"
-            />
-            <div id="size-mode-wrapper">
-              <div className="select-wrapper clearfix">
-                <ScreenSizeContainer />
-                <ModeContainer />
-                <FontSelectorContainer />
-              </div>
-              <CustomizedModeContainer />
-              <ColorPicker />
-            </div>
-          </div>
-
+          <Step1 />
+          ScreenSizeContainer
           <div className="wrapper-by-step">
             <Description
               step="2"
@@ -292,7 +274,6 @@ export default class App extends Component {
             </div>
             <TextareaContainer captureScreen={this.captureScreen} />
           </div>
-
           <div className="wrapper-by-step">
             <Description
               step="3"
