@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from './components/Header';
 import ProductHuntStecker from './components/ProductHuntStecker';
 import Description from './components/Description';
 import Note from './components/Note';
@@ -17,7 +18,6 @@ import html2canvas from 'html2canvas';
 /* eslint-disable no-undef */
 // import GIFEncoder from "./GIFEncoder";
 import './App.css';
-import logo from './img/logo.png';
 import encode64 from './b64';
 import store from './reducers/store';
 import ModalWindow from './components/ModalWindow';
@@ -247,11 +247,8 @@ export default class App extends Component {
       <div id="container">
         <ModalWindow />
         <ProductHuntStecker />
-        <div id="main"></div>
         <Notification />
-        <header>
-          <img src={logo} alt="logo" id="logo" />
-        </header>
+        <Header />
 
         <div id="inner">
           <div className="wrapper-by-step">
