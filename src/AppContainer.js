@@ -18,7 +18,8 @@ import {
   pushToFrames,
   setNotification,
   closeNotification,
-  marginBackgroundColor
+  marginBackgroundColor,
+  setGifAnimationURL
 } from './actions';
 import App from './App';
 
@@ -35,7 +36,8 @@ const mapStateToProps = state => {
     createGifCount: state.createGifCount,
     frames: state.frames,
     NotificationReducer: state.NotificationReducer,
-    marginBackgroundColor: state.marginBackgroundColor
+    marginBackgroundColor: state.marginBackgroundColor,
+    gifAnimationURL: state.gifAnimationURL
   };
 };
 
@@ -62,7 +64,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(setNotification(variant, message)),
     closeNotification: (variant, message) =>
       dispatch(closeNotification(variant, message)),
-    marginBackgroundColor: text => dispatch(marginBackgroundColor(text))
+    marginBackgroundColor: text => dispatch(marginBackgroundColor(text)),
+    setGifAnimationURL: text => dispatch(setGifAnimationURL(text))
   };
 };
 

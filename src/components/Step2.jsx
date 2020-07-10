@@ -11,9 +11,9 @@ import html2canvas from 'html2canvas';
 import encode64 from '../b64';
 
 class Step2 extends Component {
-  state = {
-    gifAnimation: ''
-  };
+  // state = {
+  //   gifAnimation: ''
+  // };
 
   textArea;
   outputScreen;
@@ -144,10 +144,14 @@ class Step2 extends Component {
 
       await proseccing();
 
-      this.setState({
-        gifAnimation:
-          'data:image/gif;base64,' + encode64(encoder.stream().getData())
-      });
+      // this.setState({
+      //   gifAnimation:
+      //     'data:image/gif;base64,' + encode64(encoder.stream().getData())
+      // });
+
+      this.props.setGifAnimationURL(
+        'data:image/gif;base64,' + encode64(encoder.stream().getData())
+      );
 
       //set width and height of the output image
       const outputImgWidth = getComputedStyle(document.documentElement)
@@ -160,9 +164,9 @@ class Step2 extends Component {
       //create an output image
       const img = document.createElement('img');
       img.id = 'outputImg';
-      img.src = this.state.gifAnimation;
+      img.src = store.getState().gifAnimationURL;
       console.log('---------------------');
-      console.log(this.state.gifAnimation);
+      console.log(store.getState().gifAnimationURL);
       console.log('---------------------');
       img.width = outputImgWidth;
       img.height = outputImgHeight;

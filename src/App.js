@@ -24,8 +24,8 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      recordingFlg: false,
-      gifAnimation: ''
+      recordingFlg: false
+      // gifAnimation: ''
       // outputScreenStatus: "",
     };
   }
@@ -183,7 +183,7 @@ export default class App extends Component {
               title="Download the GIF animation you've created. You can share it on Twitter, Facebook, chat apps or wherever you want!🎉"
             />
             <OutputScreen />
-            <Download href={this.state.gifAnimation} />
+            <Download href={store.getState().gifAnimationURL} />
             <div id="down-to-here" className="down-to-here-hide"></div>
           </div>
         </div>

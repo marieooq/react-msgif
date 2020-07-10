@@ -6,7 +6,8 @@ import {
   pushToFrames,
   setNotification,
   closeNotification,
-  createGifCountIncrement
+  createGifCountIncrement,
+  setGifAnimationURL
 } from '../actions';
 import Step2 from './Step2';
 
@@ -16,7 +17,8 @@ const mapStateToProps = state => {
     captureCount: state.captureCount,
     frames: state.frames,
     NotificationReducer: state.NotificationReducer,
-    createGifCount: state.createGifCount
+    createGifCount: state.createGifCount,
+    gifAnimationURL: state.gifAnimationURL
   };
 };
 
@@ -30,7 +32,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(setNotification(variant, message)),
     closeNotification: (variant, message) =>
       dispatch(closeNotification(variant, message)),
-    createGifCountIncrement: () => dispatch(createGifCountIncrement())
+    createGifCountIncrement: () => dispatch(createGifCountIncrement()),
+    setGifAnimationURL: text => dispatch(setGifAnimationURL(text))
   };
 };
 

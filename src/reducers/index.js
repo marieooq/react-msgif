@@ -175,6 +175,15 @@ const NotificationReducer = (
   }
 };
 
+const gifAnimationURL = (state = '', action) => {
+  switch (action.type) {
+    case 'SET_GIF_ANIMATION_URL':
+      return action.text;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   isRec,
   textAreaVal,
@@ -191,5 +200,6 @@ export default combineReducers({
   captureCount,
   createGifCount,
   frames,
-  NotificationReducer
+  NotificationReducer,
+  gifAnimationURL
 });
