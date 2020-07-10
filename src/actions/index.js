@@ -106,6 +106,7 @@ export const closeNotification = (variant, message) => {
   };
 };
 
-export const setGifAnimationURL = text => {
-  return { type: 'SET_GIF_ANIMATION_URL', text };
-};
+export const setGifAnimationURL = text => ({
+  type: 'SET_GIF_ANIMATION_URL',
+  text
+});
