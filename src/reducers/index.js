@@ -89,7 +89,7 @@ const isFontFamilySelector = (state = false, action) => {
   }
 };
 
-const customizedFontFamily = (state = "'Comic Neue', cursive", action) => {
+const customizedFontFamily = (state = "'Sigmar One', cursive", action) => {
   switch (action.type) {
     case 'CHANGE_CUSTOMIZED_FONT_FAMILY':
       return action.text;
