@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
 import ProductHuntStecker from './components/ProductHuntStecker';
-import Description from './components/Description';
-import OutputScreen from './components/OutputScreen';
+// import Description from './components/Description';
+// import OutputScreen from './components/OutputScreen';
 import Step1 from './components/Step1';
 import Step2Container from './components/Step2Container';
-import Download from './components/Download';
+import Step3 from './components/Step3';
+// import Download from './components/Download';
 import './App.css';
 import store from './reducers/store';
 import ModalWindow from './components/ModalWindow';
@@ -30,15 +31,7 @@ export default class App extends Component {
 
           <Step2Container />
 
-          <div className="wrapper-by-step">
-            <Description
-              step="3"
-              title="Download the GIF animation you've created. You can share it on Twitter, Facebook, chat apps or wherever you want!🎉"
-            />
-            <OutputScreen />
-            <Download href={store.getState().gifAnimationURL} />
-            <div id="down-to-here" className="down-to-here-hide"></div>
-          </div>
+          <Step3 />
         </div>
 
         <Footer />
