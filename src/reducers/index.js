@@ -89,7 +89,7 @@ const isFontFamilySelector = (state = false, action) => {
   }
 };
 
-const customizedFontFamily = (state = "'Comic Neue', cursive", action) => {
+const customizedFontFamily = (state = "'Sigmar One', cursive", action) => {
   switch (action.type) {
     case 'CHANGE_CUSTOMIZED_FONT_FAMILY':
       return action.text;
@@ -175,6 +175,15 @@ const NotificationReducer = (
   }
 };
 
+const gifAnimationURL = (state = '', action) => {
+  switch (action.type) {
+    case 'SET_GIF_ANIMATION_URL':
+      return action.text;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   isRec,
   textAreaVal,
@@ -191,5 +200,6 @@ export default combineReducers({
   captureCount,
   createGifCount,
   frames,
-  NotificationReducer
+  NotificationReducer,
+  gifAnimationURL
 });
