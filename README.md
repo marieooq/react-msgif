@@ -19,5 +19,5 @@ Thankfully, I got a lot of feedback. I keep updating this app so stay tune!
 - [Msgif Website](https://msgif.net/)
 - [Product Hunt](https://www.producthunt.com/posts/msgif) 
 
-I hope a lot of people will be interested in and contribute to this project!<br>
+I hope a lot of people love this app!<br>
 Happy coding!🤞
