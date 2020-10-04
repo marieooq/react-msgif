@@ -3,7 +3,6 @@ import html2canvas from "html2canvas";
 
 export default class Capture extends Component {
   captureScreen = async () => {
-    console.log("inside captureScreen function in class Capture");
     if (this.captureCount === 0) {
       //shows the create gif button
       const createGifBtn = document.getElementById("createGif-btn");
