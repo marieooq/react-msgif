@@ -14,14 +14,14 @@ const ModalWindow = () =>{
 
   const [modalIsOpen, setModalIsOpen] = useState(true);
 
-  const openModal =() => {
-    setModalIsOpen(true);
+  // const openModal =() => {
+  //   setModalIsOpen(true);
     
-  }
+  // }
   const closeModal= () => {
     setModalIsOpen(false);
   }
-  
+
   return (
     <div>
       <ReactModal
