@@ -7,17 +7,17 @@ import Notification from './containers/Notification';
 import Steps from './components/Steps';
 import Footer from './components/Footer';
 
-export default class App extends Component {
-  render() {
-    return (
-      <div id="container">
-        <ModalWindow />
-        <ProductHuntStecker />
-        <Notification />
-        <Header />
-        <Steps />
-        <Footer />
-      </div>
-    );
-  }
+const App = () => {
+  return (
+    <div id="container">
+      <ModalWindow />
+      <ProductHuntStecker />
+      <Notification />
+      <Header />
+      <Steps />
+      <Footer />
+    </div>
+  );
 }
+
+export default App;
