@@ -1,29 +1,31 @@
-import React, { Component } from 'react';
+import React, {useState} from 'react';
 import store from '../../../reducers/store';
 import './ColorPickerButton.css';
 
-class BackgroundColorPickerButton extends Component {
-  state = {
-    buttonContent: 'Background color picker'
-  };
+const BackgroundColorPickerButton = (props) =>{
+  // state = {
+  //   buttonContent: 'Background color picker'
+  // };
 
-  handleSketchPicker = e => {
+  const [buttonContent, setbuttonContent] = useState('Background color picker');
+
+  const handleSketchPicker = e => {
     if (store.getState().isBackgroundColorPicker) {
-      this.props.isBackgroundColorPickerFalse();
-      this.setState({ buttonContent: 'Background color picker' });
+      props.isBackgroundColorPickerFalse();
+      // setState({ buttonContent: 'Background color picker' });
+      setbuttonContent('Background color picker' );
     } else {
-      this.props.isBackgroundColorPickerTrue();
-      this.setState({ buttonContent: 'Close the background color picker' });
+      props.isBackgroundColorPickerTrue();
+      // setState({ buttonContent: 'Close the background color picker' });
+      setbuttonContent('Close the background color picker' );
     }
   };
 
-  render() {
-    return (
-      <button onClick={this.handleSketchPicker} className="color_picker_button">
-        {this.state.buttonContent}
-      </button>
-    );
-  }
+  return (
+    <button onClick={handleSketchPicker} className="color_picker_button">
+      {buttonContent}
+    </button>
+  );
 }
 
 export default BackgroundColorPickerButton;
