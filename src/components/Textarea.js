@@ -28,7 +28,6 @@ class Textarea extends Component {
 
   handleMediaQuery = mq => {
     const docStyle = document.documentElement.style;
-    console.log(this.textArea);
 
     // changeScreenSize(store.getState().screenSize);
     if (mq.matches) {

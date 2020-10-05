@@ -1,36 +1,29 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import store from '../../../reducers/store';
 import './ColorPickerButton.css';
 
-class FontColorPickerButton extends Component {
-  state = {
-    buttonContent: 'Font color picker'
-  };
+ const FontColorPickerButton = (props) => {
 
-  componentDidUpdate(prevState) {
-    if (this.state.buttonContent !== prevState.buttonContent) {
-    }
-  }
-  handleSketchPicker = e => {
+ const [buttonContent, setButtonContent] = useState('Font color picker');
+
+  const handleSketchPicker = e => {
     if (store.getState().isFontColorPicker) {
-      this.props.isFontColorPickerFalse();
-      this.setState({ buttonContent: 'Font color picker' });
+      props.isFontColorPickerFalse();
+      setButtonContent('Font color picker');
     } else {
-      this.props.isFontColorPickerTrue();
-      this.setState({ buttonContent: 'Close the font color picker' });
+      props.isFontColorPickerTrue();
+      setButtonContent('Close the font color picker');
     }
   };
 
-  render() {
-    return (
-      <button
-        onClick={this.handleSketchPicker}
-        className="color_picker_button "
-      >
-        {this.state.buttonContent}
-      </button>
-    );
-  }
+  return (
+    <button
+      onClick={handleSketchPicker}
+      className="color_picker_button "
+    >
+      {buttonContent}
+    </button>
+  );
 }
 
 export default FontColorPickerButton;

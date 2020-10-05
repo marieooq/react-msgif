@@ -2,24 +2,22 @@ import React from 'react';
 import store from '../../../../reducers/store';
 import { SketchPicker } from 'react-color';
 
-class BackgroundColorPicker extends React.Component {
-  handleChangeComplete = color => {
-    this.props.changeCustomizedBackgroundColor(color.hex);
+const BackgroundColorPicker = (props) => {
+  const handleChangeComplete = color => {
+    props.changeCustomizedBackgroundColor(color.hex);
   };
 
-  render() {
-    if (store.getState().isBackgroundColorPicker) {
-      return (
-        <SketchPicker
-          color={store.getState().customizedBackgroundColor}
-          onChangeComplete={this.handleChangeComplete}
-          disableAlpha={true}
-          style={{ zIndex: '100' }}
-        />
-      );
-    } else {
-      return <></>;
-    }
+  if (store.getState().isBackgroundColorPicker) {
+    return (
+      <SketchPicker
+        color={store.getState().customizedBackgroundColor}
+        onChangeComplete={handleChangeComplete}
+        disableAlpha={true}
+        style={{ zIndex: '100' }}
+      />
+    );
+  } else {
+    return <></>;
   }
 }
 

@@ -33,7 +33,6 @@ class Step2 extends Component {
 
   handleMediaQuery = mq => {
     const docStyle = document.documentElement.style;
-    console.log(this.textArea);
 
     if (mq.matches) {
       this.props.mqFlagTrue();
@@ -165,13 +164,9 @@ class Step2 extends Component {
       const img = document.createElement('img');
       img.id = 'outputImg';
       img.src = store.getState().gifAnimationURL;
-      console.log('---------------------');
-      console.log(store.getState().gifAnimationURL);
-      console.log('---------------------');
       img.width = outputImgWidth;
       img.height = outputImgHeight;
 
-      console.log(img);
 
       //set a style to outputScreen
       this.outputScreen.style.padding = 0;

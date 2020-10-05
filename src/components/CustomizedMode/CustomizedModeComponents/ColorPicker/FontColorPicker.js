@@ -2,24 +2,22 @@ import React from 'react';
 import store from '../../../../reducers/store';
 import { SketchPicker } from 'react-color';
 
-class FontColorPicker extends React.Component {
-  handleChangeComplete = color => {
-    this.props.changeCustomizedFontColor(color.hex);
+const FontColorPicker = (props) => {
+  const handleChangeComplete = color => {
+    props.changeCustomizedFontColor(color.hex);
   };
 
-  render() {
-    if (store.getState().isFontColorPicker) {
-      return (
-        <SketchPicker
-          color={store.getState().customizedFontColor}
-          onChangeComplete={this.handleChangeComplete}
-          disableAlpha={true}
-          style={{ zIndex: '100' }}
-        />
-      );
-    } else {
-      return <></>;
-    }
+  if (store.getState().isFontColorPicker) {
+    return (
+      <SketchPicker
+        color={store.getState().customizedFontColor}
+        onChangeComplete={handleChangeComplete}
+        disableAlpha={true}
+        style={{ zIndex: '100' }}
+      />
+    );
+  } else {
+    return <></>;
   }
 }
 
