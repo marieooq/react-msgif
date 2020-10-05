@@ -1,5 +1,4 @@
 const changeScreenSize = size => {
-  // console.log(size);
   let docStyle = document.documentElement.style;
 
   if (size === "twitter") {

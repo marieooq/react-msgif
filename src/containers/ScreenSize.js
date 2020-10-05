@@ -15,10 +15,8 @@ class ScreenSize extends Component {
   handleMediaQuery = mq => {
     const docStyle = document.documentElement.style;
 
-    // changeScreenSize(store.getState().screenSize);
     if (mq.matches) {
       this.props.mqFlagTrue();
-      // console.log(store.getState().mqFlag.flag);
       if (store.getState().screenSize === 'twitter') {
         docStyle.setProperty('--screenWidth', '256px');
         docStyle.setProperty('--screenHeight', '128px');
@@ -28,7 +26,6 @@ class ScreenSize extends Component {
       }
     } else {
       this.props.mqFlagFalse();
-      // console.log(store.getState().mqFlag.flag);
       if (store.getState().screenSize === 'twitter') {
         docStyle.setProperty('--screenWidth', '512px');
         docStyle.setProperty('--screenHeight', '256px');
