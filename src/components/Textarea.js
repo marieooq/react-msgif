@@ -1,14 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import store from '../reducers/store';
 import './Textarea.css';
 
 class Textarea extends Component {
+  constructor(props){
+    super(props);
+    this.textAreaRef = createRef();
+  }
   textAreaScreen;
   componentDidMount() {
     this.textAreaScreen = document.getElementById('textareaMsg');
     const note_about_record = document.getElementById('note_about_record');
 
-    this.textAreaScreen.addEventListener('input', async () => {
+    this.textAreaRef.current.addEventListener('input', async () => {
       if (store.getState().isRec) {
         await this.props.captureScreen();
         note_about_record.classList.remove('warning');
@@ -21,7 +25,7 @@ class Textarea extends Component {
           "It's a demo unless you push the Record button."
         );
 
-        this.props.changeTextAreaVal(this.textAreaScreen.textContent);
+        this.props.changeTextAreaVal(this.textAreaRef.current.textContent);
       }
     });
   }
@@ -56,7 +60,7 @@ class Textarea extends Component {
   };
 
   render() {
-    return <div id="textareaMsg" contentEditable="true"></div>;
+    return <div id="textareaMsg" contentEditable="true" ref={this.textAreaRef}></div>;
   }
 }
 
