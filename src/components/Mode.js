@@ -118,42 +118,40 @@ class Mode extends Component {
   changeFontFamily = mode => {
     switch (mode) {
       case 'developer':
-        this.displayScreen.style.fontFamily =
-          '"Ubuntu Mono", monospace, "Kosugi", sans-serif';
+          this.props.changeTextAreaFontFamily('"Ubuntu Mono", monospace, "Kosugi", sans-serif');
         break;
 
       case 'neon':
-        this.displayScreen.style.fontFamily =
-          '"Lobster", cursive, "Kosugi", sans-serif';
+        this.props.changeTextAreaFontFamily('"Lobster", cursive, "Kosugi", sans-serif');
         break;
 
       case 'note':
-        this.displayScreen.style.fontFamily = '"Noto Serif", serif';
+        this.props.changeTextAreaFontFamily("'Noto Serif', serif");
         break;
 
       case 'pop-yellow':
-        this.displayScreen.style.fontFamily = "'Anton', 'Kosugi', sans-serif";
+        this.props.changeTextAreaFontFamily("'Anton', 'Kosugi', sans-serif");
         break;
 
       case 'pop-blue':
-        this.displayScreen.style.fontFamily = "'Anton', 'Kosugi', sans-serif";
+        this.props.changeTextAreaFontFamily("'Anton', 'Kosugi', sans-serif");
         break;
 
       case 'pop-pink':
-        this.displayScreen.style.fontFamily = "'Anton', 'Kosugi', sans-serif";
+        this.props.changeTextAreaFontFamily("'Anton', 'Kosugi', sans-serif");
         break;
 
       case 'navy':
-        this.displayScreen.style.fontFamily = "'PT Sans', 'Kosugi', sans-serif";
+        this.props.changeTextAreaFontFamily("'PT Sans', 'Kosugi', sans-serif");
         break;
 
       case 'customized':
-        this.displayScreen.style.fontFamily = store.getState().customizedFontFamily;
+        this.props.changeTextAreaFontFamily(store.getState().customizedFontFamily);
         break;
 
       default:
         console.log('apply for the default font family.');
-        this.displayScreen.style.fontFamily = '"Noto Serif", serif';
+        this.props.changeTextAreaFontFamily("'Noto Serif', serif");
     }
   };
 
