@@ -2,6 +2,9 @@ import { connect } from 'react-redux';
 import {
   changeMode,
   changeTextAreaVal,
+  changeTextAreaFontFamily,
+  changeTextAreaFontColor,
+  changeTextAreaBackGround,
   changeCustomizedBackgroundColor,
   changeCustomizedFontColor,
   changeCutomizedFontFamily,
@@ -30,6 +33,9 @@ const mapDispatchToProps = dispatch => {
   return {
     changeMode: text => dispatch(changeMode(text)),
     changeTextAreaVal: text => dispatch(changeTextAreaVal(text)),
+    changeTextAreaFontFamily: text => dispatch(changeTextAreaFontFamily(text)),
+    changeTextAreaFontColor: text => dispatch(changeTextAreaFontColor(text)),
+    changeTextAreaBackGround: text => dispatch(changeTextAreaBackGround(text)),
     changeCustomizedBackgroundColor: text =>
       dispatch(changeCustomizedBackgroundColor(text)),
     changeCustomizedFontColor: text =>

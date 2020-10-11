@@ -161,42 +161,50 @@ class Mode extends Component {
     let margin_background_color;
     switch (mode) {
       case 'developer':
-        this.displayScreen.style.backgroundColor = 'rgb(12, 5, 32)';
+        // this.displayScreen.style.backgroundColor = 'rgb(12, 5, 32)';
+        this.props.changeTextAreaBackGround('rgb(12, 5, 32)');
         margin_background_color = 'rgb(12, 5, 32)';
         break;
 
       case 'neon':
-        this.displayScreen.style.backgroundColor = 'rgb(12, 5, 32)';
+        // this.displayScreen.style.backgroundColor = 'rgb(12, 5, 32)';
+        this.props.changeTextAreaBackGround('rgb(12, 5, 32)');
         margin_background_color = 'rgb(12, 5, 32)';
         break;
 
       case 'note':
-        this.displayScreen.style.backgroundColor = '#fff';
+        // this.displayScreen.style.backgroundColor = '#fff';
+        this.props.changeTextAreaBackGround('#fff');
         margin_background_color = '#fff';
         break;
 
       case 'pop-yellow':
-        this.displayScreen.style.backgroundColor = '#fef734';
+        // this.displayScreen.style.backgroundColor = '#fef734';
+        this.props.changeTextAreaBackGround('#fef734');
         margin_background_color = '#fef734';
         break;
 
       case 'pop-blue':
-        this.displayScreen.style.backgroundColor = '#34ccfe';
+        // this.displayScreen.style.backgroundColor = '#34ccfe';
+        this.props.changeTextAreaBackGround('#34ccfe');
         margin_background_color = '#34ccfe';
         break;
 
       case 'pop-pink':
-        this.displayScreen.style.backgroundColor = '#fe34a6';
+        // this.displayScreen.style.backgroundColor = '#fe34a6';
+        this.props.changeTextAreaBackGround('#fe34a6');
         margin_background_color = '#fe34a6';
         break;
 
       case 'navy':
-        this.displayScreen.style.backgroundColor = '#043364';
+        // this.displayScreen.style.backgroundColor = '#043364';
+        this.props.changeTextAreaBackGround('#043364');
         margin_background_color = '#043364';
         break;
 
       case 'customized':
-        this.displayScreen.style.backgroundColor = store.getState().customizedBackgroundColor;
+        // this.displayScreen.style.backgroundColor = store.getState().customizedBackgroundColor;
+        this.props.changeTextAreaBackGround(store.getState().customizedBackgroundColor);
         margin_background_color = store.getState().customizedBackgroundColor;
         break;
 

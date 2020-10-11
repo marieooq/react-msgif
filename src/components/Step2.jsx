@@ -220,7 +220,7 @@ class Step2 extends Component {
             name="Create GIF"
           />
         </div>
-        <TextareaContainer captureScreen={this.captureScreen} />
+        <TextareaContainer captureScreen={this.captureScreen} textAreaStyle={this.props.textAreaStyle}/>
       </div>
     );
   }

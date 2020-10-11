@@ -7,6 +7,8 @@ class Textarea extends Component {
     super(props);
     this.textAreaRef = createRef();
   }
+
+
   componentDidMount() {
     const note_about_record = document.getElementById('note_about_record');
 
@@ -27,6 +29,7 @@ class Textarea extends Component {
       }
     });
   }
+
 
   handleMediaQuery = mq => {
     const docStyle = document.documentElement.style;
@@ -58,7 +61,7 @@ class Textarea extends Component {
   };
 
   render() {
-    return <div id="textareaMsg" contentEditable="true" ref={this.textAreaRef}></div>;
+    return <div id="textareaMsg" contentEditable="true" ref={this.textAreaRef} style={this.props.textAreaStyle}></div>;
   }
 }
 
