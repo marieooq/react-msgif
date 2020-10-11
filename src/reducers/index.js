@@ -20,6 +20,33 @@ const textAreaVal = (state = '', action) => {
   }
 };
 
+const textAreaFontFamily = (state = "'Sigmar One', cursive", action) => {
+  switch(action.type){
+    case 'CHANGE_TEXT_AREA_FONT_FAMILY':
+      return action.text;
+    default:
+      return state;
+  }
+}
+
+const textAreaFontColor = (state = '#000', action) => {
+  switch(action.type){
+    case 'CHANGE_TEXT_AREA_FONT_COLOR':
+      return action.text;
+    default:
+      return state;
+  }
+}
+
+const textAreaBackGround = (state = '#ffff', action) => {
+  switch(action.type){
+    case 'CHANGE_TEXT_AREA_BACK_GROUND':
+      return action.text;
+    default:
+      return state;
+  }
+}
+
 const screenSize = (state = 'twitter', action) => {
   switch (action.type) {
     case 'CHANGE_SCREEN_SIZE':
@@ -187,6 +214,9 @@ const gifAnimationURL = (state = '', action) => {
 export default combineReducers({
   isRec,
   textAreaVal,
+  textAreaFontFamily,
+  textAreaFontColor,
+  textAreaBackGround,
   screenSize,
   mode,
   isBackgroundColorPicker,

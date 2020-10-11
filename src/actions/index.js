@@ -10,6 +10,18 @@ export const changeTextAreaVal = text => {
   return { type: 'CHANGE_TEXT_AREA_VAL', text };
 };
 
+export const changeTextAreaFontFamily = text => {
+  return { type: 'CHANGE_TEXT_AREA_FONT_FAMILY', text };
+};
+
+export const changeTextAreaFontColor = text => {
+  return { type: 'CHANGE_TEXT_AREA_FONT_COLOR', text };
+};
+
+export const changeTextAreaBackGround = text => {
+  return { type: 'CHANGE_TEXT_AREA_BACK_GROUND', text };
+};
+
 export const changeScreenSize = text => {
   return { type: 'CHANGE_SCREEN_SIZE', text };
 };
