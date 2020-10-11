@@ -7,9 +7,7 @@ class Textarea extends Component {
     super(props);
     this.textAreaRef = createRef();
   }
-  textAreaScreen;
   componentDidMount() {
-    this.textAreaScreen = document.getElementById('textareaMsg');
     const note_about_record = document.getElementById('note_about_record');
 
     this.textAreaRef.current.addEventListener('input', async () => {
